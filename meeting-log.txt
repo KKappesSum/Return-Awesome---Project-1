@@ -11,4 +11,4 @@
 	Proposed interface options:
 		- 2 tables that update each turn to reflect each player's viewpoint, OR
 		- 4 tables total, 2 for each player.  Each turn, show the player's tables, hide the opponent's tables, swapping on each turn change.
-	Proposed having a constants file that can be accessed by the main program.
+	Proposed having a constants file that can be accessed by whichever classes/objects need it.
