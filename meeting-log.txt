@@ -1,0 +1,8 @@
+1. 9/6/2019. In lecture.
+	Attendees: Archana Ramakrishnan, Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
+	Decided to make the project a webpage using JS/HTML/CSS. 
+2. 9/9/2019. In lecture.
+	Attendees: Archana Ramakrishnan, Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
+	Discussed plans for our JS object-oriented program design (grid and ship objects), interface design.  
+3. 9/9/2019. In lab.
+	Attendees: Kyle Kappes-Sum, Connie Li
