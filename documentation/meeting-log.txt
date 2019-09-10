@@ -17,4 +17,4 @@
 	Decided on class/object structure, divided tasks.  See meeting notes.
 5. 9/10/2019.  LEEP2.
 	Attendees: Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
-	Started work on JS classes.
+	Started work on our respective tasks, using JS class declarations.
