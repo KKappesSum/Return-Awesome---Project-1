@@ -12,3 +12,6 @@
 		- 2 tables that update each turn to reflect each player's viewpoint, OR
 		- 4 tables total, 2 for each player.  Each turn, show the player's tables, hide the opponent's tables, swapping on each turn change.
 	Proposed having a constants file that can be accessed by whichever classes/objects need it.
+4. 9/9/2019.  Spahr Library
+	Attendees: Archana Ramakrishnan, Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
+	Decided on class/object structure, divided tasks.  See meeting notes.
