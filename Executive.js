@@ -45,5 +45,26 @@ class Exec{
 //-------------------------------------------------------------------------------\\
 //-------------------------------------------------------------------------------\\
 
-
+/*
+input: none
+output: none
+desc: called upon user "starting" the game
+*/
+function run(){
+    //launches initializer, creation of exec object
+    //further details added later
+    return(0);
+}
+/*
+input: none
+output: specific player names, number of ships
+desc: prompts players for "gamertag", number of ships, and any other content needed
+    to start the game
+*/
+function initializer(){
+    adm1Name = "Kevin";
+    adm2Name = "Jessica"
+    numShips = 8;
+    return(adm1Name, adm2Name, numShips);
+}
 
