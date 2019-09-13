@@ -24,3 +24,6 @@
 7. 9/13/2019.  In lecture, scrum.
 	Attendees: Archana Ramakrishnan, Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
 	Scrum, discussed progress and future plans.
+8. 9/13/2019. Fish Bowl
+	Attendees: Archana Ramakrishnan, Ethan Brenner, Malena Schoeni
+	Discussed class design, UI elements, user interaction 

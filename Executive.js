@@ -64,7 +64,7 @@ desc: prompts players for "gamertag", number of ships, and any other content nee
 function initializer(){
     adm1Name = "Kevin";
     adm2Name = "Jessica"
-    numShips = 8;
+    numShips = 8;//default value, can't have more than 5 ships
     return(adm1Name, adm2Name, numShips);
 }
 
