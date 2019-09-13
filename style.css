@@ -1,0 +1,26 @@
+table{
+  empty-cells: show;
+  width: 2px;
+  height: 100%;
+  padding: 10px;
+}
+
+td, tr {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  background-color:lightblue;
+}
+
+.flex-container {
+  display: flex;
+  background-color: DodgerBlue;
+  flex-direction: column;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
