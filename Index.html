@@ -1,0 +1,351 @@
+<!Doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css"></link>
+  <script src="gui.js"></script>
+</head>
+
+<body>
+
+<h2>Welcome to Battleship!</h2>
+
+<div class="flex-container">
+    <div>
+    <table align="left" id="fire1" border="1" width=100% style="cursor: pointer;">
+        <tr>
+            <td name="1A">fire1</td>
+            <td name="1B">~~~</td>
+            <td name="1C">~~~</td>
+            <td name="1D">~~~</td>
+            <td name="1E">~~~</td>
+            <td name="1F">~~~</td>
+            <td name="1G">~~~</td>
+            <td name="1H">~~~</td>
+        </tr>
+        <tr>
+            <td name="2A">~~~</td>
+            <td name="2B">~~~</td>
+            <td name="2C">~~~</td>
+            <td name="2D">~~~</td>
+            <td name="2E">~~~</td>
+            <td name="2F">~~~</td>
+            <td name="2G">~~~</td>
+            <td name="2H">~~~</td>
+        </tr>
+        <tr>
+            <td name="3A">~~~</td>
+            <td name="3B">~~~</td>
+            <td name="3C">~~~</td>
+            <td name="3D">~~~</td>
+            <td name="3E">~~~</td>
+            <td name="3F">~~~</td>
+            <td name="3G">~~~</td>
+            <td name="3H">~~~</td>
+        </tr>
+        <tr>
+            <td name="4A">~~~</td>
+            <td name="4B">~~~</td>
+            <td name="4C">~~~</td>
+            <td name="4D">~~~</td>
+            <td name="4E">~~~</td>
+            <td name="4F">~~~</td>
+            <td name="4G">~~~</td>
+            <td name="4H">~~~</td>
+        </tr>
+        <tr>
+            <td name="5A">~~~</td>
+            <td name="5B">~~~</td>
+            <td name="5C">~~~</td>
+            <td name="5D">~~~</td>
+            <td name="5E">~~~</td>
+            <td name="5F">~~~</td>
+            <td name="5G">~~~</td>
+            <td name="5H">~~~</td>
+        </tr>
+        <tr>
+            <td name="6A">~~~</td>
+            <td name="6B">~~~</td>
+            <td name="6C">~~~</td>
+            <td name="6D">~~~</td>
+            <td name="6E">~~~</td>
+            <td name="6F">~~~</td>
+            <td name="6G">~~~</td>
+            <td name="6H">~~~</td>
+        </tr>
+        <tr>
+            <td name="7A">~~~</td>
+            <td name="7B">~~~</td>
+            <td name="7C">~~~</td>
+            <td name="7D">~~~</td>
+            <td name="7E">~~~</td>
+            <td name="7F">~~~</td>
+            <td name="7G">~~~</td>
+            <td name="7H">~~~</td>
+        </tr>
+        <tr>
+            <td name="8A">~~~</td>
+            <td name="8B">~~~</td>
+            <td name="8C">~~~</td>
+            <td name="8D">~~~</td>
+            <td name="8E">~~~</td>
+            <td name="8F">~~~</td>
+            <td name="8G">~~~</td>
+            <td name="8H">~~~</td>
+        </tr>
+    </table>
+
+    <table align="right" id="fire2" border="1" width=100% style="cursor: pointer;">
+        <tr>
+            <td name="1A">fire2</td>
+            <td name="1B">~~~</td>
+            <td name="1C">~~~</td>
+            <td name="1D">~~~</td>
+            <td name="1E">~~~</td>
+            <td name="1F">~~~</td>
+            <td name="1G">~~~</td>
+            <td name="1H">~~~</td>
+        </tr>
+        <tr>
+            <td name="2A">~~~</td>
+            <td name="2B">~~~</td>
+            <td name="2C">~~~</td>
+            <td name="2D">~~~</td>
+            <td name="2E">~~~</td>
+            <td name="2F">~~~</td>
+            <td name="2G">~~~</td>
+            <td name="2H">~~~</td>
+        </tr>
+        <tr>
+            <td name="3A">~~~</td>
+            <td name="3B">~~~</td>
+            <td name="3C">~~~</td>
+            <td name="3D">~~~</td>
+            <td name="3E">~~~</td>
+            <td name="3F">~~~</td>
+            <td name="3G">~~~</td>
+            <td name="3H">~~~</td>
+        </tr>
+        <tr>
+            <td name="4A">~~~</td>
+            <td name="4B">~~~</td>
+            <td name="4C">~~~</td>
+            <td name="4D">~~~</td>
+            <td name="4E">~~~</td>
+            <td name="4F">~~~</td>
+            <td name="4G">~~~</td>
+            <td name="4H">~~~</td>
+        </tr>
+        <tr>
+            <td name="5A">~~~</td>
+            <td name="5B">~~~</td>
+            <td name="5C">~~~</td>
+            <td name="5D">~~~</td>
+            <td name="5E">~~~</td>
+            <td name="5F">~~~</td>
+            <td name="5G">~~~</td>
+            <td name="5H">~~~</td>
+        </tr>
+        <tr>
+            <td name="6A">~~~</td>
+            <td name="6B">~~~</td>
+            <td name="6C">~~~</td>
+            <td name="6D">~~~</td>
+            <td name="6E">~~~</td>
+            <td name="6F">~~~</td>
+            <td name="6G">~~~</td>
+            <td name="6H">~~~</td>
+        </tr>
+        <tr>
+            <td name="7A">~~~</td>
+            <td name="7B">~~~</td>
+            <td name="7C">~~~</td>
+            <td name="7D">~~~</td>
+            <td name="7E">~~~</td>
+            <td name="7F">~~~</td>
+            <td name="7G">~~~</td>
+            <td name="7H">~~~</td>
+        </tr>
+        <tr>
+            <td name="8A">~~~</td>
+            <td name="8B">~~~</td>
+            <td name="8C">~~~</td>
+            <td name="8D">~~~</td>
+            <td name="8E">~~~</td>
+            <td name="8F">~~~</td>
+            <td name="8G">~~~</td>
+            <td name="8H">~~~</td>
+        </tr>
+    </table>
+</div>
+
+<div>
+<table align="left" id="ship1" border="1" width=100% style="cursor: pointer;">
+    <tr>
+        <td name="1A">ship1</td>
+        <td name="1B">~~~</td>
+        <td name="1C">~~~</td>
+        <td name="1D">~~~</td>
+        <td name="1E">~~~</td>
+        <td name="1F">~~~</td>
+        <td name="1G">~~~</td>
+        <td name="1H">~~~</td>
+    </tr>
+    <tr>
+        <td name="2A">~~~</td>
+        <td name="2B">~~~</td>
+        <td name="2C">~~~</td>
+        <td name="2D">~~~</td>
+        <td name="2E">~~~</td>
+        <td name="2F">~~~</td>
+        <td name="2G">~~~</td>
+        <td name="2H">~~~</td>
+    </tr>
+    <tr>
+        <td name="3A">~~~</td>
+        <td name="3B">~~~</td>
+        <td name="3C">~~~</td>
+        <td name="3D">~~~</td>
+        <td name="3E">~~~</td>
+        <td name="3F">~~~</td>
+        <td name="3G">~~~</td>
+        <td name="3H">~~~</td>
+    </tr>
+    <tr>
+        <td name="4A">~~~</td>
+        <td name="4B">~~~</td>
+        <td name="4C">~~~</td>
+        <td name="4D">~~~</td>
+        <td name="4E">~~~</td>
+        <td name="4F">~~~</td>
+        <td name="4G">~~~</td>
+        <td name="4H">~~~</td>
+    </tr>
+    <tr>
+        <td name="5A">~~~</td>
+        <td name="5B">~~~</td>
+        <td name="5C">~~~</td>
+        <td name="5D">~~~</td>
+        <td name="5E">~~~</td>
+        <td name="5F">~~~</td>
+        <td name="5G">~~~</td>
+        <td name="5H">~~~</td>
+    </tr>
+    <tr>
+        <td name="6A">~~~</td>
+        <td name="6B">~~~</td>
+        <td name="6C">~~~</td>
+        <td name="6D">~~~</td>
+        <td name="6E">~~~</td>
+        <td name="6F">~~~</td>
+        <td name="6G">~~~</td>
+        <td name="6H">~~~</td>
+    </tr>
+    <tr>
+        <td name="7A">~~~</td>
+        <td name="7B">~~~</td>
+        <td name="7C">~~~</td>
+        <td name="7D">~~~</td>
+        <td name="7E">~~~</td>
+        <td name="7F">~~~</td>
+        <td name="7G">~~~</td>
+        <td name="7H">~~~</td>
+    </tr>
+    <tr>
+        <td name="8A">~~~</td>
+        <td name="8B">~~~</td>
+        <td name="8C">~~~</td>
+        <td name="8D">~~~</td>
+        <td name="8E">~~~</td>
+        <td name="8F">~~~</td>
+        <td name="8G">~~~</td>
+        <td name="8H">~~~</td>
+    </tr>
+</table>
+
+    <table align="right" id="ship2" border="1" width=100% style="cursor: pointer;">
+        <tr>
+            <td name="1A">ship2</td>
+            <td name="1B">~~~</td>
+            <td name="1C">~~~</td>
+            <td name="1D">~~~</td>
+            <td name="1E">~~~</td>
+            <td name="1F">~~~</td>
+            <td name="1G">~~~</td>
+            <td name="1H">~~~</td>
+        </tr>
+        <tr>
+            <td name="2A">~~~</td>
+            <td name="2B">~~~</td>
+            <td name="2C">~~~</td>
+            <td name="2D">~~~</td>
+            <td name="2E">~~~</td>
+            <td name="2F">~~~</td>
+            <td name="2G">~~~</td>
+            <td name="2H">~~~</td>
+        </tr>
+        <tr>
+            <td name="3A">~~~</td>
+            <td name="3B">~~~</td>
+            <td name="3C">~~~</td>
+            <td name="3D">~~~</td>
+            <td name="3E">~~~</td>
+            <td name="3F">~~~</td>
+            <td name="3G">~~~</td>
+            <td name="3H">~~~</td>
+        </tr>
+        <tr>
+            <td name="4A">~~~</td>
+            <td name="4B">~~~</td>
+            <td name="4C">~~~</td>
+            <td name="4D">~~~</td>
+            <td name="4E">~~~</td>
+            <td name="4F">~~~</td>
+            <td name="4G">~~~</td>
+            <td name="4H">~~~</td>
+        </tr>
+        <tr>
+            <td name="5A">~~~</td>
+            <td name="5B">~~~</td>
+            <td name="5C">~~~</td>
+            <td name="5D">~~~</td>
+            <td name="5E">~~~</td>
+            <td name="5F">~~~</td>
+            <td name="5G">~~~</td>
+            <td name="5H">~~~</td>
+        </tr>
+        <tr>
+            <td name="6A">~~~</td>
+            <td name="6B">~~~</td>
+            <td name="6C">~~~</td>
+            <td name="6D">~~~</td>
+            <td name="6E">~~~</td>
+            <td name="6F">~~~</td>
+            <td name="6G">~~~</td>
+            <td name="6H">~~~</td>
+        </tr>
+        <tr>
+            <td name="7A">~~~</td>
+            <td name="7B">~~~</td>
+            <td name="7C">~~~</td>
+            <td name="7D">~~~</td>
+            <td name="7E">~~~</td>
+            <td name="7F">~~~</td>
+            <td name="7G">~~~</td>
+            <td name="7H">~~~</td>
+        </tr>
+        <tr>
+            <td name="8A">~~~</td>
+            <td name="8B">~~~</td>
+            <td name="8C">~~~</td>
+            <td name="8D">~~~</td>
+            <td name="8E">~~~</td>
+            <td name="8F">~~~</td>
+            <td name="8G">~~~</td>
+            <td name="8H">~~~</td>
+        </tr>
+    </table>
+    </div>
+</div>
+
+</body>
+</html>
