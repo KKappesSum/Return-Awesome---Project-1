@@ -18,3 +18,9 @@
 5. 9/10/2019.  LEEP2.
 	Attendees: Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
 	Started work on our respective tasks, using JS class declarations.
+6. 9/12/2019.  LEEP2.
+	Attendees: Ethan Brenner, Connie Li
+	Figured out how to merge remote branches properly.
+7. 9/13/2019.  In lecture, scrum.
+	Attendees: Archana Ramakrishnan, Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
+	Scrum, discussed progress and future plans.
