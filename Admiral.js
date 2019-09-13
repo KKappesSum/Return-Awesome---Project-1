@@ -9,6 +9,7 @@ class Admiral {
     this.firingMap = 0;
     this.shipMap = 0;
     this.fleet = 0;
+    this.name = "";
   }
 
   getNumShips() {
@@ -27,6 +28,10 @@ class Admiral {
     return this.fleet;
   }
 
+  getName() {
+    return this.name;
+  }
+
   setNumShips(x) {
     this.numShips = x;
   }
@@ -41,5 +46,9 @@ class Admiral {
 
   setShipMap(x) {
     this.shipMap = x;
+  }
+
+  setName(x) {
+    this.name = x;
   }
 }
