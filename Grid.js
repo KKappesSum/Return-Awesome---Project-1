@@ -20,14 +20,15 @@ class Grid{
             #arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)][locationArr[i].substring(locationArr[i].indexOf(":"))] 
                 = conf.oceanTypes.properties["SHIP"].value;
         }   
-        this.refreshTable(tableId);
+        this.refreshTable(tableId, True);
     }
 
     /**
      * 
      * @param {string} tableId:  A string given the elementId for the table to be updated
+     * @param {bool} isShipMap: True: Updates the shipmap; False: Updates the firingmap
      */
-    refreshTable(tableId){
+    refreshTable(tableId, isShipMap){
 
     }
 
