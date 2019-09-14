@@ -2,13 +2,15 @@
 /*
 admiral has numShips = number of ships
 
+Do you guys want the name to be passed in as well??
 */
 class Admiral {
-  constructor(num) {
+  constructor(num, pName) {
     this.numShips = num;
     this.firingMap = 0;
     this.shipMap = 0;
     this.fleet = 0;
+    this.name = pName;
   }
 
   getNumShips() {
@@ -27,6 +29,10 @@ class Admiral {
     return this.fleet;
   }
 
+  getName() {
+    return this.name;
+  }
+
   setNumShips(x) {
     this.numShips = x;
   }
@@ -41,5 +47,9 @@ class Admiral {
 
   setShipMap(x) {
     this.shipMap = x;
+  }
+
+  setName(x) {
+    this.name = x;
   }
 }
