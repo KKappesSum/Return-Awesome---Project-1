@@ -35,10 +35,19 @@ function setShipCount()
   	}
 
   	//disable the text boxes and button
-  	document.getElementById("button").disabled = true;
+  	document.getElementById("button1").disabled = true;
   	document.getElementById("player1").disabled = true;
   	document.getElementById("player2").disabled = true;
 
-  	document.getElementById("ships").innerHTML =
-    	"You have chosen " + numShips + " ships ";
+  	document.getElementById("ships").innerHTML = "You have chosen " + numShips + " ships ";
+    for (let i = 1; i<= numShips; i++)
+    {
+    	placeShip(i);
+    }
+}
+
+function placeShip(size)
+{
+	document.getElementById("placement").innerHTML = "Place ship of size " + size;
+	
 }
