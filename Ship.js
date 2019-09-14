@@ -33,4 +33,30 @@ class Ship {
 		return Ship.#afloat;
 	}
 
+	/**
+	 * Increment the number of hits the ship has taken, and call setSunk() if the ship takes enough hits to sink.
+	 * @param none.
+	 * @return none.
+	 */
+	incNumHits() {
+		if(Ship.#afloat === true)
+		{
+			Ship.#numHits--;
+			if(Ship.#numHits >= Ship.#numSize)
+			{
+				Ship.setSunk();
+			}
+		}
+		// TODO: throw error if you try to sink a ship that's already sunk?  or prevent this in UI
+	}
+
+	/**
+	 * Update the ship's status when it sinks.
+	 * @param none.
+	 * @return none.
+	 */
+	setSunk() {
+		Ship.#afloat = false;
+	}
+
 }
