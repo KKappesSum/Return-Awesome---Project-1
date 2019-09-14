@@ -87,4 +87,66 @@ class Admiral {
      * Updates your "firing map" after you guess a location
      */
   }
+
+
+  /**
+   * Assign coordinates for a ship to the given ship and the board
+   * @param {string} startCoord - the upper leftmost coordinate of the ship
+   * @param {integer} size - the size of the ship
+   * @param {string} orientation - orientation of the ship, 'h' for horizontal, 'v' for vertical
+   * @param {string} tableID - the ID of the table to place the ship in
+   * @return none.
+   */
+  placeShip(startCoord, size, orientation, tableID) {
+    let coordsArr = new Array(size);
+    let coordsDone = false;
+    // parse startCoord
+    let row = startCoord.substring(0,1);
+    let col = startCoord.substring(2);
+    let tempStr = "";
+    if(orientation === 'v') {
+      for(let i = row; i <= row + size - 1; i++)
+      {
+        coordsArr[i] = tempStr.concat(i, ':', col);
+      }
+      coordsDone = true;
+    }
+    else if(orientation === 'h') {
+      for(let j = col; j <= col + size - 1; j++)
+      {
+        coordsArr[j] = tempStr.concat(row, ':', j);
+      }
+      coordsDone = true;
+    }
+    else {
+      console.log("ERROR: placeShip received invalid orientation\n");
+    }
+
+    if(coordsDone === true) {
+      // find the ship
+      let shipIndex = findShipBySize(size);
+      // give coords to Ship
+      this.#fleet[shipIndex].setCoords(coordsArr);
+      // give coords AND TABLEID to grid
+      this.#board.populateGrid(coordsArr, tableID);
+    }
+  }
+
+  /**
+   * Find the ship of the given size.
+   * @param {integer} size, the size of the ship you're searching for.
+   * @return {integer} the index of the correct ship.
+   */
+  findShipBySize(size) {
+    let shipIndex;
+    for(let index = 0; index < this.#numShips; index++)
+    {
+      if(this.#fleet[index].getSize() === size)
+      {
+        shipIndex = index;
+      }
+    }
+    return shipIndex;
+  }
+
 }
