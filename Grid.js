@@ -8,18 +8,31 @@ class Grid{
                 arr[i][j] = conf.oceanTypes.properties["WATER"].code;
             }
         }
-
-        function createShip(location){
-            
-        }
     }
 
+    /**
+     * 
+     * @param {Array} locationArr: An array of all of the cells the ship contains
+     */
     populateGrid(locationArr){
         for(let i = 0; i < locationArr.length; i++){
             #arr[i] = conf.oceanTypes.properties["SHIP"].code;
         }        
     }
 
+    /**
+     * 
+     * @param {string} tableId: Identifies which table element to update 
+     */
+    refreshTable(tableId){
+
+    }
+
+    /**
+     * 
+     * @param {string} location: The location of the cell to update
+     * @returns {bool} If true, a ship was hit. If false, it was a miss
+     */
     updateCell(location){
         this.#isHit = false;
         return this.#isHit;
