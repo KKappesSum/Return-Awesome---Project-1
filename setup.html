@@ -10,21 +10,19 @@
         <form id="form" onsubmit="return false;">
 
             <label for="Player1">Enter name of player 1: </label>
-            <input type="text" id="player1" />
+            <input type="text" id="player1"placeholder="player1" />
             <br>
 
             <label for="Player2">Enter name of player 2: </label>
-            <input type="text" id="player2" />
+            <input type="text" id="player2" placeholder="player2"/>
             <br>
 
-            <label for="ships">Enter number of shapes: </label>
-            <input type="text" id="ships" />
-            <br>
+            
 
-            <input type="submit" onclick="othername();" />
+            <button onclick="setShipCount(); setPlayerNames()">Pick number of ships</button>
+            <p id="ships"></p>
+            <p id="names"></p>
 
-            <input style="position:absolute; top:80%; left:5%; width:40%;" type="text" id="player2" />
-            <input style="position:absolute; top:50%; left:5%; width:40%;" type="submit" onclick="othername();" />
         </form>
     </div>
 
