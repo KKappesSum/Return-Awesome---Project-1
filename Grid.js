@@ -17,7 +17,8 @@ class Grid{
      */
     populateGrid(locationArr, tableId){
         for(let i = 0; i < locationArr.length; i++){
-            #arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)][locationArr[i].substring(locationArr[i].indexOf(":"))] 
+            #arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
+                [locationArr[i].substring(locationArr[i].indexOf(":"))] 
                 = conf.oceanTypes.properties["SHIP"].value;
         }   
         this.refreshTable(tableId, True);
@@ -29,7 +30,20 @@ class Grid{
      * @param {bool} isShipMap: True: Updates the shipmap; False: Updates the firingmap
      */
     refreshTable(tableId, isShipMap){
-
+        for(let i = 0; i < document.getElementById(tableId).rows.length; i++){
+            for(let j = 0; j < document.getElementById(tableId).rows[0].cells.length; j++){
+                let temp = document.getElementById(tableId).rows[i].cells[j].innerHTML.style.backgroundColor;
+                if(isShipMap){
+                    if(arr[i][j] == conf.oceanTypes.properties["SHIP"].value){
+                        temp = conf.oceanTypes.properties["SHIP"].value;
+                    }else if(arr[i][j] == conf.oceanTypes.properties["HIT"].value){
+                        temp = conf.oceanTypes.properties["HIT"].value;
+                    }else{
+                        temp = conf.oceanTypes.properties["WATER"].value;
+                    }
+                }
+            }
+        }
     }
 
     /**
