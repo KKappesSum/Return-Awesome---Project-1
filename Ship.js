@@ -7,7 +7,7 @@ class Ship {
 
 	/**
 	 * Create a Ship object.
-	 * @param {number} size - The size (i.e. length) of the Ship.
+	 * @param {integer} size - The size (i.e. length) of the Ship.
 	 */
 	constructor(size) {
 		this.#size = size;
@@ -17,9 +17,20 @@ class Ship {
 	}
 
 	/* TODO: setters & getters */
-
+	/**
+	 * Get the ship's size.
+	 * @return {integer} the Ship's size.
+	 */
 	getSize() {
 		return Ship.#size;
+	}
+
+	/**
+	 * Get the ship's status.
+	 * @return {boolean} true if the ship is still afloat, false if the ship has been sunk.
+	 */
+	getAfloat() {
+		return Ship.#afloat;
 	}
 
 }
