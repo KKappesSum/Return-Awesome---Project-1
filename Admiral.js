@@ -18,7 +18,7 @@ class Admiral {
     this.#fleet = {};
     this.#afloat = num;
     this.#name = pName;
-    for (var x = 1; x <= num; x++) {
+    for (let x = 1; x <= num; x++) {
       Ship newShip = new Ship(x); //creates ship size x
       #this.fleet.push(newShip); //adds the new ship to fleet array
     }
@@ -61,6 +61,7 @@ class Admiral {
      * Update your own ship map with the other user's firing outcome
      * void function, changes the hit or miss type of the water tile
      * @param {string} coor - NumberLetter coordinate of the player's guess
+     * @return none
      */
     if (updateCell(coor) === true)
     {
