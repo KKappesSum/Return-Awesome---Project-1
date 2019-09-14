@@ -59,4 +59,24 @@ class Ship {
 		Ship.#afloat = false;
 	}
 
+	/**
+	 * Set the ship's coordinates.
+	 * @param {string[]} coordsArr, an array of strings
+	 * @return none.
+	 */
+	setCoords(coordsArr) {
+		for(let i = 0; i < Ship.#size; i++)
+		{
+			Ship.#coords[i] = coordsArr[i];
+		}
+	}
+
+	/**
+	 * Get the ship's coordinates.
+	 * @param none.
+	 * @return {string[]} #coords, an array of strings
+	 */
+	getCoords() {
+		return Ship.#coords;
+	}
 }
