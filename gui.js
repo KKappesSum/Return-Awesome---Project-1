@@ -27,10 +27,18 @@ function setShipCount()
 
 	//validate that number of ships is between 1 and 5/
 	//prompt until you recieve a valid input
-  	while(numShips > 5 || numShips < 1 || numShips == null)
+
+  	while(numShips > 5 || numShips < 1 || numShips === null || (numShips%1!=0))
+  		//check numShips%1!=0 because we only want an integer. integer%1 is always 0.
   	{
-  		var numShips = prompt("Please enter number of ships between 1 and 5: ");
+		var numShips = prompt("Please enter number of ships between 1 and 5: ");
   	}
+
+  	//disable the text boxes and button
+  	document.getElementById("button").disabled = true;
+  	document.getElementById("player1").disabled = true;
+  	document.getElementById("player2").disabled = true;
+
   	document.getElementById("ships").innerHTML =
     	"You have chosen " + numShips + " ships ";
 }

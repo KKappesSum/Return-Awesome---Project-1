@@ -5,35 +5,40 @@ class Grid{
         for(let i = 0; i < size; i++){
             arr[i] = new Array(size);
             for(let j = 0; j < size; j++){
-                arr[i][j] = conf.oceanTypes.properties["WATER"].code;
+                arr[i][j] = conf.oceanTypes.properties["WATER"].value;
             }
         }
     }
 
     /**
      * 
-     * @param {Array} locationArr: An array of all of the cells the ship contains
+     * @param {Array} locationArr: An array of all of the cells that contains a ship
+     * @param {string} tableId: A string given the elementId for the table to be updated
      */
-    populateGrid(locationArr){
+    populateGrid(locationArr, tableId){
         for(let i = 0; i < locationArr.length; i++){
-            #arr[i] = conf.oceanTypes.properties["SHIP"].code;
-        }        
+            #arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)][locationArr[i].substring(locationArr[i].indexOf(":"))] 
+                = conf.oceanTypes.properties["SHIP"].value;
+        }   
+        this.refreshTable(tableId, True);
     }
 
     /**
      * 
-     * @param {string} tableId: Identifies which table element to update 
+     * @param {string} tableId:  A string given the elementId for the table to be updated
+     * @param {bool} isShipMap: True: Updates the shipmap; False: Updates the firingmap
      */
-    refreshTable(tableId){
+    refreshTable(tableId, isShipMap){
 
     }
 
     /**
      * 
      * @param {string} location: The location of the cell to update
-     * @returns {bool} If true, a ship was hit. If false, it was a miss
+     * @param {string} tableId: The identifier for the table to be changed
+     * @returns {bool} True: a ship was hit; False: it was a miss
      */
-    updateCell(location){
+    updateCell(location, tableId){
         this.#isHit = false;
         return this.#isHit;
     }
