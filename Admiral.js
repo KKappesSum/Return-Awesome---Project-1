@@ -11,11 +11,17 @@ class Admiral {
   #board;
   #fleet;
   #name;
+  #afloat;
   constructor(num, pName) {
     this.#numShips = num;
     this.#board = 0;
-    this.#fleet = 0;
+    this.#fleet = {};
+    this.#afloat = num;
     this.#name = pName;
+    for (var x = 1; x <= num; x++) {
+      Ship newShip = new Ship(x); //creates ship size x
+      #this.fleet.push(newShip); //adds the new ship to fleet array
+    }
   }
 
   getNumShips() {
@@ -50,10 +56,29 @@ class Admiral {
     this.#name = x;
   }
 
-  updateShipMap() {
+  updateShipMap(coor) {
     /**
      * Update your own ship map with the other user's firing outcome
+     * void function, changes the hit or miss type of the water tile
+     * @param {string} coor - NumberLetter coordinate of the player's guess
      */
+    if (updateCell(coor) === true)
+    {
+      //checks the fleet array for the ship that was hit
+      #fleet.forEach(function (element) {
+        coordArray = element.getCoords();
+        coordArray.forEach(function(coorShip){
+          if (coorShip === coor)
+          {
+            element.incNumHits(); //func to Connie
+            if (!element.getStatus()) //if ship no longer afloat
+            {
+              #afloat -= 1;
+            }
+          }
+        });
+      });
+    }
   }
 
   updateFiringMap() {
