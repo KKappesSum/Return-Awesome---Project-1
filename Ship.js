@@ -13,10 +13,10 @@ class Ship {
 		this.#size = size;
 		this.#status = true;
 		this.#numHits = 0;
-		this.#coords = newArray(size);
+		this.#coords = [];
 	}
 
-	/* TODO: setters & getters */
+	// ---- setters & getters ----
 	/**
 	 * Get the ship's size.
 	 * @return {integer} the Ship's size.
@@ -56,10 +56,7 @@ class Ship {
 				Ship.setStatus();
 			}
 		}
-		// TODO: throw error if you try to sink a ship that's already sunk?  or prevent this in UI
 	}
-
-
 
 	/**
 	 * Set the ship's coordinates.
