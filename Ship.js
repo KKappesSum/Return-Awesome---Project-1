@@ -1,7 +1,7 @@
 /** Class representing a Ship. */
 class Ship {
 	#size;
-	#afloat;
+	#status;
 	#numHits;
 	#coords;
 
@@ -11,7 +11,7 @@ class Ship {
 	 */
 	constructor(size) {
 		this.#size = size;
-		this.#afloat = true;
+		this.#status = true;
 		this.#numHits = 0;
 		this.#coords = newArray(size);
 	}
@@ -29,8 +29,17 @@ class Ship {
 	 * Get the ship's status.
 	 * @return {boolean} true if the ship is still afloat, false if the ship has been sunk.
 	 */
-	getAfloat() {
-		return Ship.#afloat;
+	getStatus() {
+		return Ship.#status;
+	}
+
+	/**
+	 * Update the ship's status when it sinks.
+	 * @param none.
+	 * @return none.
+	 */
+	setStatus() {
+		Ship.#status = false;
 	}
 
 	/**
@@ -39,25 +48,18 @@ class Ship {
 	 * @return none.
 	 */
 	incNumHits() {
-		if(Ship.#afloat === true)
+		if(Ship.#status === true)
 		{
 			Ship.#numHits--;
 			if(Ship.#numHits >= Ship.#numSize)
 			{
-				Ship.setSunk();
+				Ship.setStatus();
 			}
 		}
 		// TODO: throw error if you try to sink a ship that's already sunk?  or prevent this in UI
 	}
 
-	/**
-	 * Update the ship's status when it sinks.
-	 * @param none.
-	 * @return none.
-	 */
-	setSunk() {
-		Ship.#afloat = false;
-	}
+
 
 	/**
 	 * Set the ship's coordinates.
