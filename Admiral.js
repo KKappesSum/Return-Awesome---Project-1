@@ -1,60 +1,64 @@
-//the number of ships needs to be asked and passed into Admiral via Exec class
-/*
-admiral has numShips = number of ships
-
-Do you guys want the name to be passed in as well??
-*/
+/**
+ * Admiral class is in charge of a player in the Battleship game
+ */
 class Admiral {
-  _numShips;
-  _firingMap;
-  _shipMap;
-  _fleet;
-  name;
+  /**
+   * Create a player
+   * @param {number} numShips - The number of ships being placed in the game
+   * @param {grid} board - The player's board, has your own ships location
+   */
+  #numShips;
+  #board;
+  #fleet;
+  #name;
   constructor(num, pName) {
-    this._numShips = num;
-    this._firingMap = 0;
-    this._shipMap = 0;
-    this._fleet = 0;
-    this.name = pName;
+    this.#numShips = num;
+    this.#board = 0;
+    this.#fleet = 0;
+    this.#name = pName;
   }
 
   getNumShips() {
-    return this._numShips;
+    return this.#numShips;
   }
 
-  getFiringMap() {
-    return this._firingMap;
-  }
-
-  getShipMap() {
-    return this._shipMap;
+  getBoard() {
+    return this.#board;
   }
 
   getFleet() {
-    return this._fleet;
+    return this.#fleet;
   }
 
   getName() {
-    return this.name;
+    return this.#name;
   }
 
-  setNumShips(x) {
-    this._numShips = x;
-  }
-
-  setFiringMap(x) {
-    this._firingMap = x;
+  setBoard(x) {
+    this.#board = x;
   }
 
   setFleet(x) {
-    this._fleet = x;
+    this.#fleet = x;
   }
 
   setShipMap(x) {
-    this._shipMap = x;
+    this.#shipMap = x;
   }
 
   setName(x) {
-    this.name = x;
+    this.#name = x;
+  }
+
+  updateShipMap() {
+    /**
+     * Update your own ship map with the other user's firing outcome
+     */
+  }
+
+  updateFiringMap() {
+    /**
+     * Updates your "firing map" after you guess a location
+     */
   }
 }
