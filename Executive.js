@@ -46,7 +46,14 @@ class Exec{
     getPlayerTurn(){
         return(m_playerTurn);
     }
-   
+    advancePlayerTurn(){
+        if(m_playerTurn == 1){
+            m_playerTurn = 2;
+        }
+        else{
+            m_playerTurn = 1;
+        }
+    }
 
 }
 
