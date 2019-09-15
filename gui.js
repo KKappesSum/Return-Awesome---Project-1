@@ -51,7 +51,7 @@ function setShipCount() {
 
   document.getElementById("ships").innerHTML =
     "You have chosen " + numShips + " ships ";
-  for (let i = 1; i <= numShips; i++) {
+  for (let i = 2; i <= numShips; i++) {
     placeShip(i);
   }
 }
@@ -61,14 +61,31 @@ function placeShip(size) {
   //document.getElementById("ship1").addEventListener("mouseover", onHover);
   //document.getElementById("ship1").addEventListener("mouseout", offHover);
 
-  var table = document.getElementById("ship1");
+  let horizontal = true;
+  let table = document.getElementById("ship1");
   if (table != null) {
     for (let i = 0; i < table.rows.length; i++) {
       for (let j = 0; j < table.rows[i].cells.length; j++) {
         table.rows[i].cells[j].style.cursor = "ptr";
-        table.rows[i].cells[j].onmousemove = function() {
-          this.style.backgroundColor = "yellow";
-        };
+        table.rows[i].cells[j].onmousemove =
+          //size is a int of the ship length, horizontal is a bool (y/n)
+          function() {
+            //this.style.backgroundColor = "yellow";
+            if (horizontal) {
+              if (j + size <= 8) {
+                for (let count = 0; count < size; count++) {
+                  table.rows[i].cells[j + count].style.backgroundColor =
+                    "yellow";
+                }
+              } else {
+                let count = 0;
+                while (count + j < 8) {
+                  table.rows[i].cells[j + count].style.backgroundColor = "red";
+                  count++;
+                }
+              }
+            }
+          };
         table.rows[i].cells[j].onmouseout = function() {
           this.style.backgroundColor = "lightblue";
         };
