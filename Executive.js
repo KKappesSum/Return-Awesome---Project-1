@@ -2,45 +2,82 @@
 
 class Exec{
 
+    /**
+     * 
+     * @param {string} adm1Name: Admiral 1's nickname
+     * @param {string} adm2Name: Admiral 2's nickname
+     * @param {number} numShips: number of playable ships per admiral
+     * @return: none
+     * creates the exec instance with two admiral objects, along with their number of ships
+     */
     constructor(adm1Name, adm2Name, numShips){
         const m_shipCount = numShips;
         //player turn updated each turn, adm1 = odd, adm2 = even?
         m_playerTurn = 1;
-        //admir1 = new Admiral(adm1Name,numShips)
-        //admir2 = new Admiral(adm2Name,numShips)
+        admir1 = new Admiral(numShips, adm1Name);
+        admir2 = new Admiral(numShips, adm2Name);
         
     }
-    /*
-    input:none(for now)
-    output: none(for now)
-    desc: fired whenever one of the cells is clicked on the grid, ticks off a code to determine 
-    what grid it originated?
+    /**
+     * @param:valid coords of cell and tableId
+     * @return: none(for now)
+     * fired whenever one of the cells is clicked on the grid during setup
     */
-    buttonHandler(){
+    buttonHandler(tableId,coords){
+
         return(0);
     }
 
-    /**
-     * @param:valid table cell coordinates 
+     /**
+     * @param {string} coords: coordinates for the specific cell in the table
+     * @param {tableId} tableId: id of the table that triggered the onclick event
      * @return:none
      * passes "guess" coordinates to admiral for grid/map updates
      */
-    interact(coords){
-        //need logic here to determine whether to update admir1 or 2, only 2 ship maps total so need
-        //to determine which to send to
-        admir2.updateShipMap(coords);
-        admir1.updateShipMap(coords);
-        
+    interact(tableId,coords){
+        if(this.getPlayerTurn() == 1){
+            admir2.updateShipMap(coords);
+            this.advancePlayerTurn();
+        }
+        else if(this.getPlayerTurn() == 2){
+            admir1.updateShipMap(coords);
+            this.advancePlayerTurn();
+        }
+        else{
+            prompt("something went wrong with the playerTurn variable")
+        }
     }
-
+    
     /**
      * @param: valid message (most likely a string)
      * @return: none
-     * takes in a message and displays it to the user, probably in a pop up message 
+     * takes in a message and displays it to the user as a pop up
     */
     attentionGetter(message){
         return(0);
     }
+    /**
+     * @param: none
+     * @return: m_playerTurn
+     * returns the value of the m_playerTurn variable
+     */
+    getPlayerTurn(){
+        return(m_playerTurn);
+    }
+     /**
+     * @param:none
+     * @return:none
+     * changes whether player turn is 1 or 2
+     */
+    advancePlayerTurn(){
+        if(m_playerTurn == 1){
+            m_playerTurn = 2;
+        }
+        else{
+            m_playerTurn = 1;
+        }
+    }
+
 }
 
 //-------------------------------------------------------------------------------\\
@@ -50,7 +87,7 @@ class Exec{
 /** 
  * @param: none
  * @return: 0
- * called upon user "starting" the game
+ * called upon user "starting" the game, takes exec obj created during setup and migrates to the game board
 */
 function run(){
     //launches initializer, creation of exec object
@@ -60,15 +97,14 @@ function run(){
 
 /** 
  * @param: none
- * @return: specific player names, number of ships
- * prompts players for "gamertag", number of ships, and any other content needed
-    to start the game, this should be for the setup page
+ * @return: none
+ * launched during the setup stage, takes in user defined data to create admirals and exec
 */
 function initializer(){
     adm1Name = "Kevin";
     adm2Name = "Jessica"
     numShips = 8;//default value, can't have more than 5 ships
-    return(adm1Name, adm2Name, numShips);
+    
 }
 
 //comment line
