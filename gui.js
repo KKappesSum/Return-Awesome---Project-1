@@ -51,17 +51,16 @@ function setShipCount() {
 
   document.getElementById("ships").innerHTML =
     "You have chosen " + numShips + " ships ";
-  for (let i = 2; i <= numShips; i++) {
-    placeShip(i);
+  for (let i = 1; i <= numShips; i++) {
+    placeShip(i, true);
   }
 }
 
-function placeShip(size) {
+function placeShip(size, horizontal) {
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
   //document.getElementById("ship1").addEventListener("mouseover", onHover);
   //document.getElementById("ship1").addEventListener("mouseout", offHover);
 
-  let horizontal = false;
   let table = document.getElementById("ship1");
   if (table != null) {
     for (let i = 0; i < table.rows.length; i++) {
