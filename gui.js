@@ -61,7 +61,7 @@ function placeShip(size) {
   //document.getElementById("ship1").addEventListener("mouseover", onHover);
   //document.getElementById("ship1").addEventListener("mouseout", offHover);
 
-  let horizontal = true;
+  let horizontal = false;
   let table = document.getElementById("ship1");
   if (table != null) {
     for (let i = 0; i < table.rows.length; i++) {
@@ -69,6 +69,7 @@ function placeShip(size) {
         table.rows[i].cells[j].style.cursor = "ptr";
         table.rows[i].cells[j].onmousemove =
           //size is a int of the ship length, horizontal is a bool (y/n)
+          //sorry this is a terrible in-line definition :( I can't get the "this" to work right otherwise
           function() {
             //this.style.backgroundColor = "yellow";
             if (horizontal) {
@@ -84,10 +85,26 @@ function placeShip(size) {
                   count++;
                 }
               }
+            } else {
+              if (i + size <= 8) {
+                for (let count = 0; count < size; count++) {
+                  table.rows[i + count].cells[j].style.backgroundColor =
+                    "yellow";
+                }
+              } else {
+                let count = 0;
+                while (count + i < 8) {
+                  table.rows[i + count].cells[j].style.backgroundColor = "red";
+                  count++;
+                }
+              }
             }
           };
         table.rows[i].cells[j].onmouseout = function() {
-          this.style.backgroundColor = "lightblue";
+          let row = table.getElementsByTagName("td");
+          for (let x = 0; x < row.length; x++) {
+            row[x].style.backgroundColor = "lightblue";
+          }
         };
       }
     }
