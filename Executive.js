@@ -28,8 +28,26 @@ class Exec{
         return(0);
     }
 
-   
-
+     /**
+     * @param {string} coords: coordinates for the specific cell in the table
+     * @param {tableId} tableId: id of the table that triggered the onclick event
+     * @return:none
+     * passes "guess" coordinates to admiral for grid/map updates
+     */
+    interact(tableId,coords){
+        if(this.getPlayerTurn() == 1){
+            admir2.updateShipMap(coords);
+            this.advancePlayerTurn();
+        }
+        else if(this.getPlayerTurn() == 2){
+            admir1.updateShipMap(coords);
+            this.advancePlayerTurn();
+        }
+        else{
+            prompt("something went wrong with the playerTurn variable")
+        }
+    }
+    
     /**
      * @param: valid message (most likely a string)
      * @return: none
@@ -46,6 +64,11 @@ class Exec{
     getPlayerTurn(){
         return(m_playerTurn);
     }
+     /**
+     * @param:none
+     * @return:none
+     * changes whether player turn is 1 or 2
+     */
     advancePlayerTurn(){
         if(m_playerTurn == 1){
             m_playerTurn = 2;
