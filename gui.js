@@ -3,51 +3,76 @@
  * @param {number} input any number
  * @returns {number} that number, plus one.
  */
-function setPlayerNames() 
-{
-    var p1 = document.getElementById("player1").value;
-    var p2 = document.getElementById("player2").value;
-    if(!(document.getElementById("player1") && document.getElementById("player1").value))
-	{
-    	p1 = document.getElementById("player1").placeholder;
-	} 
-	if(!(document.getElementById("player2") && document.getElementById("player2").value))
-	{
-		p2 = document.getElementById("player2").placeholder;
-	} 
+function setPlayerNames() {
+  var p1 = document.getElementById("player1").value;
+  var p2 = document.getElementById("player2").value;
+  if (
+    !(
+      document.getElementById("player1") &&
+      document.getElementById("player1").value
+    )
+  ) {
+    p1 = document.getElementById("player1").placeholder;
+  }
+  if (
+    !(
+      document.getElementById("player2") &&
+      document.getElementById("player2").value
+    )
+  ) {
+    p2 = document.getElementById("player2").placeholder;
+  }
 
-    document.getElementById("names").innerHTML =
-    	"These are your names " + p1 + " and " + p2;
+  document.getElementById("names").innerHTML =
+    "These are your names " + p1 + " and " + p2;
 }
 
-function setShipCount() 
-{
-	//get input from user in pop up
-	var numShips = prompt("Please enter number of ships between 1 and 5: ");
+function setShipCount() {
+  //get input from user in pop up
+  var numShips = prompt("Please enter number of ships between 1 and 5: ");
 
-	//validate that number of ships is between 1 and 5/
-	//prompt until you recieve a valid input
+  //validate that number of ships is between 1 and 5/
+  //prompt until you recieve a valid input
 
-  	while(numShips > 5 || numShips < 1 || numShips === null || (numShips%1!=0))
-  		//check numShips%1!=0 because we only want an integer. integer%1 is always 0.
-  	{
-		var numShips = prompt("Please enter number of ships between 1 and 5: ");
-  	}
+  while (
+    numShips > 5 ||
+    numShips < 1 ||
+    numShips === null ||
+    numShips % 1 != 0
+  ) {
+    //check numShips%1!=0 because we only want an integer. integer%1 is always 0.
+    var numShips = prompt("Please enter number of ships between 1 and 5: ");
+  }
 
-  	//disable the text boxes and button
-  	document.getElementById("button1").disabled = true;
-  	document.getElementById("player1").disabled = true;
-  	document.getElementById("player2").disabled = true;
+  //disable the text boxes and button
+  document.getElementById("button1").disabled = true;
+  document.getElementById("player1").disabled = true;
+  document.getElementById("player2").disabled = true;
 
-  	document.getElementById("ships").innerHTML = "You have chosen " + numShips + " ships ";
-    for (let i = 1; i<= numShips; i++)
-    {
-    	placeShip(i);
+  document.getElementById("ships").innerHTML =
+    "You have chosen " + numShips + " ships ";
+  for (let i = 1; i <= numShips; i++) {
+    placeShip(i);
+  }
+}
+
+function placeShip(size) {
+  document.getElementById("placement").innerHTML = "Place ship of size " + size;
+  //document.getElementById("ship1").addEventListener("mouseover", onHover);
+  //document.getElementById("ship1").addEventListener("mouseout", offHover);
+
+  var table = document.getElementById("ship1");
+  if (table != null) {
+    for (let i = 0; i < table.rows.length; i++) {
+      for (let j = 0; j < table.rows[i].cells.length; j++) {
+        table.rows[i].cells[j].style.cursor = "ptr";
+        table.rows[i].cells[j].onmousemove = function() {
+          this.style.backgroundColor = "yellow";
+        };
+        table.rows[i].cells[j].onmouseout = function() {
+          this.style.backgroundColor = "lightblue";
+        };
+      }
     }
-}
-
-function placeShip(size)
-{
-	document.getElementById("placement").innerHTML = "Place ship of size " + size;
-	
+  }
 }
