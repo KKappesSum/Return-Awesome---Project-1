@@ -23,7 +23,7 @@ class Ship {
 	 * @return {integer} the Ship's size.
 	 */
 	getSize() {
-		return Ship.#size;
+		return this.#size;
 	}
 
 	/**
@@ -31,7 +31,24 @@ class Ship {
 	 * @return {boolean} true if the ship is still afloat, false if the ship has been sunk.
 	 */
 	getStatus() {
-		return Ship.#status;
+		return this.#status;
+	}
+
+	/**
+	 * Get the number of hits the ship has taken.
+	 * @return {integer} the number of hits
+	 */
+	getNumHits() {
+		return this.#numHits;
+	}
+
+	/**
+	 * Get the ship's coordinates.
+	 * @param none.
+	 * @return {string[]} #coords, an array of strings
+	 */
+	getCoords() {
+		return this.#coords;
 	}
 
 	/**
@@ -40,7 +57,7 @@ class Ship {
 	 * @return none.
 	 */
 	setStatus() {
-		Ship.#status = false;
+		this.#status = false;
 	}
 
 	/**
@@ -49,13 +66,17 @@ class Ship {
 	 * @return none.
 	 */
 	incNumHits() {
-		if(Ship.#status === true)
+		if(this.#status === true)
 		{
-			Ship.#numHits--;
-			if(Ship.#numHits >= Ship.#size)
+			this.#numHits++;
+			if(this.#numHits >= this.#size)
 			{
-				Ship.setStatus();
+				this.setStatus();
 			}
+		}
+		else 
+		{
+			console.log("ERROR in Ship of size " + this.#size + ": incNumHits: cannot make the number of hits greater than the size of the Ship.");
 		}
 	}
 
@@ -65,18 +86,16 @@ class Ship {
 	 * @return none.
 	 */
 	setCoords(coordsArr) {
-		for(let i = 0; i < Ship.#size; i++)
+		if(coordsArr.length > this.#size)
 		{
-			Ship.#coords[i] = coordsArr[i];
+			console.log("ERROR in Ship of size " + this.#size + ": setCoords : too many coordinates were passed in.");
 		}
-	}
-
-	/**
-	 * Get the ship's coordinates.
-	 * @param none.
-	 * @return {string[]} #coords, an array of strings
-	 */
-	getCoords() {
-		return Ship.#coords;
+		else
+		{
+			for(let i = 0; i < this.#size; i++)
+			{
+				this.#coords[i] = coordsArr[i];
+			}
+		}
 	}
 }
