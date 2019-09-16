@@ -15,7 +15,7 @@ class Admiral {
   constructor(num, pName) {
     this.#numShips = num;
     this.#board = 0;
-    this.#fleet = {};
+    this.#fleet = [];
     this.#afloat = num;
     this.#name = pName;
     for (let x = 1; x <= num; x++) {
@@ -42,14 +42,6 @@ class Admiral {
 
   setBoard(x) {
     this.#board = x;
-  }
-
-  setFleet(x) {
-    this.#fleet = x;
-  }
-
-  setShipMap(x) {
-    this.#shipMap = x;
   }
 
   setName(x) {
