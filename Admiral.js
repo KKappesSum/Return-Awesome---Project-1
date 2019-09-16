@@ -66,7 +66,7 @@ class Admiral {
     if (updateCell(coor) === true)
     {
       //checks the fleet array for the ship that was hit
-      #fleet.forEach(function (element) {
+      this.#fleet.forEach(function (element) {
         coordArray = element.getCoords();
         coordArray.forEach(function(coorShip){
           if (coorShip === coor)
@@ -74,7 +74,7 @@ class Admiral {
             element.incNumHits(); //func to Connie
             if (!element.getStatus()) //if ship no longer afloat
             {
-              #afloat -= 1;
+              this.#afloat -= 1;
             }
           }
         });
