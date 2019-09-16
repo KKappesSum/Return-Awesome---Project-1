@@ -34,12 +34,14 @@ class Exec{
      * @return:none
      * passes "guess" coordinates to admiral for grid/map updates during game
      */
-    interact(tableId,coords){
+    updateTable(tableId,coords){
         if(this.getPlayerTurn() == 1){
+            console.log("player 1's shot");
             admir2.updateShipMap(coords);
             this.advancePlayerTurn();
         }
         else if(this.getPlayerTurn() == 2){
+            console.log("player 2's shot");
             admir1.updateShipMap(coords);
             this.advancePlayerTurn();
         }
@@ -112,9 +114,18 @@ function initializer(){
  * launched on page load
  */
 function onstart(){
-   
+   //should probably create an exec object
     
 }
 
+/**
+ * @param {}: none
+ * @return {}: none
+ * handles button clicks on player map, call necessary functions
+ */
+function buttonHandler(tableId, coords){
+    console.log(tableId);
+    console.log(coords);
+}
 
 //comment line
