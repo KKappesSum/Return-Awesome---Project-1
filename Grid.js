@@ -33,9 +33,17 @@ class Grid{
         for(let i = 0; i < document.getElementById(tableId).rows.length; i++){
             for(let j = 0; j < document.getElementById(tableId).rows[0].cells.length; j++){
                 let temp = document.getElementById(tableId).rows[i].cells[j].innerHTML.style.backgroundColor;
-                if(isShipMap){
+                if(isShipMap == true){
                     if(arr[i][j] == conf.oceanTypes.properties["SHIP"].value){
                         temp = conf.oceanTypes.properties["SHIP"].value;
+                    }else if(arr[i][j] == conf.oceanTypes.properties["HIT"].value){
+                        temp = conf.oceanTypes.properties["HIT"].value;
+                    }else{
+                        temp = conf.oceanTypes.properties["WATER"].value;
+                    }
+                }else{
+                    if(arr[i][j] == conf.oceanTypes.properties["MISS"].value){
+                        temp = conf.oceanTypes.properties["MISS"].value;
                     }else if(arr[i][j] == conf.oceanTypes.properties["HIT"].value){
                         temp = conf.oceanTypes.properties["HIT"].value;
                     }else{
