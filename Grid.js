@@ -62,7 +62,15 @@ class Grid{
      */
     updateCell(location, tableId){
         this.#isHit = false;
-        return this.#isHit;
+        i = location.substring(0, location.indexOf(":") - 1);
+        j = location.substring(location.indexOf(":"));
+        if(arr[i][j] == conf.oceanTypes.properties["SHIP"].value){
+            arr[i][j] = conf.oceanTypes.properties["HIT"].value;
+            isHit = true;
+        }else{
+            arr[i][j] = conf.oceanTypes.properties["MISS"].value;
+        }
+        return this.isHit;
     }
 
     
