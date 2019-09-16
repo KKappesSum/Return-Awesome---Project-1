@@ -4,8 +4,8 @@
  * @returns {number} that number, plus one.
  */
 function setPlayerNames() {
-  var p1 = document.getElementById("player1").value;
-  var p2 = document.getElementById("player2").value;
+  let p1 = document.getElementById("player1").value;
+  let p2 = document.getElementById("player2").value;
   if (
     !(
       document.getElementById("player1") &&
@@ -29,7 +29,7 @@ function setPlayerNames() {
 
 function setShipCount() {
   //get input from user in pop up
-  var numShips = prompt("Please enter number of ships between 1 and 5: ");
+  let numShips = prompt("Please enter number of ships between 1 and 5: ");
 
   //validate that number of ships is between 1 and 5/
   //prompt until you recieve a valid input
@@ -41,7 +41,7 @@ function setShipCount() {
     numShips % 1 != 0
   ) {
     //check numShips%1!=0 because we only want an integer. integer%1 is always 0.
-    var numShips = prompt("Please enter number of ships between 1 and 5: ");
+    let numShips = prompt("Please enter number of ships between 1 and 5: ");
   }
 
   //disable the text boxes and button
@@ -51,11 +51,30 @@ function setShipCount() {
 
   document.getElementById("ships").innerHTML =
     "You have chosen " + numShips + " ships ";
+
+
+  //false=vertical
+  //true=horizontal
+
   for (let i = 1; i <= numShips; i++) {
-    placeShip(i, false);
+    placeShip(i, getOrientation());
   }
+	
 }
 
+
+function getOrientation() {
+	let o1 = document.getElementById("orientation1");
+	let o2 = document.getElementById("orientation2");
+	if (o1.checked)
+	{
+	  return true;
+	}
+	else
+	{
+	  return false;
+	}
+}
 function placeShip(size, horizontal) {
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
   //document.getElementById("ship1").addEventListener("mouseover", onHover);
