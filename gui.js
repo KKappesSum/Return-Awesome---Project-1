@@ -52,7 +52,7 @@ function setShipCount() {
   document.getElementById("ships").innerHTML =
     "You have chosen " + numShips + " ships ";
   for (let i = 1; i <= numShips; i++) {
-    placeShip(i, true);
+    placeShip(i, false);
   }
 }
 
@@ -66,7 +66,7 @@ function placeShip(size, horizontal) {
     for (let i = 0; i < table.rows.length; i++) {
       for (let j = 0; j < table.rows[i].cells.length; j++) {
         table.rows[i].cells[j].style.cursor = "ptr";
-        table.rows[i].cells[j].onmousemove = changeColor(size, horizontal, "yellow", "ship1");
+		table.rows[i].cells[j].onmousemove = changeColor(size, horizontal, "yellow", "ship1");
         table.rows[i].cells[j].onmouseout = function() {
           if (horizontal) {
             if (j + size <= 8) {
@@ -95,7 +95,8 @@ function placeShip(size, horizontal) {
           }
         };
         table.rows[i].cells[j].onclick = function() {
-          console.log("clicked");
+		  console.log("clicked");
+		  console.log(isLegal(table.rows[i].cells[j]));
           if (horizontal) {
 			if (j + size <= 8) 
 			{
@@ -121,6 +122,24 @@ function placeShip(size, horizontal) {
   }
 }
 
+/**
+ * 
+ * @param {table cell} cell 
+ * @param {string} color string of the color of the cell (yellow)
+ * @return boolean if placement is legal
+ */
+function isLegal(cell, color)
+{
+	return (cell.style.backgroundColor === "yellow");
+}
+
+/**
+ * 
+ * @param {int} size size of the ship
+ * @param {boolean} horizontal orientation of the ship 
+ * @param {string} color color for the cell
+ * @param {string} tableID HTML ID for the table
+ */
 function changeColor(size, horizontal, color, tableID) {
   let table = document.getElementById(tableID);
   if (table != null) {
