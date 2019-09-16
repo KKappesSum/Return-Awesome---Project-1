@@ -66,6 +66,67 @@ function placeShip(size, horizontal) {
     for (let i = 0; i < table.rows.length; i++) {
       for (let j = 0; j < table.rows[i].cells.length; j++) {
         table.rows[i].cells[j].style.cursor = "ptr";
+        table.rows[i].cells[j].onmousemove = changeColor(size, horizontal, "yellow", "ship1");
+        table.rows[i].cells[j].onmouseout = function() {
+          if (horizontal) {
+            if (j + size <= 8) {
+              for (let count = 0; count < size; count++) {
+                table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
+              }
+            } else {
+              let count = 0;
+              while (count + j < 8) {
+                table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
+                count++;
+              }
+            }
+          } else {
+            if (i + size <= 8) {
+              for (let count = 0; count < size; count++) {
+                table.rows[i + count].cells[j].style.backgroundColor ="lightblue";
+              }
+            } else {
+              let count = 0;
+              while (count + i < 8) {
+                table.rows[i + count].cells[j].style.backgroundColor = "lightblue";
+                count++;
+              }
+            }
+          }
+        };
+        table.rows[i].cells[j].onclick = function() {
+          console.log("clicked");
+          if (horizontal) {
+			if (j + size <= 8) 
+			{
+			  for (let count = 0; count < size; count++) 
+			  {
+                table.rows[i].cells[j + count].style.backgroundColor = "grey";
+              }
+            }
+		  } 
+		  else 
+		  {
+			if (i + size <= 8) 
+			{
+			  for (let count = 0; count < size; count++) 
+			  {
+                table.rows[i + count].cells[j].style.backgroundColor = "grey";
+              }
+            }
+          }
+        };
+      }
+    }
+  }
+}
+
+function changeColor(size, horizontal, color, tableID) {
+  let table = document.getElementById(tableID);
+  if (table != null) {
+    for (let i = 0; i < table.rows.length; i++) {
+      for (let j = 0; j < table.rows[i].cells.length; j++) {
+        table.rows[i].cells[j].style.cursor = "ptr";
         table.rows[i].cells[j].onmousemove =
           //size is a int of the ship length, horizontal is a bool (y/n)
           //sorry this is a terrible in-line definition :( I can't get the "this" to work right otherwise
@@ -74,8 +135,7 @@ function placeShip(size, horizontal) {
             if (horizontal) {
               if (j + size <= 8) {
                 for (let count = 0; count < size; count++) {
-                  table.rows[i].cells[j + count].style.backgroundColor =
-                    "yellow";
+                  table.rows[i].cells[j + count].style.backgroundColor = color;
                 }
               } else {
                 let count = 0;
@@ -87,8 +147,7 @@ function placeShip(size, horizontal) {
             } else {
               if (i + size <= 8) {
                 for (let count = 0; count < size; count++) {
-                  table.rows[i + count].cells[j].style.backgroundColor =
-                    "yellow";
+                  table.rows[i + count].cells[j].style.backgroundColor = color;
                 }
               } else {
                 let count = 0;
@@ -99,12 +158,6 @@ function placeShip(size, horizontal) {
               }
             }
           };
-        table.rows[i].cells[j].onmouseout = function() {
-          let row = table.getElementsByTagName("td");
-          for (let x = 0; x < row.length; x++) {
-            row[x].style.backgroundColor = "lightblue";
-          }
-        };
       }
     }
   }
