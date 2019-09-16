@@ -1,7 +1,6 @@
 //Author: Ethan Brenner
 
 class Exec{
-
     /**
      * 
      * @param {string} adm1Name: Admiral 1's nickname
@@ -15,8 +14,7 @@ class Exec{
         //player turn updated each turn, adm1 = odd, adm2 = even?
         m_playerTurn = 1;
         admir1 = new Admiral(numShips, adm1Name);
-        admir2 = new Admiral(numShips, adm2Name);
-        
+        admir2 = new Admiral(numShips, adm2Name);  
     }
     /**
      * currently not in use, need to figure out exec object stuff and things
@@ -109,7 +107,15 @@ function initializer(){
  */
 function onstart(){
    //should probably create an exec object
-    
+    let tempAdmr1 = document.getElementById("player1").value;
+    console.log(tempAdmr1);
+    let tempAdmr2 = document.getElementById("player2").value;
+    console.log(tempAdmr2);
+    let newString = document.getElementById("ships").innerHTML;
+    tempNumShips = newString.substring(16);
+    tempNumShips= tempNumShips.substring(0,tempNumShips.indexOf(" "));
+    console.log(tempNumShips);
+
 }
 
 /**
@@ -132,6 +138,7 @@ function buttonHandler(tableId, coords){
  * handles button clicks on the setup page, calls necessary functions
  */
 function buttonHandlerSetup(tableId, coords){
+
     console.log(tableId);
     console.log(coords);
 }
