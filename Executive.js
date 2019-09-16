@@ -30,9 +30,9 @@ class Exec{
 
      /**
      * @param {string} coords: coordinates for the specific cell in the table
-     * @param {tableId} tableId: id of the table that triggered the onclick event
+     * @param {string} tableId: id of the table that triggered the onclick event
      * @return:none
-     * passes "guess" coordinates to admiral for grid/map updates
+     * passes "guess" coordinates to admiral for grid/map updates during game
      */
     interact(tableId,coords){
         if(this.getPlayerTurn() == 1){
@@ -77,7 +77,6 @@ class Exec{
             m_playerTurn = 1;
         }
     }
-
 }
 
 //-------------------------------------------------------------------------------\\
@@ -106,5 +105,16 @@ function initializer(){
     numShips = 8;//default value, can't have more than 5 ships
     
 }
+
+/**
+ * @param: none
+ * @return: none
+ * launched on page load
+ */
+function onstart(){
+   
+    
+}
+
 
 //comment line
