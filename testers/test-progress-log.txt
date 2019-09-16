@@ -1,0 +1,5 @@
+TEST PROGRESS LOG
+
+ - DONE: constructing Admirals and Ships
+ - TESTING: all Ship member methods
+ - TESTING: Admiral setters, getters, helper functions
