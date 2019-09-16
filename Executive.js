@@ -83,25 +83,6 @@ class Exec{
 //-------------------------------------------------------------------------------\\
 //-------------------------------------------------------------------------------\\
 
-/** 
- * called upon user "starting" the game, takes exec obj created during setup and migrates to the game board
-*/
-function run(){
-    //launches initializer, creation of exec object
-    //further details added later
-    return(0);
-}
-
-/** 
- * launched during the setup stage, takes in user defined data to create admirals and exec
-*/
-function initializer(){
-    adm1Name = "Kevin";
-    adm2Name = "Jessica"
-    numShips = 8;//default value, can't have more than 5 ships
-    
-}
-
 /**
  * launched when submitting information in setup.html
  */
