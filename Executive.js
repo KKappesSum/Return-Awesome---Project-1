@@ -19,27 +19,31 @@ class Exec{
         
     }
     /**
+     * currently not in use, need to figure out exec object stuff and things
      * @param:valid coords of cell and tableId
      * @return: none(for now)
      * fired whenever one of the cells is clicked on the grid during setup
-    */
+    
     buttonHandler(tableId,coords){
 
         return(0);
     }
+    */
 
      /**
      * @param {string} coords: coordinates for the specific cell in the table
-     * @param {tableId} tableId: id of the table that triggered the onclick event
+     * @param {string} tableId: id of the table that triggered the onclick event
      * @return:none
-     * passes "guess" coordinates to admiral for grid/map updates
+     * passes "guess" coordinates to admiral for grid/map updates during game
      */
-    interact(tableId,coords){
+    updateTable(tableId,coords){
         if(this.getPlayerTurn() == 1){
+            console.log("player 1's shot");
             admir2.updateShipMap(coords);
             this.advancePlayerTurn();
         }
         else if(this.getPlayerTurn() == 2){
+            console.log("player 2's shot");
             admir1.updateShipMap(coords);
             this.advancePlayerTurn();
         }
@@ -57,16 +61,14 @@ class Exec{
         return(0);
     }
     /**
-     * @param: none
-     * @return: m_playerTurn
+     * @returns {number}: a number indicating whose turn it is
      * returns the value of the m_playerTurn variable
      */
     getPlayerTurn(){
         return(m_playerTurn);
     }
+
      /**
-     * @param:none
-     * @return:none
      * changes whether player turn is 1 or 2
      */
     advancePlayerTurn(){
@@ -77,7 +79,6 @@ class Exec{
             m_playerTurn = 1;
         }
     }
-
 }
 
 //-------------------------------------------------------------------------------\\
@@ -85,8 +86,6 @@ class Exec{
 //-------------------------------------------------------------------------------\\
 
 /** 
- * @param: none
- * @return: 0
  * called upon user "starting" the game, takes exec obj created during setup and migrates to the game board
 */
 function run(){
@@ -96,8 +95,6 @@ function run(){
 }
 
 /** 
- * @param: none
- * @return: none
  * launched during the setup stage, takes in user defined data to create admirals and exec
 */
 function initializer(){
@@ -107,4 +104,34 @@ function initializer(){
     
 }
 
-//comment line
+/**
+ * launched on page load
+ */
+function onstart(){
+   //should probably create an exec object
+    
+}
+
+/**
+ * @param {string} tableId: id of the table that triggered the onclick event
+ * @param {string} coords: coordinates for a specific cell in the table
+ * handles button clicks on player map, call necessary functions
+ */
+function buttonHandler(tableId, coords){
+    console.log(tableId);
+    console.log(coords);
+}
+
+//these functions below might go in a "setup.js"??
+
+
+/**
+ * 
+ * @param {string} tableId : id of the table that triggered the onclick event
+ * @param {string} coords : coordinates for a specific cell in the table
+ * handles button clicks on the setup page, calls necessary functions
+ */
+function buttonHandlerSetup(tableId, coords){
+    console.log(tableId);
+    console.log(coords);
+}
