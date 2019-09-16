@@ -36,7 +36,7 @@ console.log("Coords: " + ship1.getCoords());
 while(ship5.getStatus() === true)
 {
 	ship5.incNumHits();
-	console.log("Num hits: " + ship1.getNumHits());
-	console.log("Status: " + ship1.getStatus());
+	console.log("Num hits: " + ship5.getNumHits());
+	console.log("Status: " + ship5.getStatus());
 }
-console.log("Status: " + ship1.getStatus());
+console.log("Status: " + ship5.getStatus());
