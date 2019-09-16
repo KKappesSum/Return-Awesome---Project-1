@@ -19,14 +19,16 @@ class Exec{
         
     }
     /**
+     * currently not in use, need to figure out exec object stuff and things
      * @param:valid coords of cell and tableId
      * @return: none(for now)
      * fired whenever one of the cells is clicked on the grid during setup
-    */
+    
     buttonHandler(tableId,coords){
 
         return(0);
     }
+    */
 
      /**
      * @param {string} coords: coordinates for the specific cell in the table
@@ -59,16 +61,14 @@ class Exec{
         return(0);
     }
     /**
-     * @param: none
-     * @return: m_playerTurn
+     * @returns {number}: a number indicating whose turn it is
      * returns the value of the m_playerTurn variable
      */
     getPlayerTurn(){
         return(m_playerTurn);
     }
+
      /**
-     * @param:none
-     * @return:none
      * changes whether player turn is 1 or 2
      */
     advancePlayerTurn(){
@@ -86,8 +86,6 @@ class Exec{
 //-------------------------------------------------------------------------------\\
 
 /** 
- * @param: none
- * @return: 0
  * called upon user "starting" the game, takes exec obj created during setup and migrates to the game board
 */
 function run(){
@@ -97,8 +95,6 @@ function run(){
 }
 
 /** 
- * @param: none
- * @return: none
  * launched during the setup stage, takes in user defined data to create admirals and exec
 */
 function initializer(){
@@ -109,8 +105,6 @@ function initializer(){
 }
 
 /**
- * @param: none
- * @return: none
  * launched on page load
  */
 function onstart(){
@@ -129,13 +123,14 @@ function buttonHandler(tableId, coords){
 }
 
 //these functions below might go in a "setup.js"??
+
+
 /**
  * 
  * @param {string} tableId : id of the table that triggered the onclick event
  * @param {string} coords : coordinates for a specific cell in the table
  * handles button clicks on the setup page, calls necessary functions
  */
-
 function buttonHandlerSetup(tableId, coords){
     console.log(tableId);
     console.log(coords);
