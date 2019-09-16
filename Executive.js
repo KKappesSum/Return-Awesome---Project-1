@@ -1,7 +1,6 @@
 //Author: Ethan Brenner
 
 class Exec{
-
     /**
      * 
      * @param {string} adm1Name: Admiral 1's nickname
@@ -13,23 +12,10 @@ class Exec{
     constructor(adm1Name, adm2Name, numShips){
         const m_shipCount = numShips;
         //player turn updated each turn, adm1 = odd, adm2 = even?
-        m_playerTurn = 1;
-        admir1 = new Admiral(numShips, adm1Name);
-        admir2 = new Admiral(numShips, adm2Name);
-        
+        let m_playerTurn = 1;
+        let admir1 = new Admiral(numShips, adm1Name);
+        let admir2 = new Admiral(numShips, adm2Name);  
     }
-    /**
-     * currently not in use, need to figure out exec object stuff and things
-     * @param:valid coords of cell and tableId
-     * @return: none(for now)
-     * fired whenever one of the cells is clicked on the grid during setup
-    
-    buttonHandler(tableId,coords){
-
-        return(0);
-    }
-    */
-
      /**
      * @param {string} coords: coordinates for the specific cell in the table
      * @param {string} tableId: id of the table that triggered the onclick event
@@ -85,31 +71,21 @@ class Exec{
 //-------------------------------------------------------------------------------\\
 //-------------------------------------------------------------------------------\\
 
-/** 
- * called upon user "starting" the game, takes exec obj created during setup and migrates to the game board
-*/
-function run(){
-    //launches initializer, creation of exec object
-    //further details added later
-    return(0);
-}
-
-/** 
- * launched during the setup stage, takes in user defined data to create admirals and exec
-*/
-function initializer(){
-    adm1Name = "Kevin";
-    adm2Name = "Jessica"
-    numShips = 8;//default value, can't have more than 5 ships
-    
-}
-
 /**
- * launched on page load
+ * launched when submitting information in setup.html
  */
-function onstart(){
-   //should probably create an exec object
-    
+function createExec(){
+   //creating an exec object
+    let tempAdmr1 = document.getElementById("player1").value;
+    console.log(tempAdmr1);
+    let tempAdmr2 = document.getElementById("player2").value;
+    console.log(tempAdmr2);
+    let newString = document.getElementById("ships").innerHTML;
+    tempNumShips = newString.substring(16);
+    tempNumShips= tempNumShips.substring(0,tempNumShips.indexOf(" "));
+    console.log(tempNumShips);
+
+    exec = new Exec(tempAdmr1, tempAdmr2, tempNumShips);
 }
 
 /**
@@ -132,6 +108,7 @@ function buttonHandler(tableId, coords){
  * handles button clicks on the setup page, calls necessary functions
  */
 function buttonHandlerSetup(tableId, coords){
+
     console.log(tableId);
     console.log(coords);
 }
