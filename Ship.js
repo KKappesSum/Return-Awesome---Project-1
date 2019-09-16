@@ -35,6 +35,23 @@ class Ship {
 	}
 
 	/**
+	 * Get the number of hits the ship has taken.
+	 * @return {integer} the number of hits
+	 */
+	getNumHits() {
+		return Ship.#numHits;
+	}
+
+	/**
+	 * Get the ship's coordinates.
+	 * @param none.
+	 * @return {string[]} #coords, an array of strings
+	 */
+	getCoords() {
+		return Ship.#coords;
+	}
+
+	/**
 	 * Update the ship's status when it sinks.
 	 * @param none.
 	 * @return none.
@@ -69,14 +86,5 @@ class Ship {
 		{
 			Ship.#coords[i] = coordsArr[i];
 		}
-	}
-
-	/**
-	 * Get the ship's coordinates.
-	 * @param none.
-	 * @return {string[]} #coords, an array of strings
-	 */
-	getCoords() {
-		return Ship.#coords;
 	}
 }
