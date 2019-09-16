@@ -30,3 +30,6 @@
 9. 9/14/2019.  LEEP2.
 	Attendees: Archana Ramakrishnan, Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
 	Modified class definitions, clarified which functionality belongs to which class, resolved naming/labeling conventions for coordinates. Made progress on our respective class methods.
+10.9/16/2019.  In lecture, scrum.
+	Attendees: Archana Ramakrishnan, Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
+	Scrum, discussed progress and future plans.  Showed ship placement UI prototype to Dr. Gibbons.
