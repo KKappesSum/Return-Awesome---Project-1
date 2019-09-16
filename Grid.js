@@ -74,6 +74,7 @@ class Grid{
         }else{
             arr[i][j] = conf.oceanTypes.properties["MISS"].value;
         }
+        this.refreshTable(tableId, false)
         return this.isHit;
     }
 
