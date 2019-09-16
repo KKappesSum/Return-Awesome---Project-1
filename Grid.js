@@ -11,13 +11,13 @@ class Grid{
     }
 
     /**
-     * 
+     * Places ships on the grid based on an array of cooridants and updates the onscreen grid
      * @param {Array} locationArr: An array of all of the cells that contains a ship
      * @param {string} tableId: A string given the elementId for the table to be updated
      */
     populateGrid(locationArr, tableId){
         for(let i = 0; i < locationArr.length; i++){
-            #arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
+            arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
                 [locationArr[i].substring(locationArr[i].indexOf(":"))] 
                 = conf.oceanTypes.properties["SHIP"].value;
         }   
@@ -25,7 +25,7 @@ class Grid{
     }
 
     /**
-     * 
+     * A function for updating an onscreen table to display the current values in the grid
      * @param {string} tableId:  A string given the elementId for the table to be updated
      * @param {bool} isShipMap: True: Updates the shipmap; False: Updates the firingmap
      */
@@ -47,7 +47,7 @@ class Grid{
     }
 
     /**
-     * 
+     * Changes a single cell based on whether or not the shot was a hit or a miss.
      * @param {string} location: The location of the cell to update
      * @param {string} tableId: The identifier for the table to be changed
      * @returns {bool} True: a ship was hit; False: it was a miss
