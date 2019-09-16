@@ -25,14 +25,41 @@ class GridTester{
     }
 
     testPopulateGrid(){
-
+        let locationArr = ["1:1", "1:2", "1:3", "1:4", "1:5"];
+        try{
+            Grid.populateGrid(locationArr, "#ship1");
+        }catch(error){
+            console.log(error);
+            return false;
+        }
+        return true;
     }
     
     testRefreshTable(){
-
+        try{
+            console.log("/n/tSubtest Firing Map: ");
+            Grid.refreshTable("#ship1", false);
+            console.log("SUCCESS");
+            console.log("/n/tSubtest Ship Map: ");
+            Grid.refreshTable("#ship1", true);
+        }catch(error){
+            console.log(error);
+            return false;
+        }
+        return true;
     }
 
     testUpdateCell(){
-
+        try{
+            console.log("/n/tSubtest Hit: ");
+            Grid.updateCell("1:1", "#ship1");
+            console.log("SUCCESS");
+            console.log("/n/tSubtest Miss: ");
+            Grid.updateCell("4:4", "#ship1");
+        }catch(error){
+            console.log(error);
+            return false;
+        }
+        return true;
     }
 }
