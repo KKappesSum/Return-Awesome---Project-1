@@ -119,8 +119,8 @@ function onstart(){
 }
 
 /**
- * @param {}: none
- * @return {}: none
+ * @param {string} tableId: id of the table that triggered the onclick event
+ * @param {string} coords: coordinates for a specific cell in the table
  * handles button clicks on player map, call necessary functions
  */
 function buttonHandler(tableId, coords){
@@ -128,4 +128,15 @@ function buttonHandler(tableId, coords){
     console.log(coords);
 }
 
-//comment line
+//these functions below might go in a "setup.js"??
+/**
+ * 
+ * @param {string} tableId : id of the table that triggered the onclick event
+ * @param {string} coords : coordinates for a specific cell in the table
+ * handles button clicks on the setup page, calls necessary functions
+ */
+
+function buttonHandlerSetup(tableId, coords){
+    console.log(tableId);
+    console.log(coords);
+}
