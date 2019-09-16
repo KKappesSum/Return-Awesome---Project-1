@@ -68,11 +68,15 @@ class Ship {
 	incNumHits() {
 		if(this.#status === true)
 		{
-			this.#numHits--;
+			this.#numHits++;
 			if(this.#numHits >= this.#size)
 			{
 				this.setStatus();
 			}
+		}
+		else 
+		{
+			console.log("ERROR in Ship of size " + this.#size + ": incNumHits: cannot make the number of hits greater than the size of the Ship.");
 		}
 	}
 
@@ -82,9 +86,16 @@ class Ship {
 	 * @return none.
 	 */
 	setCoords(coordsArr) {
-		for(let i = 0; i < this.#size; i++)
+		if(coordsArr.length() > this.#size)
 		{
-			this.#coords[i] = coordsArr[i];
+			console.log("ERROR in Ship of size " + this.#size + ": setCoords : too many coordinates were passed in.");
+		}
+		else
+		{
+			for(let i = 0; i < this.#size; i++)
+			{
+				this.#coords[i] = coordsArr[i];
+			}
 		}
 	}
 }
