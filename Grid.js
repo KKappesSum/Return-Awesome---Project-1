@@ -1,7 +1,11 @@
+/**
+ * Grid object for storing and updating information for each battlegrid
+ * @param {number} size: The size of the array to be created.
+ */
 class Grid{   
     constructor(size){
         let conf = new Config();
-        this.#arr = new Array(size);
+        this.arr = new Array(size);
         for(let i = 0; i < size; i++){
             arr[i] = new Array(size);
             for(let j = 0; j < size; j++){
@@ -61,7 +65,7 @@ class Grid{
      * @returns {bool} True: a ship was hit; False: it was a miss
      */
     updateCell(location, tableId){
-        this.#isHit = false;
+        this.isHit = false;
         i = location.substring(0, location.indexOf(":") - 1);
         j = location.substring(location.indexOf(":"));
         if(arr[i][j] == conf.oceanTypes.properties["SHIP"].value){
