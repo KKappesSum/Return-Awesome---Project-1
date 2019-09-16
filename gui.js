@@ -95,6 +95,12 @@ function placeShip(size, horizontal) {
           }
         };
         table.rows[i].cells[j].onclick = function() {
+          //sending the coords and tableId for ship construction
+          if(isLegal(table.rows[i].cells[j])){
+            let tempCoords = i + ":" + j;
+            buttonHandlerSetup("ship1",tempCoords);
+          }
+        
 		  console.log("clicked");
 		  console.log(isLegal(table.rows[i].cells[j]));
           if (horizontal) {
