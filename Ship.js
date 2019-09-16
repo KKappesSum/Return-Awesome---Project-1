@@ -1,4 +1,6 @@
-/** Class representing a Ship. */
+/** Class representing a Ship. 
+ * @param {integer} size - The size (i.e. length) of the Ship.
+ */
 class Ship {
 	#size;
 	#status;
@@ -7,7 +9,6 @@ class Ship {
 
 	/**
 	 * Create a Ship object.
-	 * @param {integer} size - The size (i.e. length) of the Ship.
 	 */
 	constructor(size) {
 		this.#size = size;
