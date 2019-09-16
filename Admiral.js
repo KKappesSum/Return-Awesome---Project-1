@@ -19,7 +19,7 @@ class Admiral {
     this.#afloat = num;
     this.#name = pName;
     for (let x = 1; x <= num; x++) {
-      Ship newShip = new Ship(x); //creates ship size x
+      let newShip = new Ship(x); //creates ship size x
       this.#fleet.push(newShip); //adds the new ship to fleet array
     }
   }
