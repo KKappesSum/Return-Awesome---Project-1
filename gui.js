@@ -59,26 +59,22 @@ function setShipCount() {
   for (let i = 1; i <= numShips; i++) {
     placeShip(i, getOrientation());
   }
+	
 }
+
 
 function getOrientation() {
-  let o1 = document.getElementById("orientation1").value;
-  let o2 = document.getElementById("orientation2").value;
-
-  if (o1 === "horizontal")
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-
-  document.getElementById("names").innerHTML =
-    "These are your names " + p1 + " and " + p2;
-
+	let o1 = document.getElementById("orientation1");
+	let o2 = document.getElementById("orientation2");
+	if (o1.checked)
+	{
+	  return true;
+	}
+	else
+	{
+	  return false;
+	}
 }
-
 function placeShip(size, horizontal) {
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
   //document.getElementById("ship1").addEventListener("mouseover", onHover);
