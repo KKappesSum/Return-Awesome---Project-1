@@ -3,13 +3,18 @@
  * @param {number} size: The size of the array to be created.
  */
 class Grid{   
+    #arr;
+    #conf;
+    #isHit;
+    #temp;
+
     constructor(size){
-        let conf = new Config();
-        this.arr = new Array(size);
+        let #conf = new Config();
+        this.#arr = new Array(size);
         for(let i = 0; i < size; i++){
-            arr[i] = new Array(size);
+            #arr[i] = new Array(size);
             for(let j = 0; j < size; j++){
-                arr[i][j] = conf.oceanTypes.properties["WATER"].value;
+                #arr[i][j] = conf.oceanTypes.properties["WATER"].value;
             }
         }
     }
@@ -21,9 +26,9 @@ class Grid{
      */
     populateGrid(locationArr, tableId){
         for(let i = 0; i < locationArr.length; i++){
-            arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
+            #arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
                 [locationArr[i].substring(locationArr[i].indexOf(":"))] 
-                = conf.oceanTypes.properties["SHIP"].value;
+                = #conf.oceanTypes.properties["SHIP"].value;
         }   
         this.refreshTable(tableId, True);
     }
@@ -36,22 +41,22 @@ class Grid{
     refreshTable(tableId, isShipMap){
         for(let i = 0; i < document.getElementById(tableId).rows.length; i++){
             for(let j = 0; j < document.getElementById(tableId).rows[0].cells.length; j++){
-                let temp = document.getElementById(tableId).rows[i].cells[j].innerHTML.style.backgroundColor;
+                this. #temp = document.getElementById(tableId).rows[i].cells[j].innerHTML.style.backgroundColor;
                 if(isShipMap == true){
-                    if(arr[i][j] == conf.oceanTypes.properties["SHIP"].value){
-                        temp = conf.oceanTypes.properties["SHIP"].value;
-                    }else if(arr[i][j] == conf.oceanTypes.properties["HIT"].value){
-                        temp = conf.oceanTypes.properties["HIT"].value;
+                    if(#arr[i][j] == #conf.oceanTypes.properties["SHIP"].value){
+                        #temp = #conf.oceanTypes.properties["SHIP"].value;
+                    }else if(#arr[i][j] == #conf.oceanTypes.properties["HIT"].value){
+                        #temp = #conf.oceanTypes.properties["HIT"].value;
                     }else{
-                        temp = conf.oceanTypes.properties["WATER"].value;
+                        #temp = #conf.oceanTypes.properties["WATER"].value;
                     }
                 }else{
-                    if(arr[i][j] == conf.oceanTypes.properties["MISS"].value){
-                        temp = conf.oceanTypes.properties["MISS"].value;
-                    }else if(arr[i][j] == conf.oceanTypes.properties["HIT"].value){
-                        temp = conf.oceanTypes.properties["HIT"].value;
+                    if(#arr[i][j] == #conf.oceanTypes.properties["MISS"].value){
+                        #temp = #conf.oceanTypes.properties["MISS"].value;
+                    }else if(#arr[i][j] == #conf.oceanTypes.properties["HIT"].value){
+                        #temp = #conf.oceanTypes.properties["HIT"].value;
                     }else{
-                        temp = conf.oceanTypes.properties["WATER"].value;
+                        #temp = #conf.oceanTypes.properties["WATER"].value;
                     }
                 }
             }
@@ -65,17 +70,17 @@ class Grid{
      * @returns {bool} True: a ship was hit; False: it was a miss
      */
     updateCell(location, tableId){
-        this.isHit = false;
-        i = location.substring(0, location.indexOf(":") - 1);
-        j = location.substring(location.indexOf(":"));
-        if(arr[i][j] == conf.oceanTypes.properties["SHIP"].value){
-            arr[i][j] = conf.oceanTypes.properties["HIT"].value;
-            isHit = true;
+        this.#isHit = false;
+        let i = location.substring(0, location.indexOf(":") - 1);
+        let j = location.substring(location.indexOf(":"));
+        if(#arr[i][j] == #conf.oceanTypes.properties["SHIP"].value){
+            #arr[i][j] = #conf.oceanTypes.properties["HIT"].value;
+            #isHit = true;
         }else{
-            arr[i][j] = conf.oceanTypes.properties["MISS"].value;
+            #arr[i][j] = #conf.oceanTypes.properties["MISS"].value;
         }
         this.refreshTable(tableId, false)
-        return this.isHit;
+        return this.#isHit;
     }
 
     
