@@ -125,10 +125,9 @@ function placeShip(size, horizontal) {
 /**
  * 
  * @param {table cell} cell 
- * @param {string} color string of the color of the cell (yellow)
  * @return boolean if placement is legal
  */
-function isLegal(cell, color)
+function isLegal(cell)
 {
 	return (cell.style.backgroundColor === "yellow");
 }
