@@ -16,18 +16,6 @@ class Exec{
         let admir1 = new Admiral(numShips, adm1Name);
         let admir2 = new Admiral(numShips, adm2Name);  
     }
-    /**
-     * currently not in use, need to figure out exec object stuff and things
-     * @param:valid coords of cell and tableId
-     * @return: none(for now)
-     * fired whenever one of the cells is clicked on the grid during setup
-    
-    buttonHandler(tableId,coords){
-
-        return(0);
-    }
-    */
-
      /**
      * @param {string} coords: coordinates for the specific cell in the table
      * @param {string} tableId: id of the table that triggered the onclick event
@@ -86,7 +74,7 @@ class Exec{
 /**
  * launched when submitting information in setup.html
  */
-function onstart(){
+function createExec(){
    //creating an exec object
     let tempAdmr1 = document.getElementById("player1").value;
     console.log(tempAdmr1);
