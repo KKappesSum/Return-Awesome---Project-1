@@ -52,7 +52,7 @@ class Ship {
 		if(Ship.#status === true)
 		{
 			Ship.#numHits--;
-			if(Ship.#numHits >= Ship.#numSize)
+			if(Ship.#numHits >= Ship.#size)
 			{
 				Ship.setStatus();
 			}
