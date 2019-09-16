@@ -12,9 +12,9 @@ class Exec{
     constructor(adm1Name, adm2Name, numShips){
         const m_shipCount = numShips;
         //player turn updated each turn, adm1 = odd, adm2 = even?
-        m_playerTurn = 1;
-        admir1 = new Admiral(numShips, adm1Name);
-        admir2 = new Admiral(numShips, adm2Name);  
+        let m_playerTurn = 1;
+        let admir1 = new Admiral(numShips, adm1Name);
+        let admir2 = new Admiral(numShips, adm2Name);  
     }
     /**
      * currently not in use, need to figure out exec object stuff and things
@@ -103,10 +103,10 @@ function initializer(){
 }
 
 /**
- * launched on page load
+ * launched when submitting information in setup.html
  */
 function onstart(){
-   //should probably create an exec object
+   //creating an exec object
     let tempAdmr1 = document.getElementById("player1").value;
     console.log(tempAdmr1);
     let tempAdmr2 = document.getElementById("player2").value;
@@ -116,6 +116,7 @@ function onstart(){
     tempNumShips= tempNumShips.substring(0,tempNumShips.indexOf(" "));
     console.log(tempNumShips);
 
+    exec = new Exec(tempAdmr1, tempAdmr2, tempNumShips);
 }
 
 /**
