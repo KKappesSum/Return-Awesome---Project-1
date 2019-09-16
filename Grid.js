@@ -11,13 +11,13 @@ class Grid{
     }
 
     /**
-     * 
+     * Places ships on the grid based on an array of cooridants and updates the onscreen grid
      * @param {Array} locationArr: An array of all of the cells that contains a ship
      * @param {string} tableId: A string given the elementId for the table to be updated
      */
     populateGrid(locationArr, tableId){
         for(let i = 0; i < locationArr.length; i++){
-            #arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
+            arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
                 [locationArr[i].substring(locationArr[i].indexOf(":"))] 
                 = conf.oceanTypes.properties["SHIP"].value;
         }   
@@ -25,7 +25,7 @@ class Grid{
     }
 
     /**
-     * 
+     * A function for updating an onscreen table to display the current values in the grid
      * @param {string} tableId:  A string given the elementId for the table to be updated
      * @param {bool} isShipMap: True: Updates the shipmap; False: Updates the firingmap
      */
@@ -33,9 +33,17 @@ class Grid{
         for(let i = 0; i < document.getElementById(tableId).rows.length; i++){
             for(let j = 0; j < document.getElementById(tableId).rows[0].cells.length; j++){
                 let temp = document.getElementById(tableId).rows[i].cells[j].innerHTML.style.backgroundColor;
-                if(isShipMap){
+                if(isShipMap == true){
                     if(arr[i][j] == conf.oceanTypes.properties["SHIP"].value){
                         temp = conf.oceanTypes.properties["SHIP"].value;
+                    }else if(arr[i][j] == conf.oceanTypes.properties["HIT"].value){
+                        temp = conf.oceanTypes.properties["HIT"].value;
+                    }else{
+                        temp = conf.oceanTypes.properties["WATER"].value;
+                    }
+                }else{
+                    if(arr[i][j] == conf.oceanTypes.properties["MISS"].value){
+                        temp = conf.oceanTypes.properties["MISS"].value;
                     }else if(arr[i][j] == conf.oceanTypes.properties["HIT"].value){
                         temp = conf.oceanTypes.properties["HIT"].value;
                     }else{
@@ -47,14 +55,22 @@ class Grid{
     }
 
     /**
-     * 
+     * Changes a single cell based on whether or not the shot was a hit or a miss.
      * @param {string} location: The location of the cell to update
      * @param {string} tableId: The identifier for the table to be changed
      * @returns {bool} True: a ship was hit; False: it was a miss
      */
     updateCell(location, tableId){
         this.#isHit = false;
-        return this.#isHit;
+        i = location.substring(0, location.indexOf(":") - 1);
+        j = location.substring(location.indexOf(":"));
+        if(arr[i][j] == conf.oceanTypes.properties["SHIP"].value){
+            arr[i][j] = conf.oceanTypes.properties["HIT"].value;
+            isHit = true;
+        }else{
+            arr[i][j] = conf.oceanTypes.properties["MISS"].value;
+        }
+        return this.isHit;
     }
 
     
