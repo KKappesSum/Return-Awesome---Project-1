@@ -23,7 +23,7 @@ class Ship {
 	 * @return {integer} the Ship's size.
 	 */
 	getSize() {
-		return Ship.#size;
+		return this.#size;
 	}
 
 	/**
@@ -31,7 +31,7 @@ class Ship {
 	 * @return {boolean} true if the ship is still afloat, false if the ship has been sunk.
 	 */
 	getStatus() {
-		return Ship.#status;
+		return this.#status;
 	}
 
 	/**
@@ -39,7 +39,7 @@ class Ship {
 	 * @return {integer} the number of hits
 	 */
 	getNumHits() {
-		return Ship.#numHits;
+		return this.#numHits;
 	}
 
 	/**
@@ -48,7 +48,7 @@ class Ship {
 	 * @return {string[]} #coords, an array of strings
 	 */
 	getCoords() {
-		return Ship.#coords;
+		return this.#coords;
 	}
 
 	/**
@@ -57,7 +57,7 @@ class Ship {
 	 * @return none.
 	 */
 	setStatus() {
-		Ship.#status = false;
+		this.#status = false;
 	}
 
 	/**
@@ -66,12 +66,12 @@ class Ship {
 	 * @return none.
 	 */
 	incNumHits() {
-		if(Ship.#status === true)
+		if(this.#status === true)
 		{
-			Ship.#numHits--;
-			if(Ship.#numHits >= Ship.#size)
+			this.#numHits--;
+			if(this.#numHits >= this.#size)
 			{
-				Ship.setStatus();
+				this.setStatus();
 			}
 		}
 	}
@@ -82,9 +82,9 @@ class Ship {
 	 * @return none.
 	 */
 	setCoords(coordsArr) {
-		for(let i = 0; i < Ship.#size; i++)
+		for(let i = 0; i < this.#size; i++)
 		{
-			Ship.#coords[i] = coordsArr[i];
+			this.#coords[i] = coordsArr[i];
 		}
 	}
 }
