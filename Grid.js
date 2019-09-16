@@ -9,12 +9,12 @@ class Grid{
     #temp;
 
     constructor(size){
-        let #conf = new Config();
+        this.#conf = new Config();
         this.#arr = new Array(size);
         for(let i = 0; i < size; i++){
-            #arr[i] = new Array(size);
+            this.#arr[i] = new Array(size);
             for(let j = 0; j < size; j++){
-                #arr[i][j] = conf.oceanTypes.properties["WATER"].value;
+                this.#arr[i][j] = this.#conf.oceanTypes.WATER;
             }
         }
     }
@@ -26,9 +26,9 @@ class Grid{
      */
     populateGrid(locationArr, tableId){
         for(let i = 0; i < locationArr.length; i++){
-            #arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
+            this.#arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
                 [locationArr[i].substring(locationArr[i].indexOf(":"))] 
-                = #conf.oceanTypes.properties["SHIP"].value;
+                = this.#conf.oceanTypes.SHIP;
         }   
         this.refreshTable(tableId, True);
     }
@@ -41,22 +41,22 @@ class Grid{
     refreshTable(tableId, isShipMap){
         for(let i = 0; i < document.getElementById(tableId).rows.length; i++){
             for(let j = 0; j < document.getElementById(tableId).rows[0].cells.length; j++){
-                this. #temp = document.getElementById(tableId).rows[i].cells[j].innerHTML.style.backgroundColor;
+                this.#temp = document.getElementById(tableId).rows[i].cells[j].innerHTML.style.backgroundColor;
                 if(isShipMap == true){
-                    if(#arr[i][j] == #conf.oceanTypes.properties["SHIP"].value){
-                        #temp = #conf.oceanTypes.properties["SHIP"].value;
-                    }else if(#arr[i][j] == #conf.oceanTypes.properties["HIT"].value){
-                        #temp = #conf.oceanTypes.properties["HIT"].value;
+                    if(this.#arr[i][j] == this.#conf.oceanTypes.SHIP){
+                        this.#temp = this.#conf.oceanTypes.SHIP;
+                    }else if(this.#arr[i][j] == this.#conf.oceanTypes.HIT){
+                        this.#temp = this.#conf.oceanTypes.HIT;
                     }else{
-                        #temp = #conf.oceanTypes.properties["WATER"].value;
+                        this.#temp = this.#conf.oceanTypes.WATER;
                     }
                 }else{
-                    if(#arr[i][j] == #conf.oceanTypes.properties["MISS"].value){
-                        #temp = #conf.oceanTypes.properties["MISS"].value;
-                    }else if(#arr[i][j] == #conf.oceanTypes.properties["HIT"].value){
-                        #temp = #conf.oceanTypes.properties["HIT"].value;
+                    if(this.#arr[i][j] == this.#conf.oceanTypes.MISS){
+                        this.#temp = this.#conf.oceanTypes.MISS;
+                    }else if(this.#arr[i][j] == this.#conf.oceanTypes.HIT){
+                        this.#temp = this.#conf.oceanTypes.HIT;
                     }else{
-                        #temp = #conf.oceanTypes.properties["WATER"].value;
+                        this.#temp = this.#conf.oceanTypes.WATER;
                     }
                 }
             }
@@ -73,15 +73,13 @@ class Grid{
         this.#isHit = false;
         let i = location.substring(0, location.indexOf(":") - 1);
         let j = location.substring(location.indexOf(":"));
-        if(#arr[i][j] == #conf.oceanTypes.properties["SHIP"].value){
-            #arr[i][j] = #conf.oceanTypes.properties["HIT"].value;
-            #isHit = true;
+        if(this.#arr[i][j] == this.conf.oceanTypes.SHIP){
+            this.#arr[i][j] = this.#conf.oceanTypes.HIT;
+            this.#isHit = true;
         }else{
-            #arr[i][j] = #conf.oceanTypes.properties["MISS"].value;
+            this.#arr[i][j] = this.#conf.oceanTypes.MISS;
         }
         this.refreshTable(tableId, false)
         return this.#isHit;
     }
-
-    
 }

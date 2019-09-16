@@ -63,3 +63,10 @@ class GridTester{
         return true;
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector("#gridtest").style.border = "solid black 1px";
+    document.querySelector("#gridtest").style.background = "#eeeeee";
+    // The user provides the main function
+    let test = new GridTester();
+});
