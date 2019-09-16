@@ -26,13 +26,13 @@ console.log("Status: " + ship1.getStatus());	// 'false'
 // ship of size 5
 let ship5 = new Ship(5);
 console.log(ship5);
-let coords5 = new Array(5);
+let coords5 = new Array();
 for(let i = 1; i <= 5; i++)
 {
 	coords5.push(i);
 }
 ship5.setCoords(coords5);
-console.log("Coords: " + ship1.getCoords());
+console.log("Coords: " + ship5.getCoords());
 while(ship5.getStatus() === true)
 {
 	ship5.incNumHits();

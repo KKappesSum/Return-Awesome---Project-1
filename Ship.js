@@ -86,7 +86,7 @@ class Ship {
 	 * @return none.
 	 */
 	setCoords(coordsArr) {
-		if(coordsArr.length() > this.#size)
+		if(coordsArr.length > this.#size)
 		{
 			console.log("ERROR in Ship of size " + this.#size + ": setCoords : too many coordinates were passed in.");
 		}
