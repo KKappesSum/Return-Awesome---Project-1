@@ -1,3 +1,4 @@
+
 /**
  * This function adds one to its input.
  * @param {number} input any number
@@ -24,7 +25,13 @@ function setPlayerNames() {
   }
 
   document.getElementById("names").innerHTML =
-    "These are your names " + p1 + " and " + p2;
+    "These are your names " + p1 + " and " + p2 + ". Now select an orientation for the ship with the buttons below";
+    // document.getElementById("orientation1").style.display = "block";
+    // document.getElementById("orientation1").textContent= "Horizontal"
+    // document.getElementById("orientation2").style.display = "block";
+    // document.getElementById("orientation2").innerHTML = "Vertical"
+
+
 }
 
 function setShipCount() {
@@ -50,36 +57,40 @@ function setShipCount() {
   document.getElementById("player2").disabled = true;
 
   document.getElementById("ships").innerHTML =
-    "You have chosen " + numShips + " ships ";
-
-
-  //false=vertical
-  //true=horizontal
-
-  for (let i = 1; i <= numShips; i++) {
-    placeShip(i, getOrientation());
+    "You have chosen " + numShips + " ships";
+    // document.getElementById("test").style.display = "block";
+    // document.getElementById("test2").style.display = "block";
+    //document.getElementById("orientation").innerHTML = numShips
+  
+  for (let i = numShips; i>=1; i--)
+  {
+    let direction = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
+    while (direction <1 || direction >2 || direction%1 != 0 || direction === null) 
+    {
+      direction = prompt("Type 1 for horizontal or 2 for vertical");
+    }
+    direction = parseInt(direction, 10);
+    if (direction === 1 )
+    {
+      placeShip(i, true);
+      console.log("hiiii");
+      
+    }
+    else 
+    {
+      placeShip(i, false);
+      break;
+    }
   }
+
 	
 }
 
-
-function getOrientation() {
-	let o1 = document.getElementById("orientation1");
-	let o2 = document.getElementById("orientation2");
-	if (o1.checked)
-	{
-	  return true;
-	}
-	else
-	{
-	  return false;
-	}
-}
 function placeShip(size, horizontal) {
+  document.getElementById("ship1").style.display = "block";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
-  //document.getElementById("ship1").addEventListener("mouseover", onHover);
-  //document.getElementById("ship1").addEventListener("mouseout", offHover);
 
+  console.log("my size is "+size);
   let table = document.getElementById("ship1");
   if (table != null) {
     for (let i = 0; i < table.rows.length; i++) {
@@ -122,25 +133,25 @@ function placeShip(size, horizontal) {
         
 		  console.log("clicked");
 		  console.log(isLegal(table.rows[i].cells[j]));
-          if (horizontal) {
-			if (j + size <= 8) 
-			{
-			  for (let count = 0; count < size; count++) 
+      if (horizontal) {
+			  if (j + size <= 8) 
 			  {
-                table.rows[i].cells[j + count].style.backgroundColor = "grey";
-              }
-            }
-		  } 
-		  else 
-		  {
-			if (i + size <= 8) 
-			{
-			  for (let count = 0; count < size; count++) 
-			  {
+			    for (let count = 0; count < size; count++) 
+			    {
+            table.rows[i].cells[j + count].style.backgroundColor = "grey";
+          }
+		    } 
+		    else 
+		    {
+			    if (i + size <= 8) 
+			    {
+			        for (let count = 0; count < size; count++) 
+			        {
                 table.rows[i + count].cells[j].style.backgroundColor = "grey";
               }
             }
           }
+        }
         };
       }
     }
@@ -164,11 +175,12 @@ function isLegal(cell)
  * @param {string} color color for the cell
  * @param {string} tableID HTML ID for the table
  */
-function changeColor(size, horizontal, color, tableID) {
+function changeColor(sizee, horizontal, color, tableID) {
   let table = document.getElementById(tableID);
+  let size = parseInt(sizee, 10);
   if (table != null) {
     for (let i = 0; i < table.rows.length; i++) {
-      for (let j = 0; j < table.rows[i].cells.length; j++) {
+      for (let j = 0; j < table.rows[0].cells.length; j++) {
         table.rows[i].cells[j].style.cursor = "ptr";
         table.rows[i].cells[j].onmousemove =
           //size is a int of the ship length, horizontal is a bool (y/n)
