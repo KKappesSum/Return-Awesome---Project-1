@@ -70,11 +70,12 @@ function setShipCount() {
       direction = prompt("Type 1 for horizontal or 2 for vertical");
     }
     direction = parseInt(direction, 10);
+    direction = Number(direction);
     if (direction === 1 )
     {
       placeShip(i, true);
       console.log("hiiii");
-      
+      break;
     }
     else 
     {
@@ -101,57 +102,66 @@ function placeShip(size, horizontal) {
           if (horizontal) {
             if (j + size <= 8) {
               for (let count = 0; count < size; count++) {
-                table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
+                if (table.rows[i].cells[j + count].style.backgroundColor === "yellow")
+                  table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
               }
             } else {
               let count = 0;
               while (count + j < 8) {
-                table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
+                if (table.rows[i].cells[j + count].style.backgroundColor === "yellow")
+                  table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
                 count++;
               }
             }
           } else {
             if (i + size <= 8) {
               for (let count = 0; count < size; count++) {
-                table.rows[i + count].cells[j].style.backgroundColor ="lightblue";
+                if (table.rows[i + count].cells[j].style.backgroundColor === "yellow")
+                  table.rows[i + count].cells[j].style.backgroundColor ="lightblue";
               }
             } else {
               let count = 0;
               while (count + i < 8) {
-                table.rows[i + count].cells[j].style.backgroundColor = "lightblue";
+                if (table.rows[i + count].cells[j].style.backgroundColor === "yellow")
+                  table.rows[i + count].cells[j].style.backgroundColor = "lightblue";
                 count++;
               }
             }
           }
         };
         table.rows[i].cells[j].onclick = function() {
+          let sizeNum = Number(size);
           //sending the coords and tableId for ship construction
           if(isLegal(table.rows[i].cells[j])){
             let tempCoords = i + ":" + j;
             buttonHandlerSetup("ship1",tempCoords);
-          }
-        
+          
 		  console.log("clicked");
 		  console.log(isLegal(table.rows[i].cells[j]));
       if (horizontal) {
-			  if (j + size <= 8) 
+			  if (j + sizeNum <= 8) 
 			  {
-			    for (let count = 0; count < size; count++) 
+			    for (let count = 0; count < sizeNum; count++) 
 			    {
             table.rows[i].cells[j + count].style.backgroundColor = "grey";
+            table.rows[i].cells[j + count].innerHTML = "";
           }
 		    } 
 		    else 
 		    {
-			    if (i + size <= 8) 
+			    if (i + sizeNum <= 8) 
 			    {
-			        for (let count = 0; count < size; count++) 
+			        for (let count = 0; count < sizeNum; count++) 
 			        {
                 table.rows[i + count].cells[j].style.backgroundColor = "grey";
+                table.rows[i + count].cells[j].innerHTML = "";
+
+                
               }
             }
           }
         }
+      }
         };
       }
     }
@@ -190,12 +200,14 @@ function changeColor(sizee, horizontal, color, tableID) {
             if (horizontal) {
               if (j + size <= 8) {
                 for (let count = 0; count < size; count++) {
-                  table.rows[i].cells[j + count].style.backgroundColor = color;
+                  if (table.rows[i].cells[j + count].innerHTML != "")
+                    table.rows[i].cells[j + count].style.backgroundColor = color;
                 }
               } else {
                 let count = 0;
                 while (count + j < 8) {
-                  table.rows[i].cells[j + count].style.backgroundColor = "red";
+                  if (table.rows[i].cells[j + count].innerHTML != "")
+                    table.rows[i].cells[j + count].style.backgroundColor = "red";
                   count++;
                 }
               }
