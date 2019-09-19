@@ -102,13 +102,13 @@ function placeShip(size, horizontal) {
           if (horizontal) {
             if (j + size <= 8) {
               for (let count = 0; count < size; count++) {
-                if (table.rows[i].cells[j + count].style.backgroundColor === "yellow")
+                if (table.rows[i].cells[j + count].innerHTML != "")
                   table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
               }
             } else {
               let count = 0;
               while (count + j < 8) {
-                if (table.rows[i].cells[j + count].style.backgroundColor === "yellow")
+                if (table.rows[i].cells[j + count].innerHTML != "")
                   table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
                 count++;
               }
@@ -116,13 +116,13 @@ function placeShip(size, horizontal) {
           } else {
             if (i + size <= 8) {
               for (let count = 0; count < size; count++) {
-                if (table.rows[i + count].cells[j].style.backgroundColor === "yellow")
+                if (table.rows[i + count].cells[j].innerHTML != "")
                   table.rows[i + count].cells[j].style.backgroundColor ="lightblue";
               }
             } else {
               let count = 0;
               while (count + i < 8) {
-                if (table.rows[i + count].cells[j].style.backgroundColor === "yellow")
+                if (table.rows[i + count].cells[j].innerHTML != "")
                   table.rows[i + count].cells[j].style.backgroundColor = "lightblue";
                 count++;
               }
@@ -132,9 +132,9 @@ function placeShip(size, horizontal) {
         table.rows[i].cells[j].onclick = function() {
           let sizeNum = Number(size);
           //sending the coords and tableId for ship construction
-          if(isLegal(table.rows[i].cells[j])){
-            let tempCoords = i + ":" + j;
-            buttonHandlerSetup("ship1",tempCoords);
+        if(isLegal(table.rows[i].cells[j])){
+          let tempCoords = i + ":" + j;
+          buttonHandlerSetup("ship1",tempCoords);
           
 		  console.log("clicked");
 		  console.log(isLegal(table.rows[i].cells[j]));
@@ -146,7 +146,8 @@ function placeShip(size, horizontal) {
             table.rows[i].cells[j + count].style.backgroundColor = "grey";
             table.rows[i].cells[j + count].innerHTML = "";
           }
-		    } 
+        } 
+      }
 		    else 
 		    {
 			    if (i + sizeNum <= 8) 
@@ -161,7 +162,6 @@ function placeShip(size, horizontal) {
             }
           }
         }
-      }
         };
       }
     }
@@ -188,6 +188,7 @@ function isLegal(cell)
 function changeColor(sizee, horizontal, color, tableID) {
   let table = document.getElementById(tableID);
   let size = parseInt(sizee, 10);
+  size = Number(size);
   if (table != null) {
     for (let i = 0; i < table.rows.length; i++) {
       for (let j = 0; j < table.rows[0].cells.length; j++) {
@@ -214,11 +215,13 @@ function changeColor(sizee, horizontal, color, tableID) {
             } else {
               if (i + size <= 8) {
                 for (let count = 0; count < size; count++) {
-                  table.rows[i + count].cells[j].style.backgroundColor = color;
+                  if (table.rows[i + count].cells[j].innerHTML != "")
+                    table.rows[i + count].cells[j].style.backgroundColor = color;
                 }
               } else {
                 let count = 0;
                 while (count + i < 8) {
+                  if (table.rows[i + count].cells[j].innerHTML != "");
                   table.rows[i + count].cells[j].style.backgroundColor = "red";
                   count++;
                 }
