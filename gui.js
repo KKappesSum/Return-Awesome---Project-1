@@ -86,24 +86,9 @@ function placeShip(size, horizontal, shipId) {
   if (size <= 0)
   {
     return 0;
-  }
-  // let direction = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
-  // while (
-  //   direction < 1 ||
-  //   direction > 2 ||
-  //   direction % 1 != 0 ||
-  //   direction === null
-  //   ) 
-  //   {
-  //     direction = prompt("Type 1 for horizontal or 2 for vertical");
-  //   }
-  //   direction = parseInt(direction, 10);
-  //   direction = Number(direction);
-      
+  }  
   document.getElementById(shipId).style.display = "block";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
-
-  console.log("my size is " + size);
   let table = document.getElementById(shipId);
   if (table != null) 
   {
@@ -197,10 +182,25 @@ function placeShip(size, horizontal, shipId) {
             }
           }
           if (sizeNum !== 1)
-            placeShip(sizeNum-1, horizontal, shipId);
+          {
+            let horizontal = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
+            while (horizontal < 1 || horizontal > 2 || horizontal % 1 != 0 || horizontal === null ) 
+            {
+              horizontal = prompt("Type 1 for horizontal or 2 for vertical");
+            }
+            horizontal = Number(horizontal);
+            if (horizontal === 1)
+            {
+              placeShip(sizeNum-1, true, shipId);
+            }
+            else
+            {
+              placeShip(sizeNum -1, false, shipId);
+            }
+          }
           else
           {
-            // setTimeout()
+            document.getElementById(shipId).style.display = "none";
           }
         };
       }
