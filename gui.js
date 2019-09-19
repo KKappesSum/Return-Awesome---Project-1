@@ -1,4 +1,3 @@
-
 /**
  * This function adds one to its input.
  * @param {number} input any number
@@ -26,12 +25,10 @@ function setPlayerNames() {
 
   document.getElementById("names").innerHTML =
     "These are your names " + p1 + " and " + p2 + ". Now select an orientation for the ship with the buttons below";
-    // document.getElementById("orientation1").style.display = "block";
-    // document.getElementById("orientation1").textContent= "Horizontal"
-    // document.getElementById("orientation2").style.display = "block";
-    // document.getElementById("orientation2").innerHTML = "Vertical"
-
-
+  // document.getElementById("orientation1").style.display = "block";
+  // document.getElementById("orientation1").textContent= "Horizontal"
+  // document.getElementById("orientation2").style.display = "block";
+  // document.getElementById("orientation2").innerHTML = "Vertical"
 }
 
 function setShipCount() {
@@ -58,110 +55,129 @@ function setShipCount() {
 
   document.getElementById("ships").innerHTML =
     "You have chosen " + numShips + " ships";
-    // document.getElementById("test").style.display = "block";
-    // document.getElementById("test2").style.display = "block";
-    //document.getElementById("orientation").innerHTML = numShips
-  
-  for (let i = numShips; i>=1; i--)
-  {
+  // document.getElementById("test").style.display = "block";
+  // document.getElementById("test2").style.display = "block";
+  //document.getElementById("orientation").innerHTML = numShips
+
+  for (let i = numShips; i >= 1; i--) {
     let direction = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
-    while (direction <1 || direction >2 || direction%1 != 0 || direction === null) 
-    {
+    while (
+      direction < 1 ||
+      direction > 2 ||
+      direction % 1 != 0 ||
+      direction === null
+    ) {
       direction = prompt("Type 1 for horizontal or 2 for vertical");
     }
     direction = parseInt(direction, 10);
     direction = Number(direction);
-    if (direction === 1 )
+    if (direction === 1) 
     {
       placeShip(i, true);
       console.log("hiiii");
       break;
-    }
+    } 
     else 
     {
       placeShip(i, false);
       break;
     }
   }
-
-	
 }
 
 function placeShip(size, horizontal) {
   document.getElementById("ship1").style.display = "block";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
 
-  console.log("my size is "+size);
+  console.log("my size is " + size);
   let table = document.getElementById("ship1");
-  if (table != null) {
-    for (let i = 0; i < table.rows.length; i++) {
-      for (let j = 0; j < table.rows[i].cells.length; j++) {
+  if (table != null) 
+  {
+    for (let i = 0; i < table.rows.length; i++) 
+    {
+      for (let j = 0; j < table.rows[i].cells.length; j++) 
+      {
         table.rows[i].cells[j].style.cursor = "ptr";
-		table.rows[i].cells[j].onmousemove = changeColor(size, horizontal, "yellow", "ship1");
-        table.rows[i].cells[j].onmouseout = function() {
-          if (horizontal) {
-            if (j + size <= 8) {
-              for (let count = 0; count < size; count++) {
+        table.rows[i].cells[j].onmousemove = changeColor(size, horizontal, "yellow", "ship1");
+        table.rows[i].cells[j].onmouseout = function() 
+        {
+          if (horizontal) 
+          {
+            if (j + size <= 8) 
+            {
+              for (let count = 0; count < size; count++) 
+              {
                 if (table.rows[i].cells[j + count].innerHTML != "")
                   table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
+                else
+                  table.rows[i].cells[j + count].style.backgroundColor = "grey";
               }
-            } else {
+            } 
+            else 
+            {
               let count = 0;
-              while (count + j < 8) {
+              while (count + j < 8) 
+              {
                 if (table.rows[i].cells[j + count].innerHTML != "")
                   table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
+                else
+                  table.rows[i].cells[j + count].style.backgroundColor = "grey";
                 count++;
               }
             }
-          } else {
-            if (i + size <= 8) {
-              for (let count = 0; count < size; count++) {
+          } 
+          else 
+          {
+            if (i + size <= 8) 
+            {
+              for (let count = 0; count < size; count++) 
+              {
                 if (table.rows[i + count].cells[j].innerHTML != "")
                   table.rows[i + count].cells[j].style.backgroundColor ="lightblue";
+                else
+                  table.rows[i + count].cells[j].style.backgroundColor = "grey";
               }
-            } else {
+            } 
+            else 
+            {
               let count = 0;
-              while (count + i < 8) {
+              while (count + i < 8) 
+              {
                 if (table.rows[i + count].cells[j].innerHTML != "")
-                  table.rows[i + count].cells[j].style.backgroundColor = "lightblue";
+                  table.rows[i + count].cells[j].style.backgroundColor =  "lightblue";
+                else
+                  table.rows[i + count].cells[j].style.backgroundColor = "grey";
                 count++;
               }
             }
           }
         };
-        table.rows[i].cells[j].onclick = function() {
+        table.rows[i].cells[j].onclick = function() 
+        {
           let sizeNum = Number(size);
           //sending the coords and tableId for ship construction
-        if(isLegal(table.rows[i].cells[j])){
-          let tempCoords = i + ":" + j;
-          buttonHandlerSetup("ship1",tempCoords);
-          
-		  console.log("clicked");
-		  console.log(isLegal(table.rows[i].cells[j]));
-      if (horizontal) {
-			  if (j + sizeNum <= 8) 
-			  {
-			    for (let count = 0; count < sizeNum; count++) 
-			    {
-            table.rows[i].cells[j + count].style.backgroundColor = "grey";
-            table.rows[i].cells[j + count].innerHTML = "";
-          }
-        } 
-      }
-		    else 
-		    {
-			    if (i + sizeNum <= 8) 
-			    {
-			        for (let count = 0; count < sizeNum; count++) 
-			        {
-                table.rows[i + count].cells[j].style.backgroundColor = "grey";
-                table.rows[i + count].cells[j].innerHTML = "";
+          if (isLegal(table.rows[i].cells[j])) {
+            let tempCoords = i + ":" + j;
+            buttonHandlerSetup("ship1", tempCoords);
 
-                
+            console.log("clicked");
+            console.log(isLegal(table.rows[i].cells[j]));
+            if (horizontal) {
+              if (j + sizeNum <= 8) {
+                for (let count = 0; count < sizeNum; count++) {
+                  table.rows[i].cells[j + count].style.backgroundColor = "grey";
+                  table.rows[i].cells[j + count].innerHTML = "";
+                }
+              }
+            } else {
+              if (i + sizeNum <= 8) {
+                for (let count = 0; count < sizeNum; count++) {
+                  table.rows[i + count].cells[j].style.backgroundColor = "grey";
+                  table.rows[i + count].cells[j].innerHTML = "";
+                }
               }
             }
           }
-        }
         };
       }
     }
@@ -169,19 +185,18 @@ function placeShip(size, horizontal) {
 }
 
 /**
- * 
- * @param {table cell} cell 
+ *
+ * @param {table cell} cell
  * @return boolean if placement is legal
  */
-function isLegal(cell)
-{
-	return (cell.style.backgroundColor === "yellow");
+function isLegal(cell) {
+  return cell.style.backgroundColor === "yellow";
 }
 
 /**
- * 
+ *
  * @param {int} size size of the ship
- * @param {boolean} horizontal orientation of the ship 
+ * @param {boolean} horizontal orientation of the ship
  * @param {string} color color for the cell
  * @param {string} tableID HTML ID for the table
  */
@@ -195,33 +210,59 @@ function changeColor(sizee, horizontal, color, tableID) {
         table.rows[i].cells[j].style.cursor = "ptr";
         table.rows[i].cells[j].onmousemove =
           //size is a int of the ship length, horizontal is a bool (y/n)
-          //sorry this is a terrible in-line definition :( I can't get the "this" to work right otherwise
           function() {
-            //this.style.backgroundColor = "yellow";
+            let existingShip = false;
             if (horizontal) {
               if (j + size <= 8) {
-                for (let count = 0; count < size; count++) {
-                  if (table.rows[i].cells[j + count].innerHTML != "")
-                    table.rows[i].cells[j + count].style.backgroundColor = color;
+                for (let count = 0; count < size; count++) 
+                {
+                  if (table.rows[i].cells[j + count].innerHTML === "")
+                    existingShip = true;
+                }
+                for (let count = 0; count < size; count++) 
+                {
+                  if (existingShip)
+                  {
+                    table.rows[i].cells[j+count].style.backgroundColor = "red";
+                  }
+                  else
+                  {
+                    table.rows[i].cells[j+count].style.backgroundColor = "yellow";
+                  }
                 }
               } else {
                 let count = 0;
                 while (count + j < 8) {
-                  if (table.rows[i].cells[j + count].innerHTML != "")
+                  if (table.rows[i].cells[j + count].innerHTML !== "")
                     table.rows[i].cells[j + count].style.backgroundColor = "red";
                   count++;
                 }
               }
-            } else {
-              if (i + size <= 8) {
-                for (let count = 0; count < size; count++) {
-                  if (table.rows[i + count].cells[j].innerHTML != "")
-                    table.rows[i + count].cells[j].style.backgroundColor = color;
+            } 
+            else 
+            {
+              if (i + size <= 8) 
+              {
+                for (let count = 0; count < size; count++) 
+                {
+                  if (table.rows[i+count].cells[j].innerHTML === "")
+                    existingShip = true;
+                }
+                for (let count = 0; count < size; count++) 
+                {
+                  if (existingShip)
+                  {
+                    table.rows[i+count].cells[j].style.backgroundColor = "red";
+                  }
+                  else
+                  {
+                    table.rows[i+count].cells[j].style.backgroundColor = "yellow";
+                  }
                 }
               } else {
                 let count = 0;
                 while (count + i < 8) {
-                  if (table.rows[i + count].cells[j].innerHTML != "");
+                  if (table.rows[i + count].cells[j].innerHTML !== "");
                   table.rows[i + count].cells[j].style.backgroundColor = "red";
                   count++;
                 }
