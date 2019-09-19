@@ -73,24 +73,23 @@ function setShipCount() {
     direction = Number(direction);
     if (direction === 1) 
     {
-      placeShip(i, true);
-      console.log("hiiii");
+      placeShip(i, true, "ship1");
       break;
     } 
     else 
     {
-      placeShip(i, false);
+      placeShip(i, false, "ship1");
       break;
     }
   }
 }
 
-function placeShip(size, horizontal) {
-  document.getElementById("ship1").style.display = "block";
+function placeShip(size, horizontal, shipId) {
+  document.getElementById(shipId).style.display = "block";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
 
   console.log("my size is " + size);
-  let table = document.getElementById("ship1");
+  let table = document.getElementById(shipId);
   if (table != null) 
   {
     for (let i = 0; i < table.rows.length; i++) 
@@ -98,7 +97,7 @@ function placeShip(size, horizontal) {
       for (let j = 0; j < table.rows[i].cells.length; j++) 
       {
         table.rows[i].cells[j].style.cursor = "ptr";
-        table.rows[i].cells[j].onmousemove = changeColor(size, horizontal, "yellow", "ship1");
+        table.rows[i].cells[j].onmousemove = changeColor(size, horizontal, "yellow", shipId);
         table.rows[i].cells[j].onmouseout = function() 
         {
           if (horizontal) 
@@ -158,7 +157,7 @@ function placeShip(size, horizontal) {
           //sending the coords and tableId for ship construction
           if (isLegal(table.rows[i].cells[j])) {
             let tempCoords = i + ":" + j;
-            buttonHandlerSetup("ship1", tempCoords);
+            buttonHandlerSetup(shipId, tempCoords);
 
             console.log("clicked");
             console.log(isLegal(table.rows[i].cells[j]));
