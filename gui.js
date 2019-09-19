@@ -59,32 +59,47 @@ function setShipCount() {
   // document.getElementById("test2").style.display = "block";
   //document.getElementById("orientation").innerHTML = numShips
 
-  for (let i = numShips; i >= 1; i--) {
-    let direction = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
-    while (
-      direction < 1 ||
-      direction > 2 ||
-      direction % 1 != 0 ||
-      direction === null
-    ) {
+
+ let direction = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
+  while (
+    direction < 1 ||
+    direction > 2 ||
+    direction % 1 != 0 ||
+    direction === null
+    ) 
+    {
       direction = prompt("Type 1 for horizontal or 2 for vertical");
     }
     direction = parseInt(direction, 10);
     direction = Number(direction);
     if (direction === 1) 
     {
-      placeShip(i, true, "ship1");
-      break;
+      placeShip(numShips, true, "ship1");
     } 
     else 
     {
-      placeShip(i, false, "ship1");
-      break;
+      placeShip(numShips, false, "ship1");
     }
-  }
 }
 
 function placeShip(size, horizontal, shipId) {
+  if (size <= 0)
+  {
+    return 0;
+  }
+  // let direction = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
+  // while (
+  //   direction < 1 ||
+  //   direction > 2 ||
+  //   direction % 1 != 0 ||
+  //   direction === null
+  //   ) 
+  //   {
+  //     direction = prompt("Type 1 for horizontal or 2 for vertical");
+  //   }
+  //   direction = parseInt(direction, 10);
+  //   direction = Number(direction);
+      
   document.getElementById(shipId).style.display = "block";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
 
@@ -154,6 +169,7 @@ function placeShip(size, horizontal, shipId) {
         table.rows[i].cells[j].onclick = function() 
         {
           let sizeNum = Number(size);
+          console.log(sizeNum);
           //sending the coords and tableId for ship construction
           if (isLegal(table.rows[i].cells[j])) {
             let tempCoords = i + ":" + j;
@@ -161,14 +177,17 @@ function placeShip(size, horizontal, shipId) {
 
             console.log("clicked");
             console.log(isLegal(table.rows[i].cells[j]));
-            if (horizontal) {
+            if (horizontal) 
+            {
               if (j + sizeNum <= 8) {
                 for (let count = 0; count < sizeNum; count++) {
                   table.rows[i].cells[j + count].style.backgroundColor = "grey";
                   table.rows[i].cells[j + count].innerHTML = "";
                 }
               }
-            } else {
+            } 
+            else 
+            {
               if (i + sizeNum <= 8) {
                 for (let count = 0; count < sizeNum; count++) {
                   table.rows[i + count].cells[j].style.backgroundColor = "grey";
@@ -176,6 +195,12 @@ function placeShip(size, horizontal, shipId) {
                 }
               }
             }
+          }
+          if (sizeNum !== 1)
+            placeShip(sizeNum-1, horizontal, shipId);
+          else
+          {
+            // setTimeout()
           }
         };
       }
