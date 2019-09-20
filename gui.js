@@ -31,8 +31,9 @@ function setPlayerNames() {
   // document.getElementById("orientation2").innerHTML = "Vertical"
 }
 
-function setShipCount() {
+function setShipCount(shipId) {
   //get input from user in pop up
+  
   let numShips = prompt("Please enter number of ships between 1 and 5: ");
 
   //validate that number of ships is between 1 and 5/
@@ -45,7 +46,7 @@ function setShipCount() {
     numShips % 1 != 0
   ) {
     //check numShips%1!=0 because we only want an integer. integer%1 is always 0.
-    let numShips = prompt("Please enter number of ships between 1 and 5: ");
+    numShips = prompt("Please enter number of ships between 1 and 5: ");
   }
 
   //disable the text boxes and button
@@ -74,11 +75,11 @@ function setShipCount() {
     direction = Number(direction);
     if (direction === 1) 
     {
-      placeShip(numShips, true, "ship1");
+      placeShip(numShips, true, shipId);
     } 
     else 
     {
-      placeShip(numShips, false, "ship1");
+      placeShip(numShips, false, shipId);
     }
 }
 
@@ -87,7 +88,7 @@ function placeShip(size, horizontal, shipId) {
   {
     return 0;
   }  
-  document.getElementById(shipId).style.display = "block";
+  document.getElementById(shipId).style.display = "table";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
   let table = document.getElementById(shipId);
   if (table != null) 
@@ -201,6 +202,16 @@ function placeShip(size, horizontal, shipId) {
           else
           {
             document.getElementById(shipId).style.display = "none";
+            if (shipId === "ship1")
+            {
+              document.getElementById("test").style.display = "block";
+
+            }
+            else
+            {
+              document.getElementById("test").style.display = "none";
+
+            }
           }
         };
       }
