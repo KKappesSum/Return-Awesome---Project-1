@@ -6,7 +6,6 @@ class Grid{
     #arr;
     #conf;
     #isHit;
-    #temp;
 
     constructor(size){
         this.#conf = new Config();
@@ -25,12 +24,13 @@ class Grid{
      * @param {string} tableId: A string given the elementId for the table to be updated
      */
     populateGrid(locationArr, tableId){
+        console.log("In populate");
         for(let i = 0; i < locationArr.length; i++){
-            this.#arr[locationArr[i].substring(0, locationArr[i].indexOf(":") - 1)]
-                [locationArr[i].substring(locationArr[i].indexOf(":"))] 
+            this.#arr[locationArr[i].substring(0, locationArr[i].indexOf(":"))]
+                [locationArr[i].substring(locationArr[i].indexOf(":") + 1)] 
                 = this.#conf.oceanTypes.SHIP;
         }   
-        this.refreshTable(tableId, True);
+        this.refreshTable(tableId, true);
     }
 
     /**
@@ -39,24 +39,25 @@ class Grid{
      * @param {bool} isShipMap: True: Updates the shipmap; False: Updates the firingmap
      */
     refreshTable(tableId, isShipMap){
+        let table = document.getElementById(tableId);
+        let cell = 0;
         for(let i = 0; i < document.getElementById(tableId).rows.length; i++){
             for(let j = 0; j < document.getElementById(tableId).rows[0].cells.length; j++){
-                this.#temp = document.getElementById(tableId).rows[i].cells[j].innerHTML.style.backgroundColor;
                 if(isShipMap == true){
                     if(this.#arr[i][j] == this.#conf.oceanTypes.SHIP){
-                        this.#temp = this.#conf.oceanTypes.SHIP;
+                        table.rows[i].cells[j].style.backgroundColor = this.#conf.oceanTypes.SHIP;
                     }else if(this.#arr[i][j] == this.#conf.oceanTypes.HIT){
-                        this.#temp = this.#conf.oceanTypes.HIT;
+                        table.rows[i].cells[j].style.backgroundColor = this.#conf.oceanTypes.HIT;
                     }else{
-                        this.#temp = this.#conf.oceanTypes.WATER;
+                        table.rows[i].cells[j].style.backgroundColor = this.#conf.oceanTypes.WATER;
                     }
                 }else{
                     if(this.#arr[i][j] == this.#conf.oceanTypes.MISS){
-                        this.#temp = this.#conf.oceanTypes.MISS;
+                        table.rows[i].cells[j].style.backgroundColor = this.#conf.oceanTypes.MISS;
                     }else if(this.#arr[i][j] == this.#conf.oceanTypes.HIT){
-                        this.#temp = this.#conf.oceanTypes.HIT;
+                        table.rows[i].cells[j].style.backgroundColor = this.#conf.oceanTypes.HIT;
                     }else{
-                        this.#temp = this.#conf.oceanTypes.WATER;
+                        table.rows[i].cells[j].style.backgroundColor = this.#conf.oceanTypes.WATER;
                     }
                 }
             }
@@ -71,9 +72,9 @@ class Grid{
      */
     updateCell(location, tableId){
         this.#isHit = false;
-        let i = location.substring(0, location.indexOf(":") - 1);
-        let j = location.substring(location.indexOf(":"));
-        if(this.#arr[i][j] == this.conf.oceanTypes.SHIP){
+        let i = location.substring(0, location.indexOf(":"));
+        let j = location.substring(location.indexOf(":") + 1);
+        if(this.#arr[i][j] == this.#conf.oceanTypes.SHIP){
             this.#arr[i][j] = this.#conf.oceanTypes.HIT;
             this.#isHit = true;
         }else{
