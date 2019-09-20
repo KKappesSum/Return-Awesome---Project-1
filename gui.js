@@ -33,21 +33,27 @@ function setPlayerNames() {
 
 function setShipCount(shipId) {
   //get input from user in pop up
-  
-  let numShips = prompt("Please enter number of ships between 1 and 5: ");
+  let numShips;
+  if (shipId === "ship1")
+  {
+    numShips = prompt("Please enter number of ships between 1 and 5: ");
 
   //validate that number of ships is between 1 and 5/
   //prompt until you recieve a valid input
 
-  while (
-    numShips > 5 ||
-    numShips < 1 ||
-    numShips === null ||
-    numShips % 1 != 0
-  ) {
+    while ( numShips > 5 ||numShips < 1 || numShips === null ||numShips % 1 != 0) 
+    {
     //check numShips%1!=0 because we only want an integer. integer%1 is always 0.
-    numShips = prompt("Please enter number of ships between 1 and 5: ");
+      numShips = prompt("Please enter number of ships between 1 and 5: ");
+    }
+    document.getElementById("shipNum").innerHTML = numShips;
   }
+  else
+  {
+    numShips = document.getElementById("shipNum").innerHTML;
+    console.log(numShips + "for p2");
+  }
+
 
   //disable the text boxes and button
   document.getElementById("button1").disabled = true;
@@ -210,6 +216,9 @@ function placeShip(size, horizontal, shipId) {
             else
             {
               document.getElementById("test").style.display = "none";
+              document.getElementById("ships").style.display = "none";
+              document.getElementById("names").style.display = "none";
+              document.getElementById("placement").style.display = "none";
 
             }
           }
