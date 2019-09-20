@@ -31,13 +31,13 @@
 
 
 
-            <button onclick="setPlayerNames(); setShipCount(); createExec();" id = "button1">Pick number of ships</button>
+            <button class = "button" onclick="setPlayerNames(); setShipCount('ship1'); createExec();" id = "button1">Pick number of ships</button>
 
             <p id="ships"></p>
             <p id="names"></p>
+            <p id="shipNum"></p>
 
-            <!-- <button onclick="tester(document.getElementById("orientation").innerHTML);" id="test">Horizontal</button>
-            <button onclick="test2(document.getElementById("orientation").innerHTML);" id="test2">Vertical</button> -->
+            <button class = "button" onclick="setShipCount('ship2');" id="test">Click here to start placing your ships</button>
 <!-- 
             <input type="radio" value="horizontal" name="orientation" id="orientation1">Horizontal
             <input type="radio" value="vertical" name="orientation" id="orientation2">Vertical -->
@@ -221,8 +221,8 @@
 </div>
 <script> document.getElementById("ship1").style.display = "none";
 document.getElementById("ship2").style.display = "none";
-// document.getElementById("test").style.display = "none";
-// document.getElementById("test2").style.display = "none";
+document.getElementById("test").style.display = "none";
+document.getElementById("shipNum").style.display = "none";
 </script>
 </body>
 </html>
