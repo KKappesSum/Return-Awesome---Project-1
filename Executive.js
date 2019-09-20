@@ -167,6 +167,3 @@ function testObj(){
     tempExec = new Exec("Ethan", "Anna", '6');
 }
 
-function navigate(){
-    location.href = "./index.html";
-}
