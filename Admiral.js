@@ -9,9 +9,12 @@ class Admiral {
   #fleet;
   #name;
   #afloat;
+  #config;
+
   constructor(num, pName) {
+    this.#config = new Config();
     this.#numShips = num;
-    this.#board = new Grid(BOARD_SIZE);
+    this.#board = new Grid(this.#config.BOARD_SIZE);
     this.#fleet = [];
     this.#afloat = num;
     this.#name = pName;
