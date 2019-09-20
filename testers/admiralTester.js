@@ -14,9 +14,10 @@ console.log("fleet: " + adm2.getFleet());
 console.log("name: " + adm2.getName());
 
 // test helper functions
-for(let j = 1; j <= adm.getNumShips(); j++)
+let adm5 = new Admiral(5, "admiral 5");
+for(let j = 1; j <= adm5.getNumShips(); j++)
 {
-	console.log("ship of size " + j + " is at index " + findShipBySize(j) + " of Admiral A");
+	console.log("In " + adm5.getName() + ", ship of size " + j + " is at index " + adm5.findShipBySize(j));
 }
 
 
