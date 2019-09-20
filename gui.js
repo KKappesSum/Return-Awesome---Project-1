@@ -6,20 +6,12 @@
 function setPlayerNames() {
   let p1 = document.getElementById("player1").value;
   let p2 = document.getElementById("player2").value;
-  if (
-    !(
-      document.getElementById("player1") &&
-      document.getElementById("player1").value
-    )
-  ) {
+  if (!(document.getElementById("player1") && document.getElementById("player1").value)) 
+  {
     p1 = document.getElementById("player1").placeholder;
   }
-  if (
-    !(
-      document.getElementById("player2") &&
-      document.getElementById("player2").value
-    )
-  ) {
+  if (!(document.getElementById("player2") && document.getElementById("player2").value)) 
+  {
     p2 = document.getElementById("player2").placeholder;
   }
 
@@ -31,6 +23,11 @@ function setPlayerNames() {
   // document.getElementById("orientation2").innerHTML = "Vertical"
 }
 
+
+/**
+ * This function asks the user how many ships they want to use and begins to place ships
+ * @param {string} shipId the id for the ship map from the setup.html
+ */
 function setShipCount(shipId) {
   //get input from user in pop up
   let numShips;
@@ -68,28 +65,32 @@ function setShipCount(shipId) {
 
 
  let direction = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
-  while (
-    direction < 1 ||
-    direction > 2 ||
-    direction % 1 != 0 ||
-    direction === null
-    ) 
-    {
-      direction = prompt("Type 1 for horizontal or 2 for vertical");
-    }
-    direction = parseInt(direction, 10);
-    direction = Number(direction);
-    if (direction === 1) 
-    {
-      placeShip(numShips, true, shipId);
-    } 
-    else 
-    {
-      placeShip(numShips, false, shipId);
-    }
+  while (direction < 1 ||direction > 2 || direction % 1 != 0 ||direction === null) 
+  {
+    direction = prompt("Type 1 for horizontal or 2 for vertical");
+  }
+  direction = parseInt(direction, 10);
+  direction = Number(direction);
+  if (direction === 1) 
+  {
+    placeShip(numShips, true, shipId);
+  } 
+  else 
+  {
+    placeShip(numShips, false, shipId);
+  }
 }
 
-function placeShip(size, horizontal, shipId) {
+/**
+ * This function deals with the interface for placing ships. When the mouse hovers, 
+ * the ship outline with change color depending on if a ship can be placed there.
+ * Lets p1 place all their ships before hiding the map and prompting p2 to place their ships.
+ * @param {int} size the size of the ship being placed
+ * @param {boolean} horizontal boolean of the orientation, true = the ship is horizontal
+ * @param {string} shipId string of the html id for the ship map being used
+ */
+function placeShip(size, horizontal, shipId) 
+{
   if (size <= 0)
   {
     return 0;
@@ -244,7 +245,7 @@ function isLegal(cell) {
 }
 
 /**
- *
+ * This function will color cells of a table according to if the placement of the ship is legal
  * @param {int} size size of the ship
  * @param {boolean} horizontal orientation of the ship
  * @param {string} color color for the cell
