@@ -128,3 +128,13 @@ function buttonHandlerSetup(tableId, coords, shipSize){
     console.log(tableId);
     console.log(coords);
 }
+
+/**
+ * @param: none
+ * stores the completed Exec object in the sessionStorage after all ships are placed
+ */
+function storeExecObj(){
+    
+
+}
+
