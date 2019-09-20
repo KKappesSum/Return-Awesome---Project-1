@@ -13,9 +13,9 @@ class Exec{
     constructor(adm1Name, adm2Name, numShips){
         const m_shipCount = numShips;
         //player turn updated each turn, adm1 = odd, adm2 = even?
-        let m_playerTurn = 1;
-        let admir1 = new Admiral(numShips, adm1Name);
-        let admir2 = new Admiral(numShips, adm2Name);  
+        this.m_playerTurn = 1;
+        this.admir1 = new Admiral(numShips, adm1Name);
+        this.admir2 = new Admiral(numShips, adm2Name);  
     }
      /**
      * @param {string} coords: coordinates for the specific cell in the table
@@ -52,7 +52,7 @@ class Exec{
      * returns the value of the m_playerTurn variable
      */
     getPlayerTurn(){
-        return(m_playerTurn);
+        return(this.m_playerTurn);
     }
 
      /**
@@ -113,13 +113,13 @@ function buttonHandlerSetup(tableId, coords, shipSize){
 
     //need to figure out better way to decide which player to place ships for
     //maybe something can be taken from gui
-    if(exec.getPlayerTurn() === 1){
-        exec.admir1.placeShip(coords,shipSize,1,tableId);
-        console.log("ship of size "+size+" successfully placed for admiral1");
+    if(exec.getPlayerTurn() == 1){
+        exec.admir1.placeShip(coords,shipSize,'h',tableId);
+        console.log("ship of size "+shipSize+" successfully placed for admiral1");
     }
-    else if (exec.getPlayerTurn() === 2){
-        exec.admir2.placeShip(coords,shipSize,2,tableId);
-        console.log("ship of size "+size+" successfully placed for amdiral2");
+    else if (exec.getPlayerTurn() == 2){
+        exec.admir2.placeShip(coords,shipSize,'v',tableId);
+        console.log("ship of size "+shipSize+" successfully placed for amdiral2");
     }
     else{
         console.log("something went wrong with the getplayerturn function");
