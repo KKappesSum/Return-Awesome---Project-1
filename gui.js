@@ -94,6 +94,8 @@ function placeShip(size, horizontal, shipId) {
   {
     return 0;
   }  
+  document.getElementById("ships").style.display = "block";
+  document.getElementById("placement").style.display = "block";
   document.getElementById(shipId).style.display = "table";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
   let table = document.getElementById(shipId);
@@ -211,7 +213,11 @@ function placeShip(size, horizontal, shipId) {
             if (shipId === "ship1")
             {
               document.getElementById("test").style.display = "block";
-
+              document.getElementById("ships").style.display = "none";
+              document.getElementById("names").style.display = "none";
+              document.getElementById("placement").style.display = "none";
+              document.getElementById("button1").style.display = "none";
+              alert("You have placed all of your ships. Please switch players now!");
             }
             else
             {
