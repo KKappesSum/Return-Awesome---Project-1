@@ -5,17 +5,6 @@ table{
   padding: 10px;
 }
 
-.button {
-  background-color: rgb(159, 214, 236);
-  border: black 2px;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  font-size: 16px;
-  margin: 9px 2px;
-  cursor: pointer;
-}
-
 td, tr {
   text-align: center;
   vertical-align: middle;
