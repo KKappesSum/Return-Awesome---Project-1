@@ -1,12 +1,9 @@
 /**
  * Admiral class is in charge of a player in the Battleship game
+ * @param {integer} num - The number of ships being placed in the game
+ * @param {string} pName - the name of the player.
  */
 class Admiral {
-  /**
-   * Create a player
-   * @param {number} numShips - The number of ships being placed in the game
-   * @param {grid} board - The player's board, has your own ships location
-   */
   #numShips;
   #board;
   #fleet;
@@ -24,29 +21,50 @@ class Admiral {
     }
   }
 
+  /**
+   * Get the number of ships.
+   * @param none.
+   * @return {integer} return the number of ships that the Admiral has.
+   */
   getNumShips() {
     return this.#numShips;
   }
 
+  /**
+   * Get the game board.
+   * @param none.
+   * @return {Grid} return the Grid object in Admiral.
+   */
   getBoard() {
     return this.#board;
   }
 
+  /**
+   * Get the Admiral's fleet.
+   * @param none.
+   * @return {Ship[]} return the array of Ships in Admiral.
+   */
   getFleet() {
     return this.#fleet;
   }
 
+  /**
+   * Get the Admiral's name.
+   * @param none.
+   * @return {string} return the player's name.
+   */
   getName() {
     return this.#name;
   }
 
+  /**
+   * Update your own ship map with the other user's firing outcome
+   * void function, changes the hit or miss type of the water tile
+   * @param {string} coor - NumberLetter coordinate of the player's guess
+   * @return none
+   */
   updateShipMap(coor) {
-    /**
-     * Update your own ship map with the other user's firing outcome
-     * void function, changes the hit or miss type of the water tile
-     * @param {string} coor - NumberLetter coordinate of the player's guess
-     * @return none
-     */
+    
     if (updateCell(coor) === true)
     {
       //checks the fleet array for the ship that was hit
