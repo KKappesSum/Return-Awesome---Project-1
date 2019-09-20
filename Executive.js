@@ -1,4 +1,5 @@
 //Author: Ethan Brenner
+var exec;
 
 class Exec{
     /**
@@ -105,9 +106,24 @@ function buttonHandler(tableId, coords){
  * 
  * @param {string} tableId : id of the table that triggered the onclick event
  * @param {string} coords : coordinates for a specific cell in the table
+ * @param {number} shipSize: size of the ship being placed
  * handles button clicks on the setup page, calls necessary functions
  */
-function buttonHandlerSetup(tableId, coords){
+function buttonHandlerSetup(tableId, coords, shipSize){
+
+    //need to figure out better way to decide which player to place ships for
+    //maybe something can be taken from gui
+    if(exec.getPlayerTurn() === 1){
+        exec.admir1.placeShip(coords,shipSize,1,tableId);
+        console.log("ship of size "+size+" successfully placed for admiral1");
+    }
+    else if (exec.getPlayerTurn() === 2){
+        exec.admir2.placeShip(coords,shipSize,2,tableId);
+        console.log("ship of size "+size+" successfully placed for amdiral2");
+    }
+    else{
+        console.log("something went wrong with the getplayerturn function");
+    }
 
     console.log(tableId);
     console.log(coords);
