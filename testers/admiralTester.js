@@ -12,4 +12,11 @@ console.log("# ships: " + adm2.getNumShips());
 console.log("board: " + adm2.getBoard());
 console.log("fleet: " + adm2.getFleet());
 console.log("name: " + adm2.getName());
-// 
+
+// test helper functions
+for(let j = 1; j <= adm.getNumShips(); j++)
+{
+	console.log("ship of size " + j + " is at index " + findShipBySize(j) + " of Admiral A");
+}
+
+
