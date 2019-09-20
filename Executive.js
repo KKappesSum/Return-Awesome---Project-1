@@ -156,6 +156,9 @@ function pullExecObj(){
     return(fromStorage);
 }
 
+/**
+ * tests retrieval from sessionStorage in index.html
+ */
 function onLoadTester(){
     let newExec = pullExecObj();
 
@@ -163,6 +166,9 @@ function onLoadTester(){
     console.log(newExec.m_shipCount);
 }
 
+/**
+ * creates a exec obj used for testing exec functions
+ */
 function testObj(){
     tempExec = new Exec("Ethan", "Anna", '6');
 }
