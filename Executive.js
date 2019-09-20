@@ -131,10 +131,17 @@ function buttonHandlerSetup(tableId, coords, shipSize){
 
 /**
  * @param: none
- * stores the completed Exec object in the sessionStorage after all ships are placed
+ * stores the completed Exec object in the session storage after all ships are placed
  */
 function storeExecObj(){
-    
+
 
 }
 
+/**
+ * @param: none
+ * retrieves the Exec obj from session storage at start of game
+ */
+function pullExecObj(){
+    
+}
