@@ -1,5 +1,6 @@
 //Author: Ethan Brenner
 var exec;
+var tempExec;
 
 class Exec{
     /**
@@ -11,7 +12,7 @@ class Exec{
      * creates the exec instance with two admiral objects, along with their number of ships
      */
     constructor(adm1Name, adm2Name, numShips){
-        const m_shipCount = numShips;
+        this.m_shipCount = numShips;
         //player turn updated each turn, adm1 = odd, adm2 = even?
         this.m_playerTurn = 1;
         this.admir1 = new Admiral(numShips, adm1Name);
@@ -134,7 +135,10 @@ function buttonHandlerSetup(tableId, coords, shipSize){
  * stores the completed Exec object in the session storage after all ships are placed
  */
 function storeExecObj(){
-    sessionStorage.exec = JSON.stringify(exec);
+    sessionStorage.ExecObj = JSON.stringify(tempExec);
+    console.log(tempExec);
+    console.log(sessionStorage.ExecObj);
+    console.log("stored obj");
 }
 
 /**
@@ -143,6 +147,23 @@ function storeExecObj(){
  * retrieves the Exec obj from session storage at start of game
  */
 function pullExecObj(){
-    let fromStorage = JSON.parse(sessionStorage.exec);
+    console.log(sessionStorage.ExecObj);
+    let fromStorage = JSON.parse(sessionStorage.ExecObj);
+    console.log("returning obj");
     return(fromStorage);
+}
+
+function onLoadTester(){
+    let newExec = pullExecObj();
+
+    console.log(newExec);
+    console.log(newExec.m_shipCount);
+}
+
+function testObj(){
+    tempExec = new Exec("Ethan", "Anna", '6');
+}
+
+function navigate(){
+    location.href = "./index.html";
 }
