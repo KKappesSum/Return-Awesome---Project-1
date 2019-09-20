@@ -39,3 +39,6 @@
 12. 9/16/2019.  Spahr Library
 	Attendees: Archana Ramakrishnan, Kyle Kappes-Sum, Ethan Brenner, Malena Schoeni, Connie Li
 	Continued front end and GUI development; continued testing Grid; completed testing of Ship.  See meeting notes.
+13. 9/20/19. Fish Bowl
+	Attendees: Archana Ramakrishnan, Ethan Brenner
+	Continued front end/ GUI development; bug troubleshooting
