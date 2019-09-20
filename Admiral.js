@@ -84,13 +84,6 @@ class Admiral {
     }
   }
 
-  updateFiringMap() {
-    /**
-     * Updates your "firing map" after you guess a location
-     */
-  }
-
-
   /**
    * Assign coordinates for a ship to the given ship and the board
    * @param {string} startCoord - the upper leftmost coordinate of the ship
