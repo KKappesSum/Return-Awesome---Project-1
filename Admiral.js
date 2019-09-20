@@ -40,14 +40,6 @@ class Admiral {
     return this.#name;
   }
 
-  setBoard(x) {
-    this.#board = x;
-  }
-
-  setName(x) {
-    this.#name = x;
-  }
-
   updateShipMap(coor) {
     /**
      * Update your own ship map with the other user's firing outcome
