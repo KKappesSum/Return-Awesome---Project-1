@@ -165,5 +165,7 @@ function onLoadTester(){
 
 function testObj(){
     tempExec = new Exec("Ethan", "Anna", '6');
+    console.log("Test ope");
+    storeExecObj();
 }
 
