@@ -139,8 +139,10 @@ function storeExecObj(){
 
 /**
  * @param: none
+ * @return: returns the exec obj from storage
  * retrieves the Exec obj from session storage at start of game
  */
 function pullExecObj(){
-    
+    let fromStorage = JSON.parse(sessionStorage.exec);
+    return(fromStorage);
 }
