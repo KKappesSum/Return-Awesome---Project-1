@@ -1,0 +1,15 @@
+admiralTester.js:6 # ships: 1
+admiralTester.js:7 board: [object Object]
+admiralTester.js:8 fleet: [object Object]
+admiralTester.js:9 name: admiral 1
+admiralTester.js:11 # ships: 1
+admiralTester.js:12 board: [object Object]
+admiralTester.js:13 fleet: [object Object]
+admiralTester.js:14 name: admiral 2
+admiralTester.js:17 Uncaught ReferenceError: adm is not defined
+    at admiralTester.js:17
+(anonymous) @ admiralTester.js:17
+adm2.getFleet()
+[Ship]0: Ship {#size: 1, #status: true, #numHits: 0, #coords: Array(0)}length: 1__proto__: Array(0)
+adm2.getFleet()[0].getCoords()
+[]length: 0__proto__: Array(0)
