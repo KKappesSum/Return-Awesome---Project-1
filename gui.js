@@ -158,7 +158,7 @@ function placeShip(size, horizontal, shipId) {
           //sending the coords and tableId for ship construction
           if (isLegal(table.rows[i].cells[j])) {
             let tempCoords = i + ":" + j;
-            buttonHandlerSetup(shipId, tempCoords);
+            buttonHandlerSetup(shipId, tempCoords, size);
 
             console.log("clicked");
             console.log(isLegal(table.rows[i].cells[j]));
