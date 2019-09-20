@@ -115,11 +115,11 @@ function buttonHandlerSetup(tableId, coords, shipSize){
     //need to figure out better way to decide which player to place ships for
     //maybe something can be taken from gui
     if(exec.getPlayerTurn() == 1){
-        exec.admir1.placeShip(coords,shipSize,'h',tableId);
+        //exec.admir1.placeShip(coords,shipSize,'h',tableId);
         console.log("ship of size "+shipSize+" successfully placed for admiral1");
     }
     else if (exec.getPlayerTurn() == 2){
-        exec.admir2.placeShip(coords,shipSize,'v',tableId);
+        //exec.admir2.placeShip(coords,shipSize,'v',tableId);
         console.log("ship of size "+shipSize+" successfully placed for amdiral2");
     }
     else{
@@ -133,12 +133,15 @@ function buttonHandlerSetup(tableId, coords, shipSize){
 /**
  * @param: none
  * stores the completed Exec object in the session storage after all ships are placed
+ * navigates to the index page
  */
 function storeExecObj(){
     sessionStorage.ExecObj = JSON.stringify(tempExec);
     console.log(tempExec);
     console.log(sessionStorage.ExecObj);
     console.log("stored obj");
+
+    location.href = "./index.html";
 }
 
 /**
@@ -164,6 +167,3 @@ function testObj(){
     tempExec = new Exec("Ethan", "Anna", '6');
 }
 
-function navigate(){
-    location.href = "./index.html";
-}

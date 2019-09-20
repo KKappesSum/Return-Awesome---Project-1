@@ -226,7 +226,8 @@ function placeShip(size, horizontal, shipId)
               document.getElementById("ships").style.display = "none";
               document.getElementById("names").style.display = "none";
               document.getElementById("placement").style.display = "none";
-
+              alert("start the game");
+              storeExecObj();
             }
           }
         };
