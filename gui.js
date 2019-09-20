@@ -31,29 +31,22 @@ function setPlayerNames() {
   // document.getElementById("orientation2").innerHTML = "Vertical"
 }
 
-function setShipCount(shipId) {
+function setShipCount() {
   //get input from user in pop up
-  let numShips;
-  if (shipId === "ship1")
-  {
-    numShips = prompt("Please enter number of ships between 1 and 5: ");
+  let numShips = prompt("Please enter number of ships between 1 and 5: ");
 
   //validate that number of ships is between 1 and 5/
   //prompt until you recieve a valid input
 
-    while ( numShips > 5 ||numShips < 1 || numShips === null ||numShips % 1 != 0) 
-    {
+  while (
+    numShips > 5 ||
+    numShips < 1 ||
+    numShips === null ||
+    numShips % 1 != 0
+  ) {
     //check numShips%1!=0 because we only want an integer. integer%1 is always 0.
-      numShips = prompt("Please enter number of ships between 1 and 5: ");
-    }
-    document.getElementById("shipNum").innerHTML = numShips;
+    let numShips = prompt("Please enter number of ships between 1 and 5: ");
   }
-  else
-  {
-    numShips = document.getElementById("shipNum").innerHTML;
-    console.log(numShips + "for p2");
-  }
-
 
   //disable the text boxes and button
   document.getElementById("button1").disabled = true;
@@ -81,11 +74,11 @@ function setShipCount(shipId) {
     direction = Number(direction);
     if (direction === 1) 
     {
-      placeShip(numShips, true, shipId);
+      placeShip(numShips, true, "ship1");
     } 
     else 
     {
-      placeShip(numShips, false, shipId);
+      placeShip(numShips, false, "ship1");
     }
 }
 
@@ -94,9 +87,7 @@ function placeShip(size, horizontal, shipId) {
   {
     return 0;
   }  
-  document.getElementById("ships").style.display = "block";
-  document.getElementById("placement").style.display = "block";
-  document.getElementById(shipId).style.display = "table";
+  document.getElementById(shipId).style.display = "block";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
   let table = document.getElementById(shipId);
   if (table != null) 
@@ -210,23 +201,6 @@ function placeShip(size, horizontal, shipId) {
           else
           {
             document.getElementById(shipId).style.display = "none";
-            if (shipId === "ship1")
-            {
-              document.getElementById("test").style.display = "block";
-              document.getElementById("ships").style.display = "none";
-              document.getElementById("names").style.display = "none";
-              document.getElementById("placement").style.display = "none";
-              document.getElementById("button1").style.display = "none";
-              alert("You have placed all of your ships. Please switch players now!");
-            }
-            else
-            {
-              document.getElementById("test").style.display = "none";
-              document.getElementById("ships").style.display = "none";
-              document.getElementById("names").style.display = "none";
-              document.getElementById("placement").style.display = "none";
-
-            }
           }
         };
       }
