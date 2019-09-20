@@ -122,7 +122,7 @@ class Admiral {
 
     if(coordsDone === true) {
       // find the ship
-      let shipIndex = findShipBySize(size);
+      let shipIndex = this.findShipBySize(size);
       // give coords to Ship
       this.#fleet[shipIndex].setCoords(coordsArr);
       // give coords AND TABLEID to grid
