@@ -14,7 +14,7 @@ class Admiral {
   #afloat;
   constructor(num, pName) {
     this.#numShips = num;
-    this.#board = 0;
+    this.#board = new Grid(BOARD_SIZE);
     this.#fleet = [];
     this.#afloat = num;
     this.#name = pName;
