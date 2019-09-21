@@ -51,7 +51,17 @@ class Exec{
      * @param {boolean} orientation: vertical or horizontal orientation
      */
     sendCoordsForPlacement(tableId, coords, shipSize, orientation){
-        
+        if(this.getPlayerTurn() == 1){
+            this.#admir1.assignCoords(coords,shipSize, orientation,tableId);
+            console.log("ship of size "+shipSize+" successfully placed for admiral1");
+        }
+        else if (this.getPlayerTurn() == 2){
+            this.#admir2.assignCoords(coords,shipSize,orientation,tableId);
+            console.log("ship of size "+shipSize+" successfully placed for admiral2");
+        }
+        else{
+            console.log("something went wrong with the getplayerturn function");
+        }
     }
     
     /**
