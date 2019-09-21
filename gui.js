@@ -396,8 +396,8 @@ function pullExecObj(){
 /**
 * tests retrieval from sessionStorage in index.html
 */
-function onLoadTester(){
-    let newExec = pullExecObj();
+function onLoadPull(){
+    exec = pullExecObj();
 }
 
 /**
