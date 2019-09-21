@@ -356,9 +356,6 @@ function buttonHandler(tableId, coords){
    console.log(coords);
 }
 
-//these functions below might go in a "setup.js"??
-
-
 /**
 * 
 * @param {string} tableId : id of the table that triggered the onclick event
