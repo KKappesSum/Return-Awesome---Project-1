@@ -333,17 +333,17 @@ function changeColor(sizee, horizontal, color, tableID) {
  * launched when submitting information in setup.html
  */
 function createExec(){
-  //creating an exec object
-   let tempAdmr1 = document.getElementById("player1").value;
-   console.log(tempAdmr1);
-   let tempAdmr2 = document.getElementById("player2").value;
-   console.log(tempAdmr2);
-   let newString = document.getElementById("ships").innerHTML;
-   tempNumShips = newString.substring(16);
-   tempNumShips= tempNumShips.substring(0,tempNumShips.indexOf(" "));
-   console.log(tempNumShips);
+    //creating an exec object
+    let tempAdmr1 = document.getElementById("player1").value;
+    console.log(tempAdmr1);
+    let tempAdmr2 = document.getElementById("player2").value;
+    console.log(tempAdmr2);
+    let newString = document.getElementById("ships").innerHTML;
+    tempNumShips = newString.substring(16);
+    tempNumShips= tempNumShips.substring(0,tempNumShips.indexOf(" "));
+    console.log(tempNumShips);
 
-   exec = new Exec(tempAdmr1, tempAdmr2, tempNumShips);
+    exec = new Exec(tempAdmr1, tempAdmr2, tempNumShips);
 }
 
 /**
@@ -352,8 +352,8 @@ function createExec(){
 * handles button clicks on player map, call necessary functions
 */
 function buttonHandler(tableId, coords){
-   console.log(tableId);
-   console.log(coords);
+    console.log(tableId);
+    console.log(coords);
 }
 
 /**
@@ -365,11 +365,10 @@ function buttonHandler(tableId, coords){
 * handles button clicks on the setup page, handoff to exec obj
 */
 function buttonHandlerSetup(tableId, coords, shipSize, orientation){
-
-   //need to figure out better way to decide which player to place ships for
-   //maybe something can be taken from gui
-  exec.sendCoordsForPlacement(tableId,coords,shipSize,orientation);
-  console.log("passed params to exec");
+    //need to figure out better way to decide which player to place ships for
+    //maybe something can be taken from gui
+    exec.sendCoordsForPlacement(tableId,coords,shipSize,orientation);
+    console.log("passed params to exec");
 }
 
 /**
@@ -378,12 +377,9 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
 * navigates to the index page
 */
 function storeExecObj(){
-   sessionStorage.ExecObj = JSON.stringify(exec);
-   console.log(exec);
-   console.log(sessionStorage.ExecObj);
-   console.log("stored obj");
-
-   location.href = "./index.html";
+    sessionStorage.ExecObj = JSON.stringify(exec);
+    console.log("stored obj");
+    location.href = "./index.html";
 }
 
 /**
@@ -392,20 +388,18 @@ function storeExecObj(){
 * retrieves the Exec obj from session storage at start of game
 */
 function pullExecObj(){
-   console.log(sessionStorage.ExecObj);
-   let fromStorage = JSON.parse(sessionStorage.ExecObj);
-   console.log("returning obj");
-   return(fromStorage);
+    let fromStorage = JSON.parse(sessionStorage.ExecObj);
+    console.log("returning obj");
+    return(fromStorage);
 }
 
 /**
 * tests retrieval from sessionStorage in index.html
 */
-function onLoadTester(){
-   let newExec = pullExecObj();
-
-   console.log(newExec);
-   console.log(newExec.m_shipCount);
+function onLoadPull(){
+    exec = pullExecObj();
+    //need to make a call to updateTable in exec
+    //to get game ready for player 1
 }
 
 /**
