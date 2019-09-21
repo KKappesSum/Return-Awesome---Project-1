@@ -2,19 +2,14 @@
  * @param {integer} size - The size (i.e. length) of the Ship.
  */
 class Ship {
-	#size;
-	#status;
-	#numHits;
-	#coords;
-
 	/**
 	 * Create a Ship object.
 	 */
 	constructor(size) {
-		this.#size = size;
-		this.#status = true;
-		this.#numHits = 0;
-		this.#coords = [];
+		this.size = size;
+		this.status = true;
+		this.numHits = 0;
+		this.coords = [];
 	}
 
 	// ---- setters & getters ----
@@ -23,7 +18,7 @@ class Ship {
 	 * @return {integer} the Ship's size.
 	 */
 	getSize() {
-		return this.#size;
+		return this.size;
 	}
 
 	/**
@@ -31,7 +26,7 @@ class Ship {
 	 * @return {boolean} true if the ship is still afloat, false if the ship has been sunk.
 	 */
 	getStatus() {
-		return this.#status;
+		return this.status;
 	}
 
 	/**
@@ -39,16 +34,16 @@ class Ship {
 	 * @return {integer} the number of hits
 	 */
 	getNumHits() {
-		return this.#numHits;
+		return this.numHits;
 	}
 
 	/**
 	 * Get the ship's coordinates.
 	 * @param none.
-	 * @return {string[]} #coords, an array of strings
+	 * @return {string[]} coords, an array of strings
 	 */
 	getCoords() {
-		return this.#coords;
+		return this.coords;
 	}
 
 	/**
@@ -57,7 +52,7 @@ class Ship {
 	 * @return none.
 	 */
 	setStatus() {
-		this.#status = false;
+		this.status = false;
 	}
 
 	/**
@@ -66,17 +61,17 @@ class Ship {
 	 * @return none.
 	 */
 	incNumHits() {
-		if(this.#status === true)
+		if(this.status === true)
 		{
-			this.#numHits++;
-			if(this.#numHits >= this.#size)
+			this.numHits++;
+			if(this.numHits >= this.size)
 			{
 				this.setStatus();
 			}
 		}
 		else 
 		{
-			console.log("ERROR in Ship of size " + this.#size + ": incNumHits: cannot make the number of hits greater than the size of the Ship.");
+			console.log("ERROR in Ship of size " + this.size + ": incNumHits: cannot make the number of hits greater than the size of the Ship.");
 		}
 	}
 
@@ -86,15 +81,15 @@ class Ship {
 	 * @return none.
 	 */
 	setCoords(coordsArr) {
-		if(coordsArr.length > this.#size)
+		if(coordsArr.length > this.size)
 		{
-			console.log("ERROR in Ship of size " + this.#size + ": setCoords : too many coordinates were passed in.");
+			console.log("ERROR in Ship of size " + this.size + ": setCoords : too many coordinates were passed in.");
 		}
 		else
 		{
-			for(let i = 0; i < this.#size; i++)
+			for(let i = 0; i < this.size; i++)
 			{
-				this.#coords[i] = coordsArr[i];
+				this.coords[i] = coordsArr[i];
 			}
 		}
 	}

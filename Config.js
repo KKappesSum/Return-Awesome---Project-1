@@ -8,6 +8,6 @@ class Config{
         WATER:  "#add8e6",
         SHIP:   "#808080",
         MISS:   "#FFFFFF",
-        HIT:    "#f1f1f1",
+        HIT:    "red",
     }
 }
