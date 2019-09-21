@@ -326,7 +326,6 @@ function changeColor(sizee, horizontal, color, tableID) {
   }
 }
 
-
 /**
  * This function will hide p1's board when p1 is done and make p2's board visible once they hit ok on the prompt
  * @param none
@@ -354,4 +353,3 @@ function unhide() {
   //unhide boards
   document.getElementById("board").style.display = "block";
 }
-
