@@ -64,7 +64,7 @@ class Admiral {
    * Update your own ship map with the other user's firing outcome
    * void function, changes the hit or miss type of the water tile
    * @param {string} coor - NumberLetter coordinate of the player's guess
-   * @param {number} tableId - id of the table
+   * @param {number} tableId - id of the table being triggered by the onclick
    * @return none
    */
   updateShipMap(coor, tableId) {

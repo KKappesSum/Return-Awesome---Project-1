@@ -30,12 +30,12 @@ class Exec{
     updateTable(tableId,coords){
         if(this.getPlayerTurn() == 1){
             console.log("player 1's shot");
-            this.#admir2.updateShipMap(coords);
+            this.#admir2.updateShipMap(coords, tableId);
             this.advancePlayerTurn();
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
-            this.#admir1.updateShipMap(coords);
+            this.#admir1.updateShipMap(coords, tableId);
             this.advancePlayerTurn();
         }
         else{
