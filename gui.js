@@ -97,7 +97,7 @@ function placeShip(size, horizontal, shipId)
   }  
   document.getElementById("ships").style.display = "block";
   document.getElementById("placement").style.display = "block";
-  document.getElementById(shipId).style.display = "table";
+  document.getElementById(shipId).style.display = "inline-block";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
   let table = document.getElementById(shipId);
   if (table != null) 
