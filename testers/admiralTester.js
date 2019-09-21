@@ -20,10 +20,10 @@ for(let j = 1; j <= adm5.getNumShips(); j++)
 	console.log("In " + adm5.getName() + ", ship of size " + j + " is at index " + adm5.findShipBySize(j));
 }
 
-// test placeShip
-adm5.placeShip("1:1", 1, 'v', "ship1");
-adm5.placeShip("2:2", 2, 'v', "ship1");
-adm5.placeShip("3:3", 3, 'v', "ship1");
-adm5.placeShip("4:4", 4, 'v', "ship1");
-adm5.placeShip("5:5", 5, 'v', "ship1");
+// test assignCoords
+adm5.assignCoords("1:1", 1, 'v', "ship1");
+adm5.assignCoords("2:2", 2, 'v', "ship1");
+adm5.assignCoords("3:3", 3, 'v', "ship1");
+adm5.assignCoords("4:4", 4, 'v', "ship1");
+adm5.assignCoords("5:5", 5, 'v', "ship1");
 console.log("updated shipmap: " + adm5.getBoard());

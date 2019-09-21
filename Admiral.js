@@ -95,7 +95,7 @@ class Admiral {
    * @param {string} tableID - the ID of the table to place the ship in
    * @return none.
    */
-  placeShip(startCoord, size, orientation, tableID) {
+  assignCoords(startCoord, size, orientation, tableID) {
     let coordsArr = new Array(size);
     let coordsDone = false;
     // parse startCoord
@@ -130,7 +130,7 @@ class Admiral {
       coordsDone = true;
     }
     else {
-      console.log("ERROR: placeShip received invalid orientation\n");
+      console.log("ERROR: assignCoords received invalid orientation\n");
     }
 
     if(coordsDone === true) {
