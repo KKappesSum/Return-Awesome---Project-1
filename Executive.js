@@ -8,18 +8,18 @@ class Exec{
      * @return: none
      * creates the exec instance with two admiral objects, along with their number of ships
      */
-        #m_shipCount;
-        #admir1;
-        #admir2;
-        #m_playerTurn;
+        m_shipCount;
+        admir1;
+        admir2;
+        m_playerTurn;
 
     constructor(adm1Name, adm2Name, numShips){
         
-        this.#m_shipCount = numShips;
+        this.m_shipCount = numShips;
         //player turn updated each turn, adm1 = odd, adm2 = even?
-        this.#m_playerTurn = 1;
-        this.#admir1 = new Admiral(numShips, adm1Name);
-        this.#admir2 = new Admiral(numShips, adm2Name);  
+        this.m_playerTurn = 1;
+        this.admir1 = new Admiral(numShips, adm1Name);
+        this.admir2 = new Admiral(numShips, adm2Name);  
     }
      /**
      * @param {string} coords: coordinates for the specific cell in the table
@@ -30,12 +30,12 @@ class Exec{
     updateTable(tableId,coords){
         if(this.getPlayerTurn() == 1){
             console.log("player 1's shot");
-            this.#admir2.updateShipMap(coords);
+            this.admir2.updateShipMap(coords, tableId);
             this.advancePlayerTurn();
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
-            this.#admir1.updateShipMap(coords);
+            this.admir1.updateShipMap(coords, tableId);
             this.advancePlayerTurn();
         }
         else{
@@ -52,11 +52,11 @@ class Exec{
      */
     sendCoordsForPlacement(tableId, coords, shipSize, orientation){
         if(this.getPlayerTurn() == 1){
-            this.#admir1.assignCoords(coords,shipSize, orientation,tableId);
+            this.admir1.assignCoords(coords,shipSize, orientation,tableId);
             console.log("ship of size "+shipSize+" successfully placed for admiral1");
         }
         else if (this.getPlayerTurn() == 2){
-            this.#admir2.assignCoords(coords,shipSize,orientation,tableId);
+            this.admir2.assignCoords(coords,shipSize,orientation,tableId);
             console.log("ship of size "+shipSize+" successfully placed for admiral2");
         }
         else{
@@ -77,18 +77,31 @@ class Exec{
      * returns the value of the m_playerTurn variable
      */
     getPlayerTurn(){
-        return(this.#m_playerTurn);
+        return(this.m_playerTurn);
     }
 
      /**
      * changes whether player turn is 1 or 2
      */
     advancePlayerTurn(){
-        if(this.#m_playerTurn == 1){
-            this.#m_playerTurn = 2;
+        if(this.m_playerTurn == 1){
+            this.m_playerTurn = 2;
         }
         else{
-            this.#m_playerTurn = 1;
+            this.m_playerTurn = 1;
+        }
+    }
+    
+    /**
+     * refreshes both maps with a given player's data
+     */
+    refreshMap(){
+        if(this.getPlayerTurn()==1)
+        {
+            this.admir1.refreshOnStart();
+        }
+        else{
+            this.admir2.refreshOnStart();
         }
     }
 }
