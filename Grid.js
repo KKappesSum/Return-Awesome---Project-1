@@ -96,8 +96,8 @@ class Grid{
      */
     updateCell(location, tableId){
         this.isHit = false;
-        let i = location.substring(0, location.indexOf(":"));
-        let j = location.substring(location.indexOf(":") + 1);
+        let i = location.substring(0, location.indexOf(":")) - 1;
+        let j = location.substring(location.indexOf(":") + 1) - 1;
         if(this.arr[i][j] == this.conf.oceanTypes.SHIP){
             this.arr[i][j] = this.conf.oceanTypes.HIT;
             this.isHit = true;
