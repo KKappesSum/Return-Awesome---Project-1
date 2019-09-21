@@ -229,7 +229,7 @@ function placeShip(size, horizontal, shipId)
               document.getElementById("names").style.display = "none";
               document.getElementById("placement").style.display = "none";
               alert("start the game");
-              storeExecObj();
+              storeExecObj(exec);
             }
           }
           }
@@ -376,8 +376,8 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
 * stores the completed Exec object in the session storage after all ships are placed
 * navigates to the index page
 */
-function storeExecObj(){
-    sessionStorage.ExecObj = JSON.stringify(exec);
+function storeExecObj(executiveObj){
+    sessionStorage.ExecObj = JSON.stringify(executiveObj);
     console.log("stored obj");
     location.href = "./index.html";
 }
@@ -397,8 +397,10 @@ function pullExecObj(){
 * tests retrieval from sessionStorage in index.html
 */
 function onLoadPull(){
+    
     exec = pullExecObj();
     exec.refreshMap();
+    
 }
 
 /**
