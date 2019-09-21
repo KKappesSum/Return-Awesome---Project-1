@@ -34,3 +34,11 @@ td, tr {
   padding: 20px;
   font-size: 30px;
 }
+
+#letters {
+  width:670px;
+}
+
+#numbers {
+  height:510px;
+}
