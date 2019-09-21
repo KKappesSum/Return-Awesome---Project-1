@@ -116,7 +116,7 @@ class Admiral {
       let l = col;
       while((l <= col + Number(size) - 1) && (k < size))
       {
-        coordsArr[k] = tempStr.concat(l, ':', col);
+        coordsArr[k] = tempStr.concat(row, ':', l);
         k++;
         l++;
       }
