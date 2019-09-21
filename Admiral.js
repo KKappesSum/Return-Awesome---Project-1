@@ -4,23 +4,16 @@
  * @param {string} pName - the name of the player.
  */
 class Admiral {
-  #numShips;
-  #board;
-  #fleet;
-  #name;
-  #afloat;
-  #config;
-
   constructor(num, pName) {
-    this.#config = new Config();
-    this.#numShips = num;
-    this.#board = new Grid(this.#config.BOARD_SIZE);
-    this.#fleet = [];
-    this.#afloat = num;
-    this.#name = pName;
+    this.config = new Config();
+    this.numShips = num;
+    this.board = new Grid(this.config.BOARD_SIZE);
+    this.fleet = [];
+    this.afloat = num;
+    this.name = pName;
     for (let x = 1; x <= num; x++) {
       let newShip = new Ship(x); //creates ship size x
-      this.#fleet.push(newShip); //adds the new ship to fleet array
+      this.fleet.push(newShip); //adds the new ship to fleet array
     }
   }
 
@@ -30,7 +23,7 @@ class Admiral {
    * @return {integer} return the number of ships that the Admiral has.
    */
   getNumShips() {
-    return this.#numShips;
+    return this.numShips;
   }
 
   /**
@@ -39,7 +32,7 @@ class Admiral {
    * @return {Grid} return the Grid object in Admiral.
    */
   getBoard() {
-    return this.#board;
+    return this.board;
   }
 
   /**
@@ -48,7 +41,7 @@ class Admiral {
    * @return {Ship[]} return the array of Ships in Admiral.
    */
   getFleet() {
-    return this.#fleet;
+    return this.fleet;
   }
 
   /**
@@ -57,7 +50,7 @@ class Admiral {
    * @return {string} return the player's name.
    */
   getName() {
-    return this.#name;
+    return this.name;
   }
 
   /**
@@ -72,7 +65,7 @@ class Admiral {
     if (updateCell(coor,tableId) === true)
     {
       //checks the fleet array for the ship that was hit
-      this.#fleet.forEach(function (element) {
+      this.fleet.forEach(function (element) {
         coordArray = element.getCoords();
         coordArray.forEach(function(coorShip){
           if (coorShip === coor)
@@ -80,7 +73,7 @@ class Admiral {
             element.incNumHits(); //func to Connie
             if (!element.getStatus()) //if ship no longer afloat
             {
-              this.#afloat -= 1;
+              this.afloat -= 1;
             }
           }
         });
@@ -138,11 +131,11 @@ class Admiral {
       let shipIndex = this.findShipBySize(size);
       console.log(shipIndex);
       // give coords to Ship
-      console.log(this.#fleet[shipIndex]);
-      this.#fleet[shipIndex].setCoords(coordsArr);
+      console.log(this.fleet[shipIndex]);
+      this.fleet[shipIndex].setCoords(coordsArr);
 
       // give coords AND TABLEID to grid
-      this.#board.populateGrid(coordsArr, tableID);
+      this.board.populateGrid(coordsArr, tableID);
     }
   }
 
@@ -153,9 +146,9 @@ class Admiral {
    */
   findShipBySize(size) {
     let shipIndex;
-    for(let index = 0; index < this.#numShips; index++)
+    for(let index = 0; index < this.numShips; index++)
     {
-      if(this.#fleet[index].getSize() == size)
+      if(this.fleet[index].getSize() == size)
       {
         shipIndex = index;
       }
@@ -167,8 +160,8 @@ class Admiral {
    * refreshes both maps at the start of the game
    */
   refreshOnStart(){
-    this.#board.refreshTable("ship1");
-    this.#board.refreshTable("fire1");  
+    this.board.refreshTable("ship1");
+    this.board.refreshTable("fire1");  
   }
 
 }
