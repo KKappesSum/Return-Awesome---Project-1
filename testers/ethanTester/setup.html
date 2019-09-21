@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>SetupPage</title>
+    <script src = "./extra.js"></script>
+</head>
+<body>
+    Here is the setup page with the test object
+    <input type = "button" id = "submitButton" value = "submit" onclick = "makeExtra();">
+    <input type = "button" id = "nextButton" value = "nextPage" onclick = "changePage();">
+</body>
+</html>
+
+<script>
+    function makeExtra(){
+        let extraObj = new Extra();
+        extraObj.item = "2";
+        sessionStorage.admin1 = JSON.stringify(extraObj);
+       // sessionStorage.setItem('myObj',extraObj);
+    }
+
+    function changePage(){
+       location.href = "./index.html";
+    }
+</script>
