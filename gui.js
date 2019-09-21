@@ -358,7 +358,7 @@ function unhide() {
   document.getElementById("board").style.display = "block";
 }
 
- * launched when submitting information in setup.html
+ /* launched when submitting information in setup.html
  */
 function createExec(){
     //creating an exec object
