@@ -43,7 +43,7 @@ class Grid{
     }
 
     /**
-     * Places ships on the grid based on an array of cooridants and updates the onscreen grid
+     * Places ships on the grid based on an array of coordinates and updates the onscreen grid
      * @param {Array} locationArr: An array of all of the cells that contains a ship
      * @param {string} tableId: A string given the elementId for the table to be updated
      */
