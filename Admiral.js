@@ -99,15 +99,20 @@ class Admiral {
     let coordsArr = new Array(size);
     let coordsDone = false;
     // parse startCoord
-    let row = startCoord.substring(0,1);
-    let col = startCoord.substring(2);
+    let row = Number(startCoord.substring(0,1));
+    let col = Number(startCoord.substring(2));
     let tempStr = "";
     if(orientation === 'v') {
-      for(let i = row; i <= row + size - 1; i++)
+      let i = 0;
+      let j = row;
+      while((j <= row + size - 1) && (i < size))
       {
-        coordsArr[i] = tempStr.concat(i, ':', col);
+        coordsArr[i] = tempStr.concat(j, ':', col);
+        i++;
+        j++;
       }
       coordsDone = true;
+      console.log(coordsArr);
     }
     else if(orientation === 'h') {
       for(let j = col; j <= col + size - 1; j++)
