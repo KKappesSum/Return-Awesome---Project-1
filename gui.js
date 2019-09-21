@@ -398,8 +398,7 @@ function pullExecObj(){
 */
 function onLoadPull(){
     exec = pullExecObj();
-    //need to make a call to refreshOnLoad in exec
-    //to get game ready for player 1
+    exec.refreshMap();
 }
 
 /**
