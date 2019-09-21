@@ -1,3 +1,6 @@
+let exec;
+let tempExec;
+
 /**
  * This function adds one to its input.
  * @param {number} input any number
@@ -190,8 +193,7 @@ function placeShip(size, horizontal, shipId)
                 }
               }
             }
-          }
-          if (sizeNum !== 1)
+            if (sizeNum !== 1)
           {
             let horizontal = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
             while (horizontal < 1 || horizontal > 2 || horizontal % 1 != 0 || horizontal === null ) 
@@ -229,6 +231,7 @@ function placeShip(size, horizontal, shipId)
               alert("start the game");
               storeExecObj();
             }
+          }
           }
         };
       }
@@ -327,6 +330,7 @@ function changeColor(sizee, horizontal, color, tableID) {
 }
 
 /**
+
  * This function will hide p1's board when p1 is done and make p2's board visible once they hit ok on the prompt
  * @param none
  */
@@ -353,3 +357,86 @@ function unhide() {
   //unhide boards
   document.getElementById("board").style.display = "block";
 }
+
+ * launched when submitting information in setup.html
+ */
+function createExec(){
+    //creating an exec object
+    let tempAdmr1 = document.getElementById("player1").value;
+    console.log(tempAdmr1);
+    let tempAdmr2 = document.getElementById("player2").value;
+    console.log(tempAdmr2);
+    let newString = document.getElementById("ships").innerHTML;
+    tempNumShips = newString.substring(16);
+    tempNumShips= tempNumShips.substring(0,tempNumShips.indexOf(" "));
+    console.log(tempNumShips);
+
+    exec = new Exec(tempAdmr1, tempAdmr2, tempNumShips);
+}
+
+/**
+* @param {string} tableId: id of the table that triggered the onclick event
+* @param {string} coords: coordinates for a specific cell in the table
+* handles button clicks on player map, call necessary functions
+*/
+function buttonHandler(tableId, coords){
+    console.log(tableId);
+    console.log(coords);
+}
+
+/**
+* 
+* @param {string} tableId : id of the table that triggered the onclick event
+* @param {string} coords : coordinates for a specific cell in the table
+* @param {number} shipSize: size of the ship being placed
+* @param {boolean} orientation: orientation of the ship, true for horizontal, false for vertical
+* handles button clicks on the setup page, handoff to exec obj
+*/
+function buttonHandlerSetup(tableId, coords, shipSize, orientation){
+    //need to figure out better way to decide which player to place ships for
+    //maybe something can be taken from gui
+    exec.sendCoordsForPlacement(tableId,coords,shipSize,orientation);
+    console.log("passed params to exec");
+}
+
+/**
+* @param: none
+* stores the completed Exec object in the session storage after all ships are placed
+* navigates to the index page
+*/
+function storeExecObj(){
+    sessionStorage.ExecObj = JSON.stringify(exec);
+    console.log("stored obj");
+    location.href = "./index.html";
+}
+
+/**
+* @param: none
+* @return: returns the exec obj from storage
+* retrieves the Exec obj from session storage at start of game
+*/
+function pullExecObj(){
+    let fromStorage = JSON.parse(sessionStorage.ExecObj);
+    console.log("returning obj");
+    return(fromStorage);
+}
+
+/**
+* tests retrieval from sessionStorage in index.html
+*/
+function onLoadPull(){
+    exec = pullExecObj();
+    //need to make a call to updateTable in exec
+    //to get game ready for player 1
+}
+
+/**
+* creates a exec obj used for testing exec functions
+*/
+function testObj(){
+   tempExec = new Exec("Ethan", "Anna", '6');
+   console.log("Test ope");
+   storeExecObj();
+}
+
+

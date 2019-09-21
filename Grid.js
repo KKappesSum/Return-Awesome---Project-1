@@ -18,6 +18,30 @@ class Grid{
         }
     }
 
+    // -- SETTERS & GETTERS --
+    getArr() {
+        return this.#arr;
+    }
+
+    getCell(coord) {
+        let row = Number(coord.substring(0,1));
+        let col = Number(coord.substring(2));
+        return this.#arr[row - 1][col - 1];
+    }
+
+    getRow(row) {
+        return this.#arr[row];
+    }
+
+    getCol(col) {
+        let tempArr = [];
+        for(let row = 0; row < this.#conf.BOARD_SIZE; row++)
+        {
+            tempArr.push(this.#arr[row][col]);
+        }
+        return tempArr;
+    }
+
     /**
      * Places ships on the grid based on an array of cooridants and updates the onscreen grid
      * @param {Array} locationArr: An array of all of the cells that contains a ship
@@ -26,10 +50,10 @@ class Grid{
     populateGrid(locationArr, tableId){
         console.log("In populate");
         for(let i = 0; i < locationArr.length; i++){
-            this.#arr[locationArr[i].substring(0, locationArr[i].indexOf(":"))]
-                [locationArr[i].substring(locationArr[i].indexOf(":") + 1)] 
+            this.#arr[(locationArr[i].substring(0, locationArr[i].indexOf(":"))) - 1]
+                [(locationArr[i].substring(locationArr[i].indexOf(":") + 1)) - 1] 
                 = this.#conf.oceanTypes.SHIP;
-        }   
+        }
         this.refreshTable(tableId, true);
     }
 
