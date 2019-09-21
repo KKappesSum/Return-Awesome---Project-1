@@ -103,7 +103,7 @@ class Admiral {
     let col = Number(startCoord.substring(2));
     let tempStr = "";
 
-    // horizontal
+    // vertical
     if(orientation == false) {
       let i = 0;
       let j = row;
@@ -116,7 +116,7 @@ class Admiral {
       coordsDone = true;
       console.log(coordsArr);
     }
-    // vertical
+    // horizontal
     else if(orientation == true) {
       let k = 0;
       let l = col;
