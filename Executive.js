@@ -44,6 +44,17 @@ class Exec{
     }
     
     /**
+     * 
+     * @param {number} tableId: valid id for the table
+     * @param {string} coords: coordinates for the cell that was clicked
+     * @param {number} shipSize: size of the ship being constructed 
+     * @param {boolean} orientation: vertical or horizontal orientation
+     */
+    sendCoordsForPlacement(tableId, coords, shipSize, orientation){
+        
+    }
+    
+    /**
      * @param: valid message (most likely a string)
      * @return: none
      * takes in a message and displays it to the user as a pop up
