@@ -84,11 +84,11 @@ class Exec{
      * changes whether player turn is 1 or 2
      */
     advancePlayerTurn(){
-        if(#m_playerTurn == 1){
-            #m_playerTurn = 2;
+        if(this.#m_playerTurn == 1){
+            this.#m_playerTurn = 2;
         }
         else{
-            #m_playerTurn = 1;
+            this.#m_playerTurn = 1;
         }
     }
 }
