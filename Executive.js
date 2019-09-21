@@ -120,7 +120,7 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
         console.log("ship of size "+shipSize+" successfully placed for admiral1");
     }
     else if (exec.getPlayerTurn() == 2){
-        //exec.admir2.assignCoords(coords,shipSize, orientation,tableId);
+        exec.admir2.assignCoords(coords,shipSize, orientation,tableId);
         console.log("ship of size "+shipSize+" successfully placed for amdiral2");
     }
     else{
