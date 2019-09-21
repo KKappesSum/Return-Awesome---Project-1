@@ -193,8 +193,7 @@ function placeShip(size, horizontal, shipId)
                 }
               }
             }
-          }
-          if (sizeNum !== 1)
+            if (sizeNum !== 1)
           {
             let horizontal = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
             while (horizontal < 1 || horizontal > 2 || horizontal % 1 != 0 || horizontal === null ) 
@@ -232,6 +231,7 @@ function placeShip(size, horizontal, shipId)
               alert("start the game");
               storeExecObj();
             }
+          }
           }
         };
       }
