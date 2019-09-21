@@ -325,3 +325,33 @@ function changeColor(sizee, horizontal, color, tableID) {
     }
   }
 }
+
+
+/**
+ * This function will hide p1's board when p1 is done and make p2's board visible once they hit ok on the prompt
+ * @param none
+ */
+function switchPlayer() {
+  //TO DO: need to know if a cell in grid was a hit or a miss to be able to alert 'you hit' or 'you missed'
+  alert("You hit!");
+
+  //hide boards
+  document.getElementById("board").style.display = "none";
+  
+  //TO DO: INSERT updateTable() function from exec (which calls refreshTable() from Grid.js) here
+
+  //make p2's board visible after giving an alert half a second later
+  setTimeout(function () {unhide()}, 500);
+}
+
+/**
+ * This function will make p2's board visible
+ * @param none
+ */
+function unhide() {
+  //setTimeout(function () {alert("Next player!")}, 1000);
+  alert("Next player!");
+  //unhide boards
+  document.getElementById("board").style.display = "block";
+}
+
