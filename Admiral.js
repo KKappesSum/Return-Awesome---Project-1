@@ -163,4 +163,12 @@ class Admiral {
     return shipIndex;
   }
 
+  /**
+   * refreshes both maps at the start of the game
+   */
+  refreshOnStart(){
+    this.#board.refreshTable("ship1");
+    this.#board.refreshTable("fire1");  
+  }
+
 }
