@@ -64,11 +64,12 @@ class Admiral {
    * Update your own ship map with the other user's firing outcome
    * void function, changes the hit or miss type of the water tile
    * @param {string} coor - NumberLetter coordinate of the player's guess
+   * @param {number} tableId - id of the table
    * @return none
    */
-  updateShipMap(coor) {
+  updateShipMap(coor, tableId) {
     
-    if (updateCell(coor) === true)
+    if (updateCell(coor,tableId) === true)
     {
       //checks the fleet array for the ship that was hit
       this.#fleet.forEach(function (element) {
