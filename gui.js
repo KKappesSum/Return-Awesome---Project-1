@@ -221,6 +221,7 @@ function placeShip(size, horizontal, shipId)
               document.getElementById("placement").style.display = "none";
               document.getElementById("button1").style.display = "none";
               alert("You have placed all of your ships. Please switch players now!");
+              exec.advancePlayerTurn();
             }
             else
             {
