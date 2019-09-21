@@ -13,9 +13,11 @@
 <body onload = "onLoadPull();">
 <input type = "button" id = "btn" value = "Load Exec Object" onclick = "onLoadPull();">
 <input type = "button" id = "createObj" name = "createObj" value = "build test obj" onclick = "testObj();">
+<input type = "button" id = "switchPlayer" name = "switchPlayer" value = "Switch player!!!" onclick = "switchPlayer();">
+
 <h2>Welcome to Battleship!</h2>
 
-<div class="flex-container">
+<div class="flex-container" id="board">
     <div>
     <table align ="left" id="fire1" border ="1" width=100% style="cursor: pointer;">
         <tr>
