@@ -1,14 +1,12 @@
 //Author: Ethan Brenner
-class Exec{
-    /**
-     * 
-     * @param {string} adm1Name: Admiral 1's nickname
-     * @param {string} adm2Name: Admiral 2's nickname
-     * @param {number} numShips: number of playable ships per admiral
-     * @return: none
-     * creates the exec instance with two admiral objects, along with their number of ships
-     */
-      
+/**
+ * Creates the exec instance with two admiral objects, along with their number of ships
+ * @param {string} adm1Name: Admiral 1's nickname
+ * @param {string} adm2Name: Admiral 2's nickname
+ * @param {number} numShips: number of playable ships per admiral
+ * @return: none
+ */
+class Exec{   
     constructor(adm1Name, adm2Name, numShips){
         
         this.m_shipCount = numShips;
@@ -18,10 +16,10 @@ class Exec{
         this.admir2 = new Admiral(numShips, adm2Name);  
     }
      /**
+     * Passes "guess" coordinates to admiral for grid/map updates during game
      * @param {string} coords: coordinates for the specific cell in the table
      * @param {string} tableId: id of the table that triggered the onclick event
      * @return:none
-     * passes "guess" coordinates to admiral for grid/map updates during game
      */
     updateTable(tableId,coords){
         if(this.getPlayerTurn() == 1){
@@ -40,7 +38,9 @@ class Exec{
     }
     
     /**
-     * 
+     * Places ships based on given coordinates of the upper most left cell, 
+     * it sends the orientation, shipsize and table to be used to assemble and 
+     * place the ships across the proper cells
      * @param {number} tableId: valid id for the table
      * @param {string} coords: coordinates for the cell that was clicked
      * @param {number} shipSize: size of the ship being constructed 
@@ -61,23 +61,23 @@ class Exec{
     }
     
     /**
+     * Creates a popup to displaying the text of message
      * @param: valid message (most likely a string)
      * @return: none
-     * takes in a message and displays it to the user as a pop up
     */
     attentionGetter(message){
         return(0);
     }
     /**
+     * Determines which player is playing
      * @returns {number}: a number indicating whose turn it is
-     * returns the value of the m_playerTurn variable
      */
     getPlayerTurn(){
         return(this.m_playerTurn);
     }
 
      /**
-     * changes whether player turn is 1 or 2
+     * Toggles the turn from one player to the other
      */
     advancePlayerTurn(){
         if(this.m_playerTurn == 1){
@@ -89,7 +89,7 @@ class Exec{
     }
     
     /**
-     * refreshes both maps with a given player's data
+     * Refreshes both tables based on the grids
      */
     refreshMap(){
         if(this.getPlayerTurn()==1)
