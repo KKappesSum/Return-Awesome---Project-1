@@ -108,18 +108,19 @@ function buttonHandler(tableId, coords){
  * @param {string} tableId : id of the table that triggered the onclick event
  * @param {string} coords : coordinates for a specific cell in the table
  * @param {number} shipSize: size of the ship being placed
+ * @param {boolean} orientation: orientation of the ship, true for horizontal, false for vertical
  * handles button clicks on the setup page, calls necessary functions
  */
-function buttonHandlerSetup(tableId, coords, shipSize){
+function buttonHandlerSetup(tableId, coords, shipSize, orientation){
 
     //need to figure out better way to decide which player to place ships for
     //maybe something can be taken from gui
     if(exec.getPlayerTurn() == 1){
-        //exec.admir1.placeShip(coords,shipSize,'h',tableId);
+        exec.admir1.assignCoords(coords,shipSize,orientation,tableId);
         console.log("ship of size "+shipSize+" successfully placed for admiral1");
     }
     else if (exec.getPlayerTurn() == 2){
-        //exec.admir2.placeShip(coords,shipSize,'v',tableId);
+        exec.admir2.assignCoords(coords,shipSize, orientation,tableId);
         console.log("ship of size "+shipSize+" successfully placed for amdiral2");
     }
     else{

@@ -91,40 +91,55 @@ class Admiral {
    * Assign coordinates for a ship to the given ship and the board
    * @param {string} startCoord - the upper leftmost coordinate of the ship
    * @param {integer} size - the size of the ship
-   * @param {string} orientation - orientation of the ship, 'h' for horizontal, 'v' for vertical
+   * @param {boolean} orientation - orientation of the ship, true for horizontal, false for vertical
    * @param {string} tableID - the ID of the table to place the ship in
    * @return none.
    */
-  placeShip(startCoord, size, orientation, tableID) {
+  assignCoords(startCoord, size, orientation, tableID) {
     let coordsArr = new Array(size);
     let coordsDone = false;
     // parse startCoord
-    let row = startCoord.substring(0,1);
-    let col = startCoord.substring(2);
+    let row = Number(startCoord.substring(0,1));
+    let col = Number(startCoord.substring(2));
     let tempStr = "";
-    if(orientation === 'v') {
-      for(let i = row; i <= row + size - 1; i++)
+
+    // horizontal
+    if(orientation == false) {
+      let i = 0;
+      let j = row;
+      while((j <= row + Number(size) - 1) && (i < size))
       {
-        coordsArr[i] = tempStr.concat(i, ':', col);
+        coordsArr[i] = tempStr.concat(j, ':', col);
+        i++;
+        j++;
       }
       coordsDone = true;
+      console.log(coordsArr);
     }
-    else if(orientation === 'h') {
-      for(let j = col; j <= col + size - 1; j++)
+    // vertical
+    else if(orientation == true) {
+      let k = 0;
+      let l = col;
+      while((l <= col + Number(size) - 1) && (k < size))
       {
-        coordsArr[j] = tempStr.concat(row, ':', j);
+        coordsArr[k] = tempStr.concat(l, ':', col);
+        k++;
+        l++;
       }
       coordsDone = true;
     }
     else {
-      console.log("ERROR: placeShip received invalid orientation\n");
+      console.log("ERROR: assignCoords received invalid orientation\n");
     }
 
     if(coordsDone === true) {
       // find the ship
       let shipIndex = this.findShipBySize(size);
+      console.log(shipIndex);
       // give coords to Ship
+      console.log(this.#fleet[shipIndex]);
       this.#fleet[shipIndex].setCoords(coordsArr);
+
       // give coords AND TABLEID to grid
       this.#board.populateGrid(coordsArr, tableID);
     }
@@ -139,7 +154,7 @@ class Admiral {
     let shipIndex;
     for(let index = 0; index < this.#numShips; index++)
     {
-      if(this.#fleet[index].getSize() === size)
+      if(this.#fleet[index].getSize() == size)
       {
         shipIndex = index;
       }

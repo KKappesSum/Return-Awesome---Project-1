@@ -3,11 +3,11 @@ function _buttonHandlerSetup(tableId, coords, shipSize){
     //need to figure out better way to decide which player to place ships for
     //maybe something can be taken from gui
     if(exec1.getPlayerTurn() == 1){
-        exec1.admir1.placeShip(coords,shipSize,'h',tableId);
+        exec1.admir1.assignCoords(coords,shipSize,'h',tableId);
         console.log("ship of size "+shipSize+" successfully placed for admiral1");
     }
     else if (exec1.getPlayerTurn() == 2){
-        exec1.admir2.placeShip(coords,shipSize,'v',tableId);
+        exec1.admir2.assignCoords(coords,shipSize,'v',tableId);
         console.log("ship of size "+shipSize+" successfully placed for amdiral2");
     }
     else{
