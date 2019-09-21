@@ -105,7 +105,7 @@ class Admiral {
     if(orientation === 'v') {
       let i = 0;
       let j = row;
-      while((j <= row + size - 1) && (i < size))
+      while((j <= row + Number(size) - 1) && (i < size))
       {
         coordsArr[i] = tempStr.concat(j, ':', col);
         i++;
@@ -115,9 +115,17 @@ class Admiral {
       console.log(coordsArr);
     }
     else if(orientation === 'h') {
-      for(let j = col; j <= col + size - 1; j++)
+      for(let j = col; j <= col + Number(size) - 1; j++)
       {
         coordsArr[j] = tempStr.concat(row, ':', j);
+      }
+      let k = 0;
+      let l = col;
+      while((l <= col + Number(size) - 1) && (k < size))
+      {
+        coordsArr[k] = tempStr.concat(l, ':', col);
+        k++;
+        l++;
       }
       coordsDone = true;
     }
@@ -128,8 +136,11 @@ class Admiral {
     if(coordsDone === true) {
       // find the ship
       let shipIndex = this.findShipBySize(size);
+      console.log(shipIndex);
       // give coords to Ship
+      console.log(this.#fleet[shipIndex]);
       this.#fleet[shipIndex].setCoords(coordsArr);
+
       // give coords AND TABLEID to grid
       this.#board.populateGrid(coordsArr, tableID);
     }
@@ -144,7 +155,7 @@ class Admiral {
     let shipIndex;
     for(let index = 0; index < this.#numShips; index++)
     {
-      if(this.#fleet[index].getSize() === size)
+      if(this.#fleet[index].getSize() == size)
       {
         shipIndex = index;
       }
