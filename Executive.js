@@ -91,6 +91,19 @@ class Exec{
             this.#m_playerTurn = 1;
         }
     }
+    
+    /**
+     * refreshes both maps with a given player's data
+     */
+    refreshMap(){
+        if(this.getPlayerTurn()==1)
+        {
+            this.#admir1.refreshOnStart();
+        }
+        else{
+            this.#admir2.refreshOnStart();
+        }
+    }
 }
 
 //-------------------------------------------------------------------------------\\
