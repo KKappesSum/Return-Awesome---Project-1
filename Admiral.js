@@ -115,10 +115,6 @@ class Admiral {
       console.log(coordsArr);
     }
     else if(orientation === 'h') {
-      for(let j = col; j <= col + Number(size) - 1; j++)
-      {
-        coordsArr[j] = tempStr.concat(row, ':', j);
-      }
       let k = 0;
       let l = col;
       while((l <= col + Number(size) - 1) && (k < size))
