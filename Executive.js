@@ -108,9 +108,10 @@ function buttonHandler(tableId, coords){
  * @param {string} tableId : id of the table that triggered the onclick event
  * @param {string} coords : coordinates for a specific cell in the table
  * @param {number} shipSize: size of the ship being placed
+ * @param {char} orientation: orientation of the ship, 'h' for horizontal, 'v' for vertical
  * handles button clicks on the setup page, calls necessary functions
  */
-function buttonHandlerSetup(tableId, coords, shipSize){
+function buttonHandlerSetup(tableId, coords, shipSize, orientation){
 
     //need to figure out better way to decide which player to place ships for
     //maybe something can be taken from gui
