@@ -378,8 +378,8 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
 * navigates to the index page
 */
 function storeExecObj(){
-   sessionStorage.ExecObj = JSON.stringify(tempExec);
-   console.log(tempExec);
+   sessionStorage.ExecObj = JSON.stringify(exec);
+   console.log(exec);
    console.log(sessionStorage.ExecObj);
    console.log("stored obj");
 
