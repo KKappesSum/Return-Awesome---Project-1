@@ -91,7 +91,7 @@ class Admiral {
    * Assign coordinates for a ship to the given ship and the board
    * @param {string} startCoord - the upper leftmost coordinate of the ship
    * @param {integer} size - the size of the ship
-   * @param {string} orientation - orientation of the ship, 'h' for horizontal, 'v' for vertical
+   * @param {boolean} orientation - orientation of the ship, true for horizontal, false for vertical
    * @param {string} tableID - the ID of the table to place the ship in
    * @return none.
    */
