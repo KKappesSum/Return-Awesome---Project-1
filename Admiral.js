@@ -82,7 +82,7 @@ class Admiral {
   }
 
   /**
-   * Assign coordinates for a ship to the given ship and the board
+   * While setting up the game, assign coordinates for a ship to the given ship and the board
    * @param {string} startCoord - the upper leftmost coordinate of the ship
    * @param {integer} size - the size of the ship
    * @param {boolean} orientation - orientation of the ship, true for horizontal, false for vertical
