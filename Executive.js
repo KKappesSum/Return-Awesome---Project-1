@@ -8,11 +8,7 @@ class Exec{
      * @return: none
      * creates the exec instance with two admiral objects, along with their number of ships
      */
-        m_shipCount;
-        admir1;
-        admir2;
-        m_playerTurn;
-
+      
     constructor(adm1Name, adm2Name, numShips){
         
         this.m_shipCount = numShips;
