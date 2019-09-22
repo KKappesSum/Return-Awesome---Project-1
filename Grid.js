@@ -68,7 +68,9 @@ class Grid{
         for(let i = 0; i < document.getElementById(tableId).rows.length; i++){
             for(let j = 0; j < document.getElementById(tableId).rows[0].cells.length; j++){
                 if(isShipMap == true){
-                    if(this.arr[i][j] == this.conf.oceanTypes.SHIP){
+                    if(this.arr[i][j] == this.conf.oceanTypes.MISS){
+                        table.rows[i].cells[j].style.backgroundColor = this.conf.oceanTypes.MISS;
+                    }else if(this.arr[i][j] == this.conf.oceanTypes.SHIP){
                         table.rows[i].cells[j].style.backgroundColor = this.conf.oceanTypes.SHIP;
                     }else if(this.arr[i][j] == this.conf.oceanTypes.HIT){
                         table.rows[i].cells[j].style.backgroundColor = this.conf.oceanTypes.HIT;
