@@ -22,10 +22,7 @@ function setPlayerNames() {
 
   document.getElementById("names").innerHTML =
     "These are your names " + p1 + " and " + p2 + ". Now select an orientation for the ship with the buttons below";
-  // document.getElementById("orientation1").style.display = "block";
-  // document.getElementById("orientation1").textContent= "Horizontal"
-  // document.getElementById("orientation2").style.display = "block";
-  // document.getElementById("orientation2").innerHTML = "Vertical"
+
 }
 
 
@@ -52,6 +49,7 @@ function setShipCount(shipId) {
   }
   else
   {
+    //if now player2, don't ask for number of ships since it was already determined 
     numShips = document.getElementById("shipNum").innerHTML;
     console.log(numShips + "for p2");
   }
@@ -64,24 +62,24 @@ function setShipCount(shipId) {
 
   document.getElementById("ships").innerHTML =
     "You have chosen " + numShips + " ships";
-  // document.getElementById("test").style.display = "block";
-  // document.getElementById("test2").style.display = "block";
-  //document.getElementById("orientation").innerHTML = numShips
 
-
+  //prompt for the orientation of the ship and check for valid input
  let direction = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
   while (direction < 1 ||direction > 2 || direction % 1 != 0 ||direction === null) 
   {
     direction = prompt("Type 1 for horizontal or 2 for vertical");
   }
+  //change/confirm the intput is a number
   direction = parseInt(direction, 10);
   direction = Number(direction);
   if (direction === 1) 
   {
+    //if it is horizontal
     placeShip(numShips, true, shipId);
   } 
   else 
   {
+    //if it is vertical 
     placeShip(numShips, false, shipId);
   }
 }
@@ -96,15 +94,19 @@ function setShipCount(shipId) {
  */
 function placeShip(size, horizontal, shipId) 
 {
+  //recursive exit check
   if (size <= 0)
   {
     return 0;
   }  
+  //display the text and tables relevant to the player
   document.getElementById("ships").style.display = "block";
   document.getElementById("placement").style.display = "block";
   document.getElementById(shipId).style.display = "inline-block";
   document.getElementById("placement").innerHTML = "Place ship of size " + size;
   let table = document.getElementById(shipId);
+
+  //if the table isn't empty, begin to show the user places they can place their ships
   if (table != null) 
   {
     for (let i = 0; i < table.rows.length; i++) 
@@ -112,49 +114,55 @@ function placeShip(size, horizontal, shipId)
       for (let j = 0; j < table.rows[i].cells.length; j++) 
       {
         table.rows[i].cells[j].style.cursor = "ptr";
+
+        //adds color for potenial cell when mouse over a cell -- yellow = legal, red = illegal
         table.rows[i].cells[j].onmousemove = changeColor(size, horizontal, "yellow", shipId);
+
+        //removes the red and yellow when you move the mouse to point somewhere else
         table.rows[i].cells[j].onmouseout = function() 
         {
-          if (horizontal) 
+          if (horizontal)
           {
-            if (j + size <= 8) 
+            if (j + size <= 8)  //if the potential ship did not go out of bounds
             {
               for (let count = 0; count < size; count++) 
               {
-                if (table.rows[i].cells[j + count].innerHTML != "")
-                  table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
+                if (table.rows[i].cells[j + count].innerHTML != "") //if there is no ship already there
+                  table.rows[i].cells[j + count].style.backgroundColor = "lightblue"; //turn it back to water
                 else
-                  table.rows[i].cells[j + count].style.backgroundColor = "grey";
+                  table.rows[i].cells[j + count].style.backgroundColor = "grey"; 
               }
             } 
             else 
             {
+              //change the color back to what it for the rest of the row that the ship was in 
               let count = 0;
               while (count + j < 8) 
               {
-                if (table.rows[i].cells[j + count].innerHTML != "")
-                  table.rows[i].cells[j + count].style.backgroundColor = "lightblue";
+                if (table.rows[i].cells[j + count].innerHTML != "") //if no ship already placed
+                  table.rows[i].cells[j + count].style.backgroundColor = "lightblue"; //back to water
                 else
                   table.rows[i].cells[j + count].style.backgroundColor = "grey";
                 count++;
               }
             }
           } 
-          else 
+          else //if the ship outline was vertical 
           {
-            if (i + size <= 8) 
+            if (i + size <= 8) //if the ship doesn't go off the board
             {
               for (let count = 0; count < size; count++) 
               {
-                if (table.rows[i + count].cells[j].innerHTML != "")
-                  table.rows[i + count].cells[j].style.backgroundColor ="lightblue";
+                if (table.rows[i + count].cells[j].innerHTML != "") //if not an existing ship
+                  table.rows[i + count].cells[j].style.backgroundColor ="lightblue"; //back to water
                 else
                   table.rows[i + count].cells[j].style.backgroundColor = "grey";
               }
             } 
-            else 
+            else //if the ship goes off the bounds of the board
             {
-              let count = 0;
+              let count = 0; 
+              //avoids going out of bounds in table
               while (count + i < 8) 
               {
                 if (table.rows[i + count].cells[j].innerHTML != "")
@@ -166,17 +174,17 @@ function placeShip(size, horizontal, shipId)
             }
           }
         };
+
+        //if the user clicks to place the ship
         table.rows[i].cells[j].onclick = function() 
         {
           let sizeNum = Number(size);
-          console.log(sizeNum);
+
           //sending the coords and tableId for ship construction
           if (isLegal(table.rows[i].cells[j])) {
             let tempCoords = (i+1) + ":" + (j+1);
             buttonHandlerSetup(shipId, tempCoords, size, horizontal);
 
-            console.log("clicked");
-            console.log(isLegal(table.rows[i].cells[j]));
             if (horizontal) 
             {
               if (j + sizeNum <= 8) {
@@ -197,7 +205,10 @@ function placeShip(size, horizontal, shipId)
             }
             if (sizeNum !== 1)
           {
+            //while still placing ships, ask for a new orientation after each one is placed
             let horizontal = prompt("Now please choose an orientation for this ship. Type 1 for horizontal or 2 for vertical");
+            
+            //validate the input
             while (horizontal < 1 || horizontal > 2 || horizontal % 1 != 0 || horizontal === null ) 
             {
               horizontal = prompt("Type 1 for horizontal or 2 for vertical");
@@ -205,18 +216,22 @@ function placeShip(size, horizontal, shipId)
             horizontal = Number(horizontal);
             if (horizontal === 1)
             {
+              //call the placeship function for the next smallest ship
               placeShip(sizeNum-1, true, shipId);
             }
             else
             {
+              //call the placeship function for the next smallest ship 
               placeShip(sizeNum -1, false, shipId);
             }
-          }
+          } 
           else
           {
+            //hide the ship board
             document.getElementById(shipId).style.display = "none";
             if (shipId === "ship1")
             {
+              //player 1 just finished, hide their board and display player 2's
               document.getElementById("test").style.display = "block";
               document.getElementById("ships").style.display = "none";
               document.getElementById("names").style.display = "none";
@@ -227,6 +242,7 @@ function placeShip(size, horizontal, shipId)
             }
             else
             {
+              //player 1 and player 2 have no finished. Moving to start the game
               document.getElementById("test").style.display = "none";
               document.getElementById("ships").style.display = "none";
               document.getElementById("names").style.display = "none";
@@ -237,7 +253,7 @@ function placeShip(size, horizontal, shipId)
             }
           }
           }
-        };
+        }; //end of onclick function 
       }
     }
   }
@@ -276,12 +292,13 @@ function changeColor(sizee, horizontal, color, tableID) {
                 for (let count = 0; count < size; count++) 
                 {
                   if (table.rows[i].cells[j + count].innerHTML === "")
-                    existingShip = true;
+                    existingShip = true; 
                 }
                 for (let count = 0; count < size; count++) 
                 {
                   if (existingShip)
                   {
+                    //user can't place a ship ontop of another ship
                     table.rows[i].cells[j+count].style.backgroundColor = "red";
                   }
                   else
@@ -298,7 +315,7 @@ function changeColor(sizee, horizontal, color, tableID) {
                 }
               }
             } 
-            else 
+            else //if vertical 
             {
               if (i + size <= 8) 
               {
@@ -311,6 +328,7 @@ function changeColor(sizee, horizontal, color, tableID) {
                 {
                   if (existingShip)
                   {
+                    //user can't place a ship ontop of another ship
                     table.rows[i+count].cells[j].style.backgroundColor = "red";
                   }
                   else
@@ -319,19 +337,19 @@ function changeColor(sizee, horizontal, color, tableID) {
                   }
                 }
               } else {
-                let count = 0;
-                while (count + i < 8) {
-                  if (table.rows[i + count].cells[j].innerHTML !== "");
-                  table.rows[i + count].cells[j].style.backgroundColor = "red";
-                  count++;
-                }
-              }
+                  let count = 0;
+                  while (count + i < 8) {
+                    if (table.rows[i + count].cells[j].innerHTML !== "");
+                      table.rows[i + count].cells[j].style.backgroundColor = "red";
+                    count++;
+                  }
+                } 
             }
-          };
+          }; //end of anonymous function
       }
     }
   }
-}
+} //end of changecolor
 
 // /**
 
