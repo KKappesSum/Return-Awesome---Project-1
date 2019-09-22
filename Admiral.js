@@ -54,18 +54,14 @@ class Admiral {
   }
 
   /*
-   * Checks a specific grid cell for its status.
-   * @param {string} coord - The coordinate to check in the board.
-   * @return {boolean} true if it's a hit, else false.
+   * @return {boolean} hitBoard : true if a ship was hit, false if it was a miss
    */
-  checkIfHit(coord) {
-    let temp = this.board.getCell(coord);
-    if(temp == this.config.oceanTypes.SHIP) {
-      return(true);
+  updateHit(coord, tableID) {
+    let hitBoard = this.board.updateCell(coord, tableID);
+    if(hitBoard) {
+      this.hitShip(coord);
     }
-    else {
-      return(false);
-    }
+    return hitBoard;
   }
 
   /*
