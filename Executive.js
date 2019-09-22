@@ -25,11 +25,13 @@ class Exec{
         if(this.getPlayerTurn() == 1){
             console.log("player 1's shot");
             let isAhit = this.admir2.updateAfloat(coords, tableId);
+            //endofgame func goes here
             this.advancePlayerTurn();
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
            let isAhit = this.admir1.updateAfloat(coords, tableId);
+           //endofgame func goes here
             this.advancePlayerTurn();
         }
         else{
@@ -37,7 +39,17 @@ class Exec{
         }
         return(isAhit);
     }
-    
+
+    /**
+     * checks whether all ships have been sunk, if so tosses up an alert and ends the game
+     * @param: none
+     
+    endGameChecker(){
+        if(exec.admir1.afloat == 0){
+
+        }
+    }
+    */
     /**
      * Places ships based on given coordinates of the upper most left cell, 
      * it sends the orientation, shipsize and table to be used to assemble and 
