@@ -409,6 +409,21 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
     //maybe something can be taken from gui
     exec.sendCoordsForPlacement(tableId,coords,shipSize,orientation);
     console.log("passed params to exec");
+    saveShip(tableId, coords, shipSize, orientation);
+}
+
+function saveShip(coords, shipSize, orientation) {
+  if(exec.m_playerTurn == 1) {
+    tempObj.adm1Coords[shipSize - 1] = coords;
+    tempObj.adm1Ori[shipSize - 1] = orientation;
+  }
+  else if(exec.m_playerTurn == 2) {
+    tempObj.adm2Coords[shipSize - 1] = coords;
+    tempObj.adm2Ori[shipSize - 1] = orientation;
+  }
+  else {
+    console.log("ERROR: saveShip : player turn value is invalid, somehow!");
+  }
 }
 
 /**
