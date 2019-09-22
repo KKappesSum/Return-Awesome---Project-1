@@ -1,4 +1,5 @@
 //Author: Ethan Brenner
+
 /**
  * Creates the exec instance with two admiral objects, along with their number of ships
  * @param {string} adm1Name: Admiral 1's nickname
@@ -9,6 +10,7 @@
 class Exec{   
     constructor(adm1Name, adm2Name, numShips){
         
+        this.m_buttonState = true;
         this.m_shipCount = numShips;
         //player turn updated each turn, adm1 = odd, adm2 = even?
         this.m_playerTurn = 1;
@@ -140,11 +142,37 @@ class Exec{
             document.getElementById("playerName").value = this.admir2.name;
         }
     }
+
+
+    /**
+     * determines the state of the switch player button in index, hides/unhides table divs, updates
+     * button text and refreshes player maps
+     * @param: none
+     * 
+     */
+    turnButton(){
+        let temp = document.getElementById("turnButton");
+        if(this.m_buttonState){
+            //hide table divs
+            document.getElementById("table1").style.display = "none";
+            document.getElementById("table2").style.display = "none";
+            //update home button text to next value
+            temp.value = "Next Player";
+        }
+        else{
+            this.advancePlayerTurn();
+            //refresh the maps
+            this.refreshMap();
+            //show tables
+            document.getElementById("table1").style.display = "block";
+            document.getElementById("table2").style.display = "block";
+            //unlock the table
+            document.getElementById("fire1").classList.remove("disabledButton");
+            //update button text
+            temp.value = "End Turn";
+            //disable button
+            temp.disabled = true;
+        }
+        this.m_buttonState = !this.m_buttonState;
+    }
 }
-
-
-//-------------------------------------------------------------------------------\\
-//-------------------------------------------------------------------------------\\
-//-------------------------------------------------------------------------------\\
-
-
