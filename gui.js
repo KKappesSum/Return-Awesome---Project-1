@@ -385,7 +385,7 @@ function createExec(){
 * handles button clicks on player map, call necessary functions
 */
 function buttonHandler(tableId, coords){
-    let hit = updateTable(tableId,coords);
+    let hit = exec.updateTable(tableId,coords);
     switchPlayer(hit);
 
     console.log(tableId);
