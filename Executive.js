@@ -22,18 +22,18 @@ class Exec{
      */
     updateTable(coord, tableID){
         let isAhit;
-        if(this.getPlayerTurn() == 1){
+        if(this.getPlayerTurn() === 1){
             console.log("player 1's shot");
             isAhit = this.admir2.updateHit(coord, tableID);
             this.endGameChecker(1);
-            this.advancePlayerTurn();
+            //this.advancePlayerTurn();
             
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
             isAhit = this.admir1.updateHit(coord, tableID);
             this.endGameChecker(2);
-            this.advancePlayerTurn();
+            //this.advancePlayerTurn();
             
         }
         else{
@@ -102,10 +102,13 @@ class Exec{
      * 
      */
     advancePlayerTurn(){
+        console.log("i ran");
         if(this.m_playerTurn == 1){
+            console.log("switching to p2");
             this.m_playerTurn = 2;
         }
         else{
+            console.log("back to p1");
             this.m_playerTurn = 1;
         }
     }
@@ -116,12 +119,14 @@ class Exec{
      */
     refreshMap(){
         console.log("Called refreshMap()");
-        if(this.getPlayerTurn()==1)
+        if(this.getPlayerTurn()===1)
         {
+            console.log("refresh :)")
             this.updateName();
             this.admir1.refreshOnStart();
         }
         else{
+            console.log("reffff");
             this.updateName();
             this.admir2.refreshOnStart();
         }
@@ -132,7 +137,7 @@ class Exec{
      * @param: none
      */
     updateName(){
-        if(this.m_playerTurn ==1){
+        if(this.m_playerTurn ===1){
             document.getElementById("playerName").value = this.admir1.name;
         }
         else{
@@ -141,6 +146,17 @@ class Exec{
     }
 
 }
+
+function resetFireMap()
+    {
+        let table = document.getElementById("fire1");
+        for(let i = 0; i < table.rows.length; i++){
+            for(let j = 0; j < table.rows[0].cells.length; j++){
+                table.rows[i].cells[j].style.backgroundColor = "lightblue";
+            }
+        }
+    }
+
     /**
      * determines the state of the switch player button in index, hides/unhides table divs, updates
      * button text and refreshes player maps
@@ -150,7 +166,7 @@ class Exec{
    function turnButton(){
         let temp = document.getElementById("turnButton");
         console.log(temp.value);
-        if(temp.value == "End Turn"){
+        if(temp.value === "End Turn"){
             //hide table divs
             document.getElementById("table1").style.display = "none";
             document.getElementById("table2").style.display = "none";
@@ -162,6 +178,7 @@ class Exec{
             //refresh the maps
             exec.refreshMap();
             //show tables
+            resetFireMap();
             document.getElementById("table1").style.display = "block";
             document.getElementById("table2").style.display = "block";
             //unlock the table
