@@ -64,7 +64,7 @@ class Admiral {
   }
 
   /**
-   * Increments the hit counter in the appropriate Ship, and the afloat counter in this Admiral, if necessary.  Assumes that a hit has already been validated.
+   * Increments the hit counter in the appropriate Ship, and the afloat counter in this Admiral, if necessary.  Assumes that a successful hit has already been validated.
    * @pre A hit has already been validated.
    * @param {string} coord : The coordinate of the Ship being hit.
    */
