@@ -1,5 +1,6 @@
 let exec;
 let tempExec;
+let holder;
 
 /**
  * This function adds one to its input.
@@ -374,6 +375,7 @@ function createExec(){
     console.log(tempNumShips);
 
     exec = new Exec(tempAdmr1, tempAdmr2, tempNumShips);
+    holder = new Placeholder(tempAdmr1, tempAdmr2, tempNumShips);
 }
 
 /**
