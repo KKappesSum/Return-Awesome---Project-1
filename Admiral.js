@@ -58,7 +58,7 @@ class Admiral {
    * void function, changes the hit or miss type of the water tile
    * @param {string} coor - NumberLetter coordinate of the player's guess
    * @param {number} tableId - id of the table being triggered by the onclick
-   * @return none
+   * @return {boolean} true if a hit, false if a miss
    */
   updateAfloat(coor, tableId) {
     
@@ -79,6 +79,7 @@ class Admiral {
         });
       });
     }
+    return(updateCell(coor,tableId));
   }
 
   /**

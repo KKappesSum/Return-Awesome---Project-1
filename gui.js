@@ -335,17 +335,18 @@ function changeColor(sizee, horizontal, color, tableID) {
 /**
 
  * This function will hide p1's board when p1 is done and make p2's board visible once they hit ok on the prompt
- * @param none
+ * @param {boolean} hit: true if a hit, false if a miss
  */
-function switchPlayer() {
-  //TO DO: need to know if a cell in grid was a hit or a miss to be able to alert 'you hit' or 'you missed'
-  alert("You hit!");
-
+function switchPlayer(hit) {
+  if(hit == true){
+    alert("You hit!");
+  }
+  else{
+    alert("You missed!");
+  }
   //hide boards
   document.getElementById("board").style.display = "none";
-  
-  //TO DO: INSERT updateTable() function from exec (which calls refreshTable() from Grid.js) here
-
+  exec.refreshMap();
   //make p2's board visible after giving an alert half a second later
   setTimeout(function () {unhide()}, 500);
 }
@@ -384,6 +385,9 @@ function createExec(){
 * handles button clicks on player map, call necessary functions
 */
 function buttonHandler(tableId, coords){
+    let hit = exec.updateTable(tableId,coords);
+    switchPlayer(hit);
+
     console.log(tableId);
     console.log(coords);
 }
@@ -430,6 +434,10 @@ function pullExecObj(){
 */
 function onLoadPull(){
     
+    //should be
+    //placeholder = pullExecObj();
+    //create the new exec object/fill it in
+    //exec.refreshMap();
     exec = pullExecObj();
     exec.refreshMap();
     
