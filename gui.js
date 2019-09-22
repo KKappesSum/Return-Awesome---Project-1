@@ -484,3 +484,16 @@ function makeTempObj(exec) {
   tempObj.adm2Coords = new Array(num);
   tempObj.adm2Ori = new Array(num);
 }
+
+function reconstruct(placeholder) {
+  exec = new Exec(placeholder.adm1Name, placeholder.adm2Name, placeholder.numShips);
+  for(let i = 0; i < placeholder.numShips; i++)
+  {
+    exec.admir1.assignCoords(placeholder.adm1Coords[i], (i + 1), adm1Ori[i], "ship1");
+  }
+
+  for(let i = 0; i < placeholder.numShips; i++)
+  {
+    exec.admir2.assignCoords(placeholder.adm2Coords[i], (i + 1), adm2Ori[i], "fire1");
+  }
+}
