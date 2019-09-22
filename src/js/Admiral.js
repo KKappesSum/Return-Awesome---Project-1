@@ -5,7 +5,7 @@
  * @prop {Config} config - a Config object.
  * @prop {number} numships - the number of Ships in Admiral.
  * @prop {Grid} board - a Grid to store the Admiral's game map, with dimensions given in config.
- * @prop {Ship[]} fleet - an Array of Ships, initialized empty.
+ * @prop {Ship[]} fleet - an array of Ships, initialized empty.
  * @prop {number} afloat - the number of ships that are still afloat. 
  * @prop {string} name - the player's name. 
  */
@@ -56,7 +56,7 @@ class Admiral {
   }
 
   /**
-   * Handles an attempted hit on the board and ship.  Calls updateCell on this Admiral's Grid, and calls hitShip if the hit attempt is successful.
+   * Handles an attempted hit on the board and ship.  Calls updateCell on this Admiral's board, and calls hitShip if the hit attempt is successful.
    * @param {string} coord : the coordinate to check.
    * @param {string} tableID : the identifier of the table to update.
    * @return {boolean} hitBoard : true if a ship was hit, false if it was a miss.
@@ -70,7 +70,7 @@ class Admiral {
   }
 
   /**
-   * Increments the hit counter in the appropriate Ship, and the afloat counter in this Admiral, if necessary.  Assumes that a successful hit has already been validated.
+   * Increments the hit counter in the appropriate Ship, and the afloat property in this Admiral, if necessary.  Assumes that a successful hit has already been validated.
    * @pre A hit has already been validated.
    * @param {string} coord : The coordinate of the Ship being hit.
    */
@@ -83,11 +83,11 @@ class Admiral {
   }
 
   /**
-   * While setting up the game, assign coordinates for a ship to the given ship and the board
+   * Generate coordinates that will be occupied by a ship with the given size, orientation, and starting coordinate, and assign those coordinates to the appropriate Ship and the board.
    * @param {string} startCoord - the upper leftmost coordinate of the ship.
    * @param {number} size - the size of the ship.
-   * @param {boolean} orientation - orientation of the ship, true for horizontal, false for vertical.
-   * @param {string} tableID - the ID of the table to place the ship in
+   * @param {boolean} orientation - the orientation of the ship, true for horizontal, false for vertical.
+   * @param {string} tableID - the ID of the table in which the Ship will be placed.
    */
   assignCoords(startCoord, size, orientation, tableID) {
     let coordsArr = new Array(size);
@@ -136,7 +136,7 @@ class Admiral {
   }
 
   /**
-   * Find the ship of the given size.
+   * Find the Ship of the given size.
    * @param {number} size : the size of the ship you're searching for.
    * @return {number} the index of the correct ship.
    */
@@ -155,7 +155,7 @@ class Admiral {
   /**
    * Find the Ship that occupies a given coordinate.
    * @param {string} coord : The coordinate to search for.
-   * @return {number} foundIndex : The index of the Ship in the fleet that has the given coordinate.
+   * @return {number} The index of the Ship in the fleet that has the given coordinate.
    */
   findShipByCoord(coord) {
     let foundIndex = -1;
@@ -177,15 +177,17 @@ class Admiral {
   }
 
   /**
-   * Refreshes both maps at the start of the game.
+   * Refreshes both game maps at the start of the game.
    */
   refreshOnStart(){
     this.board.refreshTable("ship1", true);
     this.board.refreshTable("fire1", false);  
   }
 
+  /**
+   * Refreshes the firing map.
+   */
   refreshFireOnly() {
     this.board.refreshTable("fire1", false);  
   }
-
 }

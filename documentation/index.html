@@ -97,6 +97,12 @@
                         #refreshOnStart
                       </a></li>
                       
+                      <li><a
+                        href='#admiralrefreshfireonly'
+                        class='regular pre-open'>
+                        #refreshFireOnly
+                      </a></li>
+                      
                     </ul>
                   
                   
@@ -511,7 +517,7 @@
       
         <div class='space-bottom0'>
           <span class='code bold'>fleet</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#ship">Ship</a>>)</code>
-          : an Array of Ships, initialized empty.
+          : an array of Ships, initialized empty.
 
           
         </div>
@@ -777,7 +783,7 @@
 
   
 
-  <p>Handles an attempted hit on the board and ship.  Calls updateCell on this Admiral's Grid, and calls hitShip if the hit attempt is successful.</p>
+  <p>Handles an attempted hit on the board and ship.  Calls updateCell on this Admiral's board, and calls hitShip if the hit attempt is successful.</p>
 
     <div class='pre p1 fill-light mt0'>updateHit(coord: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, tableID: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
   
@@ -855,7 +861,7 @@
 
   
 
-  <p>Increments the hit counter in the appropriate Ship, and the afloat counter in this Admiral, if necessary.  Assumes that a successful hit has already been validated.</p>
+  <p>Increments the hit counter in the appropriate Ship, and the afloat property in this Admiral, if necessary.  Assumes that a successful hit has already been validated.</p>
 
     <div class='pre p1 fill-light mt0'>hitShip(coord: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
   
@@ -916,7 +922,7 @@
 
   
 
-  <p>While setting up the game, assign coordinates for a ship to the given ship and the board</p>
+  <p>Generate coordinates that will be occupied by a ship with the given size, orientation, and starting coordinate, and assign those coordinates to the appropriate Ship and the board.</p>
 
     <div class='pre p1 fill-light mt0'>assignCoords(startCoord: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, size: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, orientation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>, tableID: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
   
@@ -954,7 +960,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>orientation</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
-	    orientation of the ship, true for horizontal, false for vertical.
+	    the orientation of the ship, true for horizontal, false for vertical.
 
           </div>
           
@@ -963,7 +969,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>tableID</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    the ID of the table to place the ship in
+	    the ID of the table in which the Ship will be placed.
 
           </div>
           
@@ -1004,7 +1010,7 @@
 
   
 
-  <p>Find the ship of the given size.</p>
+  <p>Find the Ship of the given size.</p>
 
     <div class='pre p1 fill-light mt0'>findShipBySize(size: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
   
@@ -1108,7 +1114,7 @@
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
-        foundIndex : The index of the Ship in the fleet that has the given coordinate.
+        The index of the Ship in the fleet that has the given coordinate.
 
       
     
@@ -1142,9 +1148,56 @@
 
   
 
-  <p>Refreshes both maps at the start of the game.</p>
+  <p>Refreshes both game maps at the start of the game.</p>
 
     <div class='pre p1 fill-light mt0'>refreshOnStart()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='admiralrefreshfireonly'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>refreshFireOnly()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Refreshes the firing map.</p>
+
+    <div class='pre p1 fill-light mt0'>refreshFireOnly()</div>
   
   
 
