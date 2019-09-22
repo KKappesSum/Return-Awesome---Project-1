@@ -18,21 +18,26 @@ class Exec{
      /**
      * Passes "guess" coordinates to admiral for grid/map updates during game
      * @param {string} coords: coordinates for the specific cell in the table
-     * @param {string} tableId: id of the table that triggered the onclick event
      * @return {boolean} true if a hit, false if a miss
      */
-    updateTable(tableId,coords){
+    updateTable(coord){
         let isAhit;
         if(this.getPlayerTurn() == 1){
             console.log("player 1's shot");
-            isAhit = this.admir2.updateAfloat(coords, tableId);
+            isAhit = this.admir2.checkIfHit(coord);
+            if(isAhit) {
+                admir2.hitShip();
+            }
             this.endGameChecker(1);
             this.advancePlayerTurn();
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
-           isAhit = this.admir1.updateAfloat(coords, tableId);
-           this.endGameChecker(2);
+            isAhit = this.admir1.checkIfHit(coord);
+            if(isAhit) {
+                admir1.hitShip();
+            }
+            this.endGameChecker(2);
             this.advancePlayerTurn();
         }
         else{
