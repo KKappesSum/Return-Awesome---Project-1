@@ -133,7 +133,6 @@ class Admiral {
       // give coords to Ship
       console.log(this.fleet[shipIndex]);
       this.fleet[shipIndex].setCoords(coordsArr);
-
       // give coords AND TABLEID to grid
       this.board.populateGrid(coordsArr, tableID);
     }
