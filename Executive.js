@@ -62,7 +62,7 @@ class Exec{
                 location.href = "./index.html";
             }
         }
-    }
+    
     
     /**
      * Places ships based on given coordinates of the upper most left cell, 
