@@ -233,7 +233,7 @@ function placeShip(size, horizontal, shipId)
               document.getElementById("placement").style.display = "none";
               alert("start the game");
               exec.advancePlayerTurn();
-              storeExecObj(exec);
+              storeExecObj(tempObj);
             }
           }
           }
@@ -436,7 +436,7 @@ function saveShip(coords, shipSize, orientation) {
 * navigates to the index page
 */
 function storeExecObj(tempObj){
-    sessionStorage.ExecObj = JSON.stringify(tempObj);
+    sessionStorage.temp = JSON.stringify(tempObj);
     console.log("stored obj");
     location.href = "./index.html";
 }
@@ -447,8 +447,9 @@ function storeExecObj(tempObj){
 * retrieves the Exec obj from session storage at start of game
 */
 function pullExecObj(){
-    let fromStorage = JSON.parse(sessionStorage.ExecObj);
+    let fromStorage = JSON.parse(sessionStorage.temp);
     console.log("returning obj");
+    console.log(fromStorage);
     return(fromStorage);
 }
 
@@ -488,12 +489,12 @@ function reconstruct(obj) {
   exec = new Exec(obj.adm1Name, obj.adm2Name, obj.numShips);
   for(let i = 0; i < obj.numShips; i++)
   {
-    exec.admir1.assignCoords(obj.adm1Coords[i], (i + 1), adm1Ori[i], "ship1");
+    exec.admir1.assignCoords(obj.adm1Coords[i], (i + 1), obj.adm1Ori[i], "ship1");
   }
 
   for(let i = 0; i < obj.numShips; i++)
   {
-    exec.admir2.assignCoords(obj.adm2Coords[i], (i + 1), adm2Ori[i], "fire1");
+    exec.admir2.assignCoords(obj.adm2Coords[i], (i + 1), obj.adm2Ori[i], "fire1");
   }
 }
 
