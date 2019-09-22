@@ -48,7 +48,6 @@ class Grid{
      * @param {string} tableId: A string given the elementId for the table to be updated
      */
     populateGrid(locationArr, tableId){
-        console.log("In populate");
         for(let i = 0; i < locationArr.length; i++){
             this.arr[(locationArr[i].substring(0, locationArr[i].indexOf(":"))) - 1]
                 [(locationArr[i].substring(locationArr[i].indexOf(":") + 1)) - 1] 

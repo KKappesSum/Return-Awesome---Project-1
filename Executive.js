@@ -23,14 +23,12 @@ class Exec{
     updateTable(coord, tableID){
         let isAhit;
         if(this.getPlayerTurn() === 1){
-            console.log("player 1's shot");
             isAhit = this.admir2.updateHit(coord, tableID);
             this.endGameChecker(1);
             //this.advancePlayerTurn();
             
         }
         else if(this.getPlayerTurn() == 2){
-            console.log("player 2's shot");
             isAhit = this.admir1.updateHit(coord, tableID);
             this.endGameChecker(2);
             //this.advancePlayerTurn();
@@ -82,11 +80,9 @@ class Exec{
     sendCoordsForPlacement(tableId, coords, shipSize, orientation){
         if(this.getPlayerTurn() == 1){
             this.admir1.assignCoords(coords,shipSize, orientation,tableId);
-            console.log("ship of size "+shipSize+" successfully placed for admiral1");
         }
         else if (this.getPlayerTurn() == 2){
             this.admir2.assignCoords(coords,shipSize,orientation,tableId);
-            console.log("ship of size "+shipSize+" successfully placed for admiral2");
         }
         else{
             console.log("something went wrong with the getplayerturn function");
@@ -120,7 +116,6 @@ class Exec{
      * @param: none
      */
     refreshMap(){
-        console.log("Called refreshMap()");
         if(this.getPlayerTurn()===1)
         {
             this.updateName();
