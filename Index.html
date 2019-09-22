@@ -16,7 +16,7 @@
     <h2>Welcome to Battleship!</h2>
     <div align="center">
         <h1 id="playerName" style="display: inline">Player 1</h1>
-        <h1 style="display: inline">: It's your turn</h1>
+        <h1 id="message" style="display: inline">: It's your turn</h1>
     </div>
 
     <div class="flex-container" id="board" style="flex-wrap: wrap">
@@ -307,6 +307,9 @@
         </div>
 
     </div>
+    <script>
+    document.getElementById("turnButton").disabled = true;
+    </script>
 </body>
 
 </html>

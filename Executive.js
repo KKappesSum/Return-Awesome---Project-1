@@ -22,18 +22,18 @@ class Exec{
      */
     updateTable(coord, tableID){
         let isAhit;
-        if(this.getPlayerTurn() == 1){
+        if(this.getPlayerTurn() === 1){
             console.log("player 1's shot");
             isAhit = this.admir2.updateHit(coord, tableID);
             this.endGameChecker(1);
-            this.advancePlayerTurn();
+            //this.advancePlayerTurn();
             
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
             isAhit = this.admir1.updateHit(coord, tableID);
             this.endGameChecker(2);
-            this.advancePlayerTurn();
+            //this.advancePlayerTurn();
             
         }
         else{
@@ -47,8 +47,8 @@ class Exec{
      * @param: none
      */
     endGameChecker(num){
-        let player1 = this.admir1;
-        let player2 = this.admir2;
+        let player1 = this.admir1.name;
+        let player2 = this.admir2.name;
         let outputString;
         if(this.admir1.afloat ==0 || this.admir2.afloat == 0){
             if(num ==1){
@@ -60,7 +60,11 @@ class Exec{
                 //alerts gamers to the end of the game and resets sessionStorage, also routes the game to the setup screen
                 alert(outputString);
                 sessionStorage.ExecObj = {};
-                location.href = "./index.html";
+                //location.href = "./index.html"; 
+
+                //displays end of game message and hides p1 ship map
+                document.getElementById("table2").style.display = "none";
+                document.getElementById("message").innerHTML = "has won the game!!!";
             }
         }
     
@@ -102,10 +106,13 @@ class Exec{
      * 
      */
     advancePlayerTurn(){
+        console.log("i ran");
         if(this.m_playerTurn == 1){
+            console.log("switching to p2");
             this.m_playerTurn = 2;
         }
         else{
+            console.log("back to p1");
             this.m_playerTurn = 1;
         }
     }
@@ -116,12 +123,14 @@ class Exec{
      */
     refreshMap(){
         console.log("Called refreshMap()");
-        if(this.getPlayerTurn()==1)
+        if(this.getPlayerTurn()===1)
         {
+            console.log("refresh :)")
             this.updateName();
             this.admir1.refreshOnStart();
         }
         else{
+            console.log("reffff");
             this.updateName();
             this.admir2.refreshOnStart();
         }
@@ -132,15 +141,31 @@ class Exec{
      * @param: none
      */
     updateName(){
-        if(this.m_playerTurn ==1){
-            document.getElementById("playerName").value = this.admir1.name;
+        if(this.m_playerTurn ===1){
+            document.getElementById("playerName").innerHTML = this.admir1.name;
         }
         else{
-            document.getElementById("playerName").value = this.admir2.name;
+            console.log("changes name?");
+            document.getElementById("playerName").innerHTML = this.admir2.name;
         }
     }
 
 }
+
+/**
+ * Resets the fire map to all water squares 
+ * @param: none
+ */
+function resetFireMap()
+    {
+        let table = document.getElementById("fire1");
+        for(let i = 0; i < table.rows.length; i++){
+            for(let j = 0; j < table.rows[0].cells.length; j++){
+                table.rows[i].cells[j].style.backgroundColor = "lightblue";
+            }
+        }
+    }
+
     /**
      * determines the state of the switch player button in index, hides/unhides table divs, updates
      * button text and refreshes player maps
@@ -149,23 +174,25 @@ class Exec{
      */
    function turnButton(){
         let temp = document.getElementById("turnButton");
-        console.log(temp.value);
-        if(temp.value == "End Turn"){
+        if(temp.value === "End Turn"){
             //hide table divs
             document.getElementById("table1").style.display = "none";
             document.getElementById("table2").style.display = "none";
             //update home button text to next value
-            temp.value = "Next Player";
+            temp.value = "Player Start";
+            exec.advancePlayerTurn();
+            exec.refreshMap();
         }
         else{
-            exec.advancePlayerTurn();
+            //exec.advancePlayerTurn();
             //refresh the maps
-            exec.refreshMap();
+            //exec.refreshMap();
             //show tables
+            resetFireMap();
             document.getElementById("table1").style.display = "block";
             document.getElementById("table2").style.display = "block";
             //unlock the table
-            document.getElementById("fire1").classList.remove("disabledButton");
+            document.getElementById("table1").classList.remove("disabledButton");
             //update button text
             temp.value = "End Turn";
             //disable button
