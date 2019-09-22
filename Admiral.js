@@ -60,7 +60,7 @@ class Admiral {
    * @param {number} tableId - id of the table being triggered by the onclick
    * @return none
    */
-  updateShipMap(coor, tableId) {
+  updateAfloat(coor, tableId) {
     
     if (updateCell(coor,tableId) === true)
     {
