@@ -152,6 +152,10 @@ class Exec{
 
 }
 
+/**
+ * Resets the fire map to all water squares 
+ * @param: none
+ */
 function resetFireMap()
     {
         let table = document.getElementById("fire1");
@@ -170,7 +174,6 @@ function resetFireMap()
      */
    function turnButton(){
         let temp = document.getElementById("turnButton");
-        console.log(temp.value);
         if(temp.value === "End Turn"){
             //hide table divs
             document.getElementById("table1").style.display = "none";
@@ -189,7 +192,7 @@ function resetFireMap()
             document.getElementById("table1").style.display = "block";
             document.getElementById("table2").style.display = "block";
             //unlock the table
-            document.getElementById("fire1").classList.remove("disabledButton");
+            document.getElementById("table1").classList.remove("disabledButton");
             //update button text
             temp.value = "End Turn";
             //disable button
