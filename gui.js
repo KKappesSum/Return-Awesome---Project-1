@@ -1,6 +1,7 @@
 let exec;
 let tempExec;
-let holder;
+let tempObj = {};
+let placeholder;
 
 /**
  * This function adds one to its input.
@@ -367,8 +368,15 @@ function unhide() {
 function createExec(){
     //creating an exec object
     let tempAdmr1 = document.getElementById("player1").value;
+    if(tempAdmr1 == "") {
+      tempAdmr1 = document.getElementById("player1").placeholder;
+    }
     console.log(tempAdmr1);
+
     let tempAdmr2 = document.getElementById("player2").value;
+    if(tempAdmr2 == "") {
+      tempAdmr2 = document.getElementById("player2").placeholder;
+    }
     console.log(tempAdmr2);
     let newString = document.getElementById("ships").innerHTML;
     tempNumShips = newString.substring(16);
@@ -376,7 +384,7 @@ function createExec(){
     console.log(tempNumShips);
 
     exec = new Exec(tempAdmr1, tempAdmr2, tempNumShips);
-    holder = new Placeholder(tempAdmr1, tempAdmr2, tempNumShips);
+    makeTempObj(exec);
 }
 
 /**
@@ -405,6 +413,21 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
     //maybe something can be taken from gui
     exec.sendCoordsForPlacement(tableId,coords,shipSize,orientation);
     console.log("passed params to exec");
+    saveShip(coords, shipSize, orientation);
+}
+
+function saveShip(coords, shipSize, orientation) {
+  if(exec.m_playerTurn == 1) {
+    tempObj.adm1Coords[shipSize - 1] = coords;
+    tempObj.adm1Ori[shipSize - 1] = orientation;
+  }
+  else if(exec.m_playerTurn == 2) {
+    tempObj.adm2Coords[shipSize - 1] = coords;
+    tempObj.adm2Ori[shipSize - 1] = orientation;
+  }
+  else {
+    console.log("ERROR: saveShip : player turn value is invalid, somehow!");
+  }
 }
 
 /**
@@ -453,3 +476,13 @@ function testObj(){
 }
 
 
+function makeTempObj(exec) {
+  tempObj.adm1Name = exec.admir1.name;
+  tempObj.adm2Name = exec.admir2.name;
+  let num = Number(exec.m_shipCount);
+  tempObj.numShips = num;
+  tempObj.adm1Coords = new Array(num);
+  tempObj.adm1Ori = new Array(num);
+  tempObj.adm2Coords = new Array(num);
+  tempObj.adm2Ori = new Array(num);
+}
