@@ -13,16 +13,16 @@
 </head>
 
 <body onload="onLoadPull();">
-    <input type="button" id="btn" value="Load Exec Object" onclick="onLoadPull();">
-    <input type="button" id="createObj" name="createObj" value="build test obj" onclick="testObj();">
-    <input type="button" id="switchPlayer" name="switchPlayer" value="Switch player!!!" onclick="switchPlayer();">
-
     <h2>Welcome to Battleship!</h2>
+    <div align="center">
+        <h1 id="playerName" style="display: inline">Player 1</h1>
+        <h1 style="display: inline">: It's your turn</h1>
+    </div>
 
     <div class="flex-container" id="board" style="flex-wrap: wrap">
         <!--Table 1-->
-        <div>
-                <p align="center">Firing Map</p>
+        <div id="table1">
+            <p align="center">Firing Map</p>
             <!--Alpha Table 1-->
             <div>
                 <table align="top" id="letters" class="table">
@@ -160,12 +160,15 @@
                 </aside>
             </section>
         </div>
-
+        <div style="flex-direction: row; vertical-align: top; text-align: center;">
+            <button style="width:50%; height: 130%; font-weight: bold; font-size: 18px; font-stretch: expanded;"
+                align="center" type="button" id="turnButton" onlick="turnButton();">End turn</button>
+        </div>
         <br>
 
         <!--Table 2-->
-        <div>
-                <p align="center">Your Ships</p>
+        <div if="table2">
+            <p align="center">Your Ships</p>
             <!--Alpha Table 2-->
             <div>
                 <table align="top" id="letters" class="table">

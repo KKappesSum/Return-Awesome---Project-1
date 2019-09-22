@@ -47,3 +47,7 @@ td, tr {
 #board {
   width:100%;
 }
+
+.disabledButton{
+  pointer-events: none;
+}

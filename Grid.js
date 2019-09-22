@@ -101,6 +101,7 @@ class Grid{
         if(this.arr[i][j] == this.conf.oceanTypes.SHIP){
             this.arr[i][j] = this.conf.oceanTypes.HIT;
             this.isHit = true;
+        }else if(this.arr[i][j] == this.conf.oceanTypes.HIT){
         }else{
             this.arr[i][j] = this.conf.oceanTypes.MISS;
         }

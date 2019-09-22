@@ -1,4 +1,5 @@
 //Author: Ethan Brenner
+
 /**
  * Creates the exec instance with two admiral objects, along with their number of ships
  * @param {string} adm1Name: Admiral 1's nickname
@@ -8,7 +9,6 @@
  */
 class Exec{   
     constructor(adm1Name, adm2Name, numShips){
-        
         this.m_shipCount = numShips;
         //player turn updated each turn, adm1 = odd, adm2 = even?
         this.m_playerTurn = 1;
@@ -30,6 +30,7 @@ class Exec{
             }
             this.endGameChecker(1);
             this.advancePlayerTurn();
+            
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
@@ -39,6 +40,7 @@ class Exec{
             }
             this.endGameChecker(2);
             this.advancePlayerTurn();
+            
         }
         else{
             prompt("something went wrong with the playerTurn variable")
@@ -93,14 +95,6 @@ class Exec{
     }
     
     /**
-     * Creates a popup to displaying the text of message
-     * @param: valid message (most likely a string)
-     * @return: none
-    */
-    attentionGetter(message){
-        return(0);
-    }
-    /**
      * Determines which player is playing
      * @returns {number}: a number indicating whose turn it is
      */
@@ -124,21 +118,62 @@ class Exec{
     
     /**
      * Refreshes both tables based on the internal grids in each Admiral
+     * @param: none
      */
     refreshMap(){
         console.log("Called refreshMap()");
         if(this.getPlayerTurn()==1)
         {
+            this.updateName();
             this.admir1.refreshOnStart();
         }
         else{
+            this.updateName();
             this.admir2.refreshOnStart();
         }
     }
+
+    /**
+     * changes the player name at the top of index
+     * @param: none
+     */
+    updateName(){
+        if(this.m_playerTurn ==1){
+            document.getElementById("playerName").value = this.admir1.name;
+        }
+        else{
+            document.getElementById("playerName").value = this.admir2.name;
+        }
+    }
+
 }
-
-//-------------------------------------------------------------------------------\\
-//-------------------------------------------------------------------------------\\
-//-------------------------------------------------------------------------------\\
-
-
+    /**
+     * determines the state of the switch player button in index, hides/unhides table divs, updates
+     * button text and refreshes player maps
+     * @param: none
+     * 
+     */
+   function turnButton(){
+        let temp = document.getElementById("turnButton");
+        if(temp.value == "End Turn"){
+            //hide table divs
+            document.getElementById("table1").style.display = "none";
+            document.getElementById("table2").style.display = "none";
+            //update home button text to next value
+            temp.value = "Next Player";
+        }
+        else{
+            exec.advancePlayerTurn();
+            //refresh the maps
+            exec.refreshMap();
+            //show tables
+            document.getElementById("table1").style.display = "block";
+            document.getElementById("table2").style.display = "block";
+            //unlock the table
+            document.getElementById("fire1").classList.remove("disabledButton");
+            //update button text
+            temp.value = "End Turn";
+            //disable button
+            temp.disabled = true;
+        }  
+    }
