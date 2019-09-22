@@ -14,9 +14,13 @@
 
 <body onload="onLoadPull();">
     <h2>Welcome to Battleship!</h2>
+    <h5 id="gameInstructions">Scroll down to see your ships. Click on a tile in the firing map to make a guess, then click "End turn" to finish your turn</h5>
     <div align="center">
         <h1 id="playerName" style="display: inline">Player 1</h1>
         <h1 id="message" style="display: inline">: It's your turn</h1>
+        <h3 id="p1updates"> </h3>
+        <h3 id="p2updates"> </h3>
+
     </div>
 
     <div class="flex-container" id="board" style="flex-wrap: wrap">

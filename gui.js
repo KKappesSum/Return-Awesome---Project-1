@@ -3,6 +3,16 @@ let tempExec;
 let tempObj = {};
 let placeholder;
 
+
+/**
+ * Removes instructions after users start setup
+ * @param: none
+ */
+function removeInstructions()
+{
+  document.getElementById("instructions").style.display = "none";
+}
+
 /**
  * This function adds one to its input.
  * @param {number} input any number
@@ -21,7 +31,7 @@ function setPlayerNames() {
   }
 
   document.getElementById("names").innerHTML =
-    "These are your names " + p1 + " and " + p2 + ". Now select an orientation for the ship with the buttons below";
+    "Now select an orientation for the ship with the buttons below";
 
 }
 

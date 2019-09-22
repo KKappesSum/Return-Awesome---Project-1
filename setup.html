@@ -16,6 +16,7 @@
 
 <body>
     <div>
+        <p id="instructions">Welcome to Battleship! Please input the player names then click the button to start placing ships</p>
         <form id="form" onsubmit="return false;">
 
             <label for="Player1">Enter name of player 1: </label>
@@ -29,7 +30,7 @@
 
 
 
-            <button class="button" onclick="setPlayerNames(); setShipCount('ship1'); createExec();" id="button1">Pick
+            <button class="button" onclick="setPlayerNames(); setShipCount('ship1'); createExec(); removeInstructions();" id="button1">Pick
                 number of ships</button>
 
             <p id="ships"></p>
