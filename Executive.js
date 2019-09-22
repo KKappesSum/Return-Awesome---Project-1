@@ -90,14 +90,6 @@ class Exec{
     }
     
     /**
-     * Creates a popup to displaying the text of message
-     * @param: valid message (most likely a string)
-     * @return: none
-    */
-    attentionGetter(message){
-        return(0);
-    }
-    /**
      * Determines which player is playing
      * @returns {number}: a number indicating whose turn it is
      */
