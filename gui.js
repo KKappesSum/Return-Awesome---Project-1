@@ -388,9 +388,9 @@ function createExec(){
 * @param {string} tableId: id of the table that triggered the onclick event
 * @param {string} coords: coordinates for a specific cell in the table
 */
-function buttonHandler(tableId, coords){
+function buttonHandler(tableId, coords){  // TODO: remove tableId?
     if(tableId == "fire1"){
-        let hit = exec.updateTable(tableId,coords);
+        let hit = exec.updateTable(coords);
         document.getElementById("table1").classList.add("disabledButton");
         document.getElementById("turnButton").disabled = false;
         console.log(tableId);

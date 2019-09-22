@@ -53,33 +53,32 @@ class Admiral {
     return this.name;
   }
 
-  /**
-   * Update your own ship map with the other user's firing outcome
-   * void function, changes the hit or miss type of the water tile
-   * @param {string} coor - NumberLetter coordinate of the player's guess
-   * @param {number} tableId - id of the table being triggered by the onclick
-   * @return {boolean} true if a hit, false if a miss
+  /*
+   * Checks a specific grid cell for its status.
+   * @param {string} coord - The coordinate to check in the board.
+   * @return {boolean} true if it's a hit, else false.
    */
-  updateAfloat(coor, tableId) {
-    
-    if (this.board.updateCell(coor,tableId) === true)
-    {
-      //checks the fleet array for the ship that was hit
-      this.fleet.forEach(function (element) {
-        coordArray = element.getCoords();
-        coordArray.forEach(function(coorShip){
-          if (coorShip === coor)
-          {
-            element.incNumHits(); //func to Connie
-            if (!element.getStatus()) //if ship no longer afloat
-            {
-              this.afloat -= 1;
-            }
-          }
-        });
-      });
+  checkIfHit(coord) {
+    let temp = this.board.getCell(coord);
+    if(temp == this.config.oceanTypes.SHIP) {
+      return(true);
     }
-    return(this.board.updateCell(coor,tableId));
+    else {
+      return(false);
+    }
+  }
+
+  /*
+   * Increments hit counter in the appropriate Ship, and the afloat counter in this Admiral, if necessary.  This function is only called if a hit has already been validated.
+   * @param {string} coord - The coordinate of the Ship being hit.
+   * @return none.
+   */
+  hitShip(coord) {
+    let tempIndex = this.findShipByCoord(coord);
+    this.fleet[tempIndex].incNumHits();
+    if(this.fleet[tempIndex].status == false) {
+      this.afloat--;
+    }
   }
 
   /**
@@ -154,6 +153,30 @@ class Admiral {
       }
     }
     return shipIndex;
+  }
+
+  /*
+   * Helper function to find a Ship that occupies a given coordinate.
+   * @param {string} coord - The coordinate to search for.
+   * @return {number} foundIndex - The coordinate of the Ship in the fleet.
+   */
+  findShipByCoord(coord) {
+    let foundIndex = -1;
+    for(let shipIndex = 0; shipIndex < this.numShips; shipIndex++)
+    {
+      for(let coordIndex = 0; coordIndex < this.fleet[shipIndex].getSize(); coordIndex++)
+      {
+        if(this.fleet[shipIndex].getCoords()[coordIndex] == coord) {
+          foundIndex = shipIndex;
+        }
+      }
+    }
+    if(foundIndex < 0) {
+      console.log("ERROR: findShipByCoord could not find that coord in this Admiral!");
+    }
+    else {
+      return foundIndex;
+    }
   }
 
   /**
