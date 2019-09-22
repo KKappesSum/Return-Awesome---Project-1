@@ -333,29 +333,30 @@ function changeColor(sizee, horizontal, color, tableID) {
   }
 }
 
-/**
+// /**
 
- * This function will hide p1's board when p1 is done and make p2's board visible once they hit ok on the prompt
- * @param {boolean} hit: true if a hit, false if a miss
- */
-function switchPlayer(hit) {
-  //hide boards
-  document.getElementById("board").style.display = "none";
-  exec.refreshMap();
-  //make p2's board visible after giving an alert half a second later
-  setTimeout(function () {unhide()}, 500);
-}
+//  * This function will hide p1's board when p1 is done and make p2's board visible once they hit ok on the prompt
+//  * @param {boolean} hit: true if a hit, false if a miss
+//  */
+// function switchPlayer(hit) {
+//   //hide boards
+//   document.getElementById("board").style.display = "none";
+//   exec.refreshMap();
+//   //make p2's board visible after giving an alert half a second later
+//   setTimeout(function () {unhide()}, 500);
+// }
 
-/**
- * This function will make p2's board visible
- * @param none
- */
-function unhide() {
-  //setTimeout(function () {alert("Next player!")}, 1000);
-  alert("Next player!");
-  //unhide boards
-  document.getElementById("board").style.display = "block";
-}
+// /**
+//  * This function will make p2's board visible
+//  * @param none
+//  */
+// function unhide() {
+//   //setTimeout(function () {alert("Next player!")}, 1000);
+//   alert("Next player!");
+//   //unhide boards
+//   document.getElementById("board").style.display = "block";
+// }
+
 
  /* launched when submitting information in setup.html
  */
@@ -382,15 +383,16 @@ function createExec(){
 }
 
 /**
+ * handles button clicks on player map, filters for just fire map, calls for updating table coords
+ * and enables "next turn" button
 * @param {string} tableId: id of the table that triggered the onclick event
 * @param {string} coords: coordinates for a specific cell in the table
-* handles button clicks on player map, call necessary functions
 */
 function buttonHandler(tableId, coords){
     if(tableId == "fire1"){
         let hit = exec.updateTable(tableId,coords);
-        switchPlayer(hit);
-
+        document.getElementById("table1").classList.add("disabledButton");
+        document.getElementById("turnButton").disabled = false;
         console.log(tableId);
         console.log(coords);
     }
