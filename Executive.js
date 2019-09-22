@@ -22,15 +22,16 @@ class Exec{
      * @return {boolean} true if a hit, false if a miss
      */
     updateTable(tableId,coords){
+        let isAhit;
         if(this.getPlayerTurn() == 1){
             console.log("player 1's shot");
-            let isAhit = this.admir2.updateAfloat(coords, tableId);
+            isAhit = this.admir2.updateAfloat(coords, tableId);
             //endofgame func goes here
             this.advancePlayerTurn();
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
-           let isAhit = this.admir1.updateAfloat(coords, tableId);
+           isAhit = this.admir1.updateAfloat(coords, tableId);
            //endofgame func goes here
             this.advancePlayerTurn();
         }
@@ -43,10 +44,11 @@ class Exec{
     /**
      * checks whether all ships have been sunk, if so tosses up an alert and ends the game
      * @param: none
-     
+     */
+    /*
     endGameChecker(){
         if(exec.admir1.afloat == 0){
-
+            
         }
     }
     */
