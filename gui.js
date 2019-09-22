@@ -3,6 +3,8 @@ let tempExec;
 let tempObj = {};
 let placeholder;
 
+let p1;
+let p2;
 
 /**
  * Removes instructions after users start setup
@@ -19,8 +21,8 @@ function removeInstructions()
  * @returns {number} that number, plus one.
  */
 function setPlayerNames() {
-  let p1 = document.getElementById("player1").value;
-  let p2 = document.getElementById("player2").value;
+    p1 = document.getElementById("player1").value;
+    p2 = document.getElementById("player2").value;
   if (!(document.getElementById("player1") && document.getElementById("player1").value)) 
   {
     p1 = document.getElementById("player1").placeholder;
@@ -29,10 +31,6 @@ function setPlayerNames() {
   {
     p2 = document.getElementById("player2").placeholder;
   }
-
-  document.getElementById("names").innerHTML =
-    "Now select an orientation for the ship with the buttons below";
-
 }
 
 
@@ -113,7 +111,18 @@ function placeShip(size, horizontal, shipId)
   document.getElementById("ships").style.display = "block";
   document.getElementById("placement").style.display = "block";
   document.getElementById(shipId).style.display = "inline-block";
-  document.getElementById("placement").innerHTML = "Place ship of size " + size;
+  if(shipId==="ship1")
+  {
+    document.getElementById("placement").innerHTML = p1 + ", place your 1x" + size + " ship!";
+  }
+  if(shipId==="ship2")
+  {
+    console.log("THIS IS PLAYER 2'S NAME!!!!");
+    console.log(p2);
+    document.getElementById("placement").innerHTML = p2 + ", place your 1x" + size + " ship!";
+  }
+  console.log("THIS IS THE shipId");
+  console.log(shipId);
   let table = document.getElementById(shipId);
 
   //if the table isn't empty, begin to show the user places they can place their ships
