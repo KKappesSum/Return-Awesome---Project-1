@@ -156,6 +156,11 @@ class Admiral {
     return shipIndex;
   }
 
+  /*
+   * Helper function to find a Ship that occupies a given coordinate.
+   * @param {string} coord - The coordinate to search for.
+   * @return {number} foundIndex - The coordinate of the Ship in the fleet.
+   */
   findShipByCoord(coord) {
     let foundIndex = -1;
     for(let shipIndex = 0; shipIndex < this.numShips; shipIndex++)
