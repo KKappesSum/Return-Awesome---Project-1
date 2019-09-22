@@ -170,6 +170,7 @@ class Exec{
         let temp = document.getElementById("turnButton");
         if(temp.value === "End Turn"){
             //hide table divs
+            document.getElementById("gameInstructions").style.display = "none";
             document.getElementById("table1").style.display = "none";
             document.getElementById("table2").style.display = "none";
             //update home button text to next value
@@ -183,6 +184,7 @@ class Exec{
             //refresh the maps
             //exec.refreshMap();
             //show tables
+            document.getElementById("gameInstructions").style.display = "block";
             document.getElementById("table1").style.display = "block";
             document.getElementById("table2").style.display = "block";
             //unlock the table
