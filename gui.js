@@ -366,8 +366,15 @@ function unhide() {
 function createExec(){
     //creating an exec object
     let tempAdmr1 = document.getElementById("player1").value;
+    if(tempAdmr1 == "") {
+      tempAdmr1 = document.getElementById("player1").placeholder;
+    }
     console.log(tempAdmr1);
+
     let tempAdmr2 = document.getElementById("player2").value;
+    if(tempAdmr2 == "") {
+      tempAdmr2 = document.getElementById("player2").placeholder;
+    }
     console.log(tempAdmr2);
     let newString = document.getElementById("ships").innerHTML;
     tempNumShips = newString.substring(16);
@@ -375,7 +382,6 @@ function createExec(){
     console.log(tempNumShips);
 
     exec = new Exec(tempAdmr1, tempAdmr2, tempNumShips);
-    holder = new Placeholder(tempAdmr1, tempAdmr2, tempNumShips);
 }
 
 /**
