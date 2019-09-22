@@ -104,7 +104,6 @@ class Admiral {
         j++;
       }
       coordsDone = true;
-      console.log(coordsArr);
     }
     // horizontal
     else if(orientation == true) {
@@ -125,9 +124,7 @@ class Admiral {
     if(coordsDone === true) {
       // find the ship
       let shipIndex = this.findShipBySize(size);
-      console.log(shipIndex);
       // give coords to Ship
-      console.log(this.fleet[shipIndex]);
       this.fleet[shipIndex].setCoords(coordsArr);
       // give coords AND TABLEID to grid
       this.board.populateGrid(coordsArr, tableID);
