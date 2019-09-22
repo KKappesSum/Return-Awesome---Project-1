@@ -485,15 +485,16 @@ function makeTempObj(exec) {
   tempObj.adm2Ori = new Array(num);
 }
 
-function reconstruct(placeholder) {
-  exec = new Exec(placeholder.adm1Name, placeholder.adm2Name, placeholder.numShips);
-  for(let i = 0; i < placeholder.numShips; i++)
+function reconstruct(obj) {
+  exec = new Exec(obj.adm1Name, obj.adm2Name, obj.numShips);
+  for(let i = 0; i < obj.numShips; i++)
   {
-    exec.admir1.assignCoords(placeholder.adm1Coords[i], (i + 1), adm1Ori[i], "ship1");
+    exec.admir1.assignCoords(obj.adm1Coords[i], (i + 1), adm1Ori[i], "ship1");
   }
 
-  for(let i = 0; i < placeholder.numShips; i++)
+  for(let i = 0; i < obj.numShips; i++)
   {
-    exec.admir2.assignCoords(placeholder.adm2Coords[i], (i + 1), adm2Ori[i], "fire1");
+    exec.admir2.assignCoords(obj.adm2Coords[i], (i + 1), adm2Ori[i], "fire1");
   }
 }
+
