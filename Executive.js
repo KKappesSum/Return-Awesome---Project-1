@@ -28,12 +28,14 @@ class Exec{
             isAhit = this.admir2.updateAfloat(coords, tableId);
             this.endGameChecker(1);
             this.advancePlayerTurn();
+            
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
-           isAhit = this.admir1.updateAfloat(coords, tableId);
-           this.endGameChecker(2);
+            isAhit = this.admir1.updateAfloat(coords, tableId);
+            this.endGameChecker(2);
             this.advancePlayerTurn();
+            
         }
         else{
             prompt("something went wrong with the playerTurn variable")
@@ -119,18 +121,35 @@ class Exec{
     
     /**
      * Refreshes both tables based on the internal grids in each Admiral
+     * @param: none
      */
     refreshMap(){
         console.log("Called refreshMap()");
         if(this.getPlayerTurn()==1)
         {
+            this.updateName();
             this.admir1.refreshOnStart();
         }
         else{
+            this.updateName();
             this.admir2.refreshOnStart();
         }
     }
+
+    /**
+     * changes the player name at the top of index
+     * @param: none
+     */
+    updateName(){
+        if(this.m_playerTurn ==1){
+            document.getElementById("playerName").value = this.admir1.name;
+        }
+        else{
+            document.getElementById("playerName").value = this.admir2.name;
+        }
+    }
 }
+
 
 //-------------------------------------------------------------------------------\\
 //-------------------------------------------------------------------------------\\
