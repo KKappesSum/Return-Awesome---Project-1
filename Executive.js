@@ -92,6 +92,7 @@ class Exec{
      * Refreshes both tables based on the grids
      */
     refreshMap(){
+        console.log("Called refreshMap()");
         if(this.getPlayerTurn()==1)
         {
             this.admir1.refreshOnStart();

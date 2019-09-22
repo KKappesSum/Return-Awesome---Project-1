@@ -53,7 +53,7 @@ class GridTester{
     testUpdateCell(){
         try{
             console.log("/n/tSubtest Hit: ");
-            this.testGrid.updateCell("0:0", "ship1");
+            this.testGrid.updateCell("1:1", "ship1");
             console.log("SUCCESS");
             console.log("/n/tSubtest Miss: ");
             this.testGrid.updateCell("4:4", "ship1");
