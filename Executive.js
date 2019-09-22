@@ -19,22 +19,23 @@ class Exec{
      * Passes "guess" coordinates to admiral for grid/map updates during game
      * @param {string} coords: coordinates for the specific cell in the table
      * @param {string} tableId: id of the table that triggered the onclick event
-     * @return:none
+     * @return {boolean} true if a hit, false if a miss
      */
     updateTable(tableId,coords){
         if(this.getPlayerTurn() == 1){
             console.log("player 1's shot");
-            this.admir2.updateAfloat(coords, tableId);
+            let isAhit = this.admir2.updateAfloat(coords, tableId);
             this.advancePlayerTurn();
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
-            this.admir1.updateAfloat(coords, tableId);
+           let isAhit = this.admir1.updateAfloat(coords, tableId);
             this.advancePlayerTurn();
         }
         else{
             prompt("something went wrong with the playerTurn variable")
         }
+        return(isAhit);
     }
     
     /**
