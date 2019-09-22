@@ -157,6 +157,41 @@ class Exec{
         }
     }
 
+    checkSunk()
+    {
+        document.getElementById("p2updates").innerHTML = "";
+        document.getElementById("p1updates").innerHTML  = "";
+        document.getElementById("p2progress").innerHTML = "";
+        document.getElementById("p1progress").innerHTML  = "";
+        for (let i = 0; i< this.admir1.numShips; i++)
+        {
+            if (this.admir1.fleet[i].status === false)
+            {
+                document.getElementById("p2progress").innerHTML += "You sunk their ship of size "+(i+1)+"<br />";
+                document.getElementById("p1updates").innerHTML += "*Your ship of size "+(i+1)+" was sunk"  +"<br />";
+            }
+        }
+        for (let i = 0; i< this.admir2.numShips; i++)
+        {
+            if (this.admir2.fleet[i].status === false)
+            {
+                document.getElementById("p1progress").innerHTML += "You sunk their ship of size "+(i+1)+"<br />";
+                document.getElementById("p2updates").innerHTML += "*Your ship of size "+(i+1)+"was sunk" +  "<br />";
+            }
+        }
+        // let sunk;
+        // if(this.m_playerTurn ===2){
+        //     sunk = this.admir1.num - this.admir1.afloat;
+        // }
+        // else{
+        //     sunk = this.admir2.num  - this.admir2.name;
+        // }
+        // if (sunk != 0)
+        // {
+            
+        // }
+    }
+
 }
 
 /**
@@ -165,15 +200,20 @@ class Exec{
  */
 function updateMessages()
 {
+    exec.checkSunk();
     if (exec.getPlayerTurn() === 1)
     {
         document.getElementById("p1updates").style.display = "block";
         document.getElementById("p2updates").style.display = "none";
+        document.getElementById("p1progress").style.display = "block";
+        document.getElementById("p2progress").style.display = "none";
     }
     else
     {
         document.getElementById("p1updates").style.display = "none";
         document.getElementById("p2updates").style.display = "block";
+        document.getElementById("p1progress").style.display = "none";
+        document.getElementById("p2progress").style.display = "block";
     }
 }
 
@@ -190,6 +230,10 @@ function updateMessages()
             document.getElementById("gameInstructions").style.display = "none";
             document.getElementById("table1").style.display = "none";
             document.getElementById("table2").style.display = "none";
+            document.getElementById("p1updates").style.display = "none";
+            document.getElementById("p2updates").style.display = "none";
+            document.getElementById("p1progress").style.display = "none";
+            document.getElementById("p2progress").style.display = "none";
             //update home button text to next value
             temp.value = "Player Start";
             exec.advancePlayerTurn();
@@ -197,10 +241,9 @@ function updateMessages()
             exec.refreshFireMap();
         }
         else{
-            //exec.advancePlayerTurn();
-            //refresh the maps
-            //exec.refreshMap();
+
             //show tables
+            updateMessages();
             document.getElementById("gameInstructions").style.display = "block";
             document.getElementById("table1").style.display = "block";
             document.getElementById("table2").style.display = "block";

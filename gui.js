@@ -423,6 +423,42 @@ function buttonHandler(tableId, coords){
         document.getElementById("turnButton").disabled = false;
         console.log(tableId);
         console.log(coords);
+        exec.checkSunk();
+        if(exec.getPlayerTurn()===1)
+        {
+          document.getElementById("p1progress").style.display = "block";
+          for (let i = 0; i< exec.admir2.numShips; i++)
+          {
+            if (exec.admir2.fleet[i].status === false)
+            {
+                for (let j = 0; j<exec.admir2.fleet[i].coords.length; j++)
+                {
+                  console.log(exec.admir2.fleet[i].coords[j])
+                  if (exec.admir2.fleet[i].coords[j] == coords) {
+                    alert("Congrats! You sunk a ship!");
+                  }
+                }
+            }
+          }
+        }
+        else
+        {
+          document.getElementById("p2progress").style.display = "block";
+          for (let i = 0; i< exec.admir1.numShips; i++)
+          {
+            if (exec.admir1.fleet[i].status === false)
+            {
+                for (let j = 0; j<exec.admir1.fleet[i].coords.length; j++)
+                {
+                  console.log(exec.admir1.fleet[i].coords[j]);
+                  if (exec.admir1.fleet[i].coords[j] === coords) {
+                    alert("Congrats! You sunk a ship!");
+                  }
+                }
+            }
+          }
+
+        }
     }
     else{
         alert("You shouldn't fire on your own map");
