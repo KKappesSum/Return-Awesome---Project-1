@@ -123,12 +123,25 @@ class Exec{
         if(this.getPlayerTurn()===1)
         {
             this.updateName();
-            this.admir2.refreshOnStart();
+            this.admir1.refreshOnStart();
         }
         else{
             this.updateName();
-            this.admir1.refreshOnStart();
+            this.admir2.refreshOnStart();
         }
+    }
+
+    refreshFireMap()
+    {
+        if(this.getPlayerTurn()===1)
+        {
+            this.updateName();
+            this.admir2.refreshFireOnly();
+        }
+        else{
+            this.updateName();
+            this.admir1.refreshFireOnly();
+        }   
     }
 
     /**
@@ -163,6 +176,7 @@ class Exec{
             temp.value = "Player Start";
             exec.advancePlayerTurn();
             exec.refreshMap();
+            exec.refreshFireMap();
         }
         else{
             //exec.advancePlayerTurn();
