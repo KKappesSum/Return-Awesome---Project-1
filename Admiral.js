@@ -76,7 +76,7 @@ class Admiral {
   hitShip(coord) {
     let tempIndex = this.findShipByCoord(coord);
     this.fleet[tempIndex].incNumHits();
-    if(this.fleet[tempIndex] == false) {
+    if(this.fleet[tempIndex].status == false) {
       this.afloat--;
     }
   }

@@ -26,7 +26,7 @@ class Exec{
             console.log("player 1's shot");
             isAhit = this.admir2.checkIfHit(coord);
             if(isAhit) {
-                admir2.hitShip();
+                this.admir2.hitShip(coord);
             }
             this.endGameChecker(1);
             this.advancePlayerTurn();
@@ -35,7 +35,7 @@ class Exec{
             console.log("player 2's shot");
             isAhit = this.admir1.checkIfHit(coord);
             if(isAhit) {
-                admir1.hitShip();
+                this.admir1.hitShip(coord);
             }
             this.endGameChecker(2);
             this.advancePlayerTurn();

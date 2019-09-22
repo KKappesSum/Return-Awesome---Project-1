@@ -392,9 +392,9 @@ function createExec(){
 * @param {string} coords: coordinates for a specific cell in the table
 * handles button clicks on player map, call necessary functions
 */
-function buttonHandler(tableId, coords){
+function buttonHandler(tableId, coords){  // TODO: remove tableId?
     if(tableId == "fire1"){
-        let hit = exec.updateTable(tableId,coords);
+        let hit = exec.updateTable(coords);
         switchPlayer(hit);
 
         console.log(tableId);
