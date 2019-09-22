@@ -435,8 +435,8 @@ function saveShip(coords, shipSize, orientation) {
 * stores the completed Exec object in the session storage after all ships are placed
 * navigates to the index page
 */
-function storeExecObj(executiveObj){
-    sessionStorage.ExecObj = JSON.stringify(executiveObj);
+function storeExecObj(tempObj){
+    sessionStorage.ExecObj = JSON.stringify(tempObj);
     console.log("stored obj");
     location.href = "./index.html";
 }
@@ -457,10 +457,9 @@ function pullExecObj(){
 */
 function onLoadPull(){
     
-    //should be
-    //placeholder = pullExecObj();
-    //create the new exec object/fill it in
-    //exec.refreshMap();
+    placeholder = pullExecObj();
+    reconstruct(placeholder);
+    exec.refreshMap();
     
 }
 

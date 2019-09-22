@@ -22,16 +22,17 @@ class Exec{
      * @return {boolean} true if a hit, false if a miss
      */
     updateTable(tableId,coords){
+        let isAhit;
         if(this.getPlayerTurn() == 1){
             console.log("player 1's shot");
-            let isAhit = this.admir2.updateAfloat(coords, tableId);
-            //endofgame func goes here
+            isAhit = this.admir2.updateAfloat(coords, tableId);
+            this.endGameChecker(1);
             this.advancePlayerTurn();
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
-           let isAhit = this.admir1.updateAfloat(coords, tableId);
-           //endofgame func goes here
+           isAhit = this.admir1.updateAfloat(coords, tableId);
+           this.endGameChecker(2);
             this.advancePlayerTurn();
         }
         else{
@@ -43,13 +44,24 @@ class Exec{
     /**
      * checks whether all ships have been sunk, if so tosses up an alert and ends the game
      * @param: none
-     
-    endGameChecker(){
-        if(exec.admir1.afloat == 0){
-
+     */
+    
+    endGameChecker(num){
+        let player1 = this.admir1;
+        let player2 = this.admir2;
+        let outputString;
+        if(num ==1){
+            if(this.admir2.afloat == 0){
+                outputString = player1 + ", you sunk all of " + player2 + "'s battleships!";
+            }
+            else{
+                outputString = player2 + ", you sunk all of " + player1 + "'s battleships!"; 
+            }
+            alert(outputString);
+            
         }
     }
-    */
+    
     /**
      * Places ships based on given coordinates of the upper most left cell, 
      * it sends the orientation, shipsize and table to be used to assemble and 
