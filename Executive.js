@@ -47,8 +47,8 @@ class Exec{
      * @param: none
      */
     endGameChecker(num){
-        let player1 = this.admir1;
-        let player2 = this.admir2;
+        let player1 = this.admir1.name;
+        let player2 = this.admir2.name;
         let outputString;
         if(this.admir1.afloat ==0 || this.admir2.afloat == 0){
             if(num ==1){
@@ -60,7 +60,11 @@ class Exec{
                 //alerts gamers to the end of the game and resets sessionStorage, also routes the game to the setup screen
                 alert(outputString);
                 sessionStorage.ExecObj = {};
-                location.href = "./index.html";
+                //location.href = "./index.html"; 
+
+                //displays end of game message and hides p1 ship map
+                document.getElementById("table2").style.display = "none";
+                document.getElementById("message").innerHTML = "has won the game!!!";
             }
         }
     
