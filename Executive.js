@@ -149,6 +149,7 @@ class Exec{
      */
    function turnButton(){
         let temp = document.getElementById("turnButton");
+        console.log(temp.value);
         if(temp.value == "End Turn"){
             //hide table divs
             document.getElementById("table1").style.display = "none";
