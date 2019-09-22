@@ -78,6 +78,8 @@ class Exec{
 
      /**
      * Toggles the turn from one player to the other
+     * @param: none
+     * 
      */
     advancePlayerTurn(){
         if(this.m_playerTurn == 1){
@@ -89,7 +91,7 @@ class Exec{
     }
     
     /**
-     * Refreshes both tables based on the grids
+     * Refreshes both tables based on the internal grids in each Admiral
      */
     refreshMap(){
         if(this.getPlayerTurn()==1)
