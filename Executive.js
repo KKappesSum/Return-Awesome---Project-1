@@ -138,10 +138,11 @@ class Exec{
      */
     updateName(){
         if(this.m_playerTurn ===1){
-            document.getElementById("playerName").value = this.admir1.name;
+            document.getElementById("playerName").innerHTML = this.admir1.name;
         }
         else{
-            document.getElementById("playerName").value = this.admir2.name;
+            console.log("changes name?");
+            document.getElementById("playerName").innerHTML = this.admir2.name;
         }
     }
 
@@ -171,12 +172,14 @@ function resetFireMap()
             document.getElementById("table1").style.display = "none";
             document.getElementById("table2").style.display = "none";
             //update home button text to next value
-            temp.value = "Next Player";
+            temp.value = "Player Start";
+            exec.advancePlayerTurn();
+            exec.refreshMap();
         }
         else{
-            exec.advancePlayerTurn();
+            //exec.advancePlayerTurn();
             //refresh the maps
-            exec.refreshMap();
+            //exec.refreshMap();
             //show tables
             resetFireMap();
             document.getElementById("table1").style.display = "block";
