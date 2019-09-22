@@ -9,8 +9,6 @@
  */
 class Exec{   
     constructor(adm1Name, adm2Name, numShips){
-        
-        this.m_buttonState = true;
         this.m_shipCount = numShips;
         //player turn updated each turn, adm1 = odd, adm2 = even?
         this.m_playerTurn = 1;
@@ -143,16 +141,16 @@ class Exec{
         }
     }
 
-
+}
     /**
      * determines the state of the switch player button in index, hides/unhides table divs, updates
      * button text and refreshes player maps
      * @param: none
      * 
      */
-    turnButton(){
+   function turnButton(){
         let temp = document.getElementById("turnButton");
-        if(this.m_buttonState){
+        if(temp.value == "End Turn"){
             //hide table divs
             document.getElementById("table1").style.display = "none";
             document.getElementById("table2").style.display = "none";
@@ -160,9 +158,9 @@ class Exec{
             temp.value = "Next Player";
         }
         else{
-            this.advancePlayerTurn();
+            exec.advancePlayerTurn();
             //refresh the maps
-            this.refreshMap();
+            exec.refreshMap();
             //show tables
             document.getElementById("table1").style.display = "block";
             document.getElementById("table2").style.display = "block";
@@ -172,7 +170,5 @@ class Exec{
             temp.value = "End Turn";
             //disable button
             temp.disabled = true;
-        }
-        this.m_buttonState = !this.m_buttonState;
+        }  
     }
-}
