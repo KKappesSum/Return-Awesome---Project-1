@@ -339,12 +339,6 @@ function changeColor(sizee, horizontal, color, tableID) {
  * @param {boolean} hit: true if a hit, false if a miss
  */
 function switchPlayer(hit) {
-  if(hit == true){
-    alert("You hit!");
-  }
-  else{
-    alert("You missed!");
-  }
   //hide boards
   document.getElementById("board").style.display = "none";
   exec.refreshMap();
