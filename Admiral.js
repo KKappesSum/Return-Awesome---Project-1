@@ -183,4 +183,8 @@ class Admiral {
     this.board.refreshTable("fire1", false);  
   }
 
+  refreshFireOnly() {
+    this.board.refreshTable("fire1", false);  
+  }
+
 }

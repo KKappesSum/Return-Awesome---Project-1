@@ -106,13 +106,10 @@ class Exec{
      * 
      */
     advancePlayerTurn(){
-        console.log("i ran");
         if(this.m_playerTurn == 1){
-            console.log("switching to p2");
             this.m_playerTurn = 2;
         }
         else{
-            console.log("back to p1");
             this.m_playerTurn = 1;
         }
     }
@@ -125,15 +122,26 @@ class Exec{
         console.log("Called refreshMap()");
         if(this.getPlayerTurn()===1)
         {
-            console.log("refresh :)")
             this.updateName();
             this.admir1.refreshOnStart();
         }
         else{
-            console.log("reffff");
             this.updateName();
             this.admir2.refreshOnStart();
         }
+    }
+
+    refreshFireMap()
+    {
+        if(this.getPlayerTurn()===1)
+        {
+            this.updateName();
+            this.admir2.refreshFireOnly();
+        }
+        else{
+            this.updateName();
+            this.admir1.refreshFireOnly();
+        }   
     }
 
     /**
@@ -145,26 +153,12 @@ class Exec{
             document.getElementById("playerName").innerHTML = this.admir1.name;
         }
         else{
-            console.log("changes name?");
             document.getElementById("playerName").innerHTML = this.admir2.name;
         }
     }
 
 }
 
-/**
- * Resets the fire map to all water squares 
- * @param: none
- */
-function resetFireMap()
-    {
-        let table = document.getElementById("fire1");
-        for(let i = 0; i < table.rows.length; i++){
-            for(let j = 0; j < table.rows[0].cells.length; j++){
-                table.rows[i].cells[j].style.backgroundColor = "lightblue";
-            }
-        }
-    }
 
     /**
      * determines the state of the switch player button in index, hides/unhides table divs, updates
@@ -182,16 +176,17 @@ function resetFireMap()
             temp.value = "Player Start";
             exec.advancePlayerTurn();
             exec.refreshMap();
+            exec.refreshFireMap();
         }
         else{
             //exec.advancePlayerTurn();
             //refresh the maps
             //exec.refreshMap();
             //show tables
-            resetFireMap();
             document.getElementById("table1").style.display = "block";
             document.getElementById("table2").style.display = "block";
             //unlock the table
+
             document.getElementById("table1").classList.remove("disabledButton");
             //update button text
             temp.value = "End Turn";
