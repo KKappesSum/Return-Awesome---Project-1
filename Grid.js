@@ -43,9 +43,9 @@ class Grid{
     }
 
     /**
-     * Places ships on the grid based on an array of coordinates and updates the onscreen grid
-     * @param {Array} locationArr: An array of all of the cells that contains a ship
-     * @param {string} tableId: A string given the elementId for the table to be updated
+     * Places ships on the grid based on an array of coordinates and updates the onscreen table
+     * @param {Array} locationArr: An array of coordinates occupied by a Ship
+     * @param {string} tableId: the elementId for the table to be updated
      */
     populateGrid(locationArr, tableId){
         for(let i = 0; i < locationArr.length; i++){
@@ -57,9 +57,9 @@ class Grid{
     }
 
     /**
-     * A function for updating an onscreen table to display the current values in the grid
-     * @param {string} tableId:  A string given the elementId for the table to be updated
-     * @param {bool} isShipMap: True: Updates the shipmap; False: Updates the firingmap
+     * Updates an onscreen table to display the current values in the grid
+     * @param {string} tableId: the elementId for the table to be updated
+     * @param {bool} isShipMap: if true, the ship map is updated; if false, the firing map is updated.
      */
     refreshTable(tableId, isShipMap){
         let table = document.getElementById(tableId);
@@ -91,9 +91,9 @@ class Grid{
 
     /**
      * Changes a single cell based on whether or not the shot was a hit or a miss.
-     * @param {string} location: The location of the cell to update
+     * @param {string} location: The coordinate location of the cell to update
      * @param {string} tableId: The identifier for the table to be changed
-     * @returns {bool} True: a ship was hit; False: it was a miss
+     * @returns {bool} true if a ship was hit; false if it was a miss
      */
     updateCell(location, tableId){
         this.isHit = false;

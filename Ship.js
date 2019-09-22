@@ -1,5 +1,5 @@
-/** Class representing a Ship. 
- * @param {integer} size - The size (i.e. length) of the Ship.
+/** Class that represents a Ship. 
+ * @param {number} size : The size (i.e. length) of the Ship.
  */
 class Ship {
 	/**
@@ -15,7 +15,7 @@ class Ship {
 	// ---- setters & getters ----
 	/**
 	 * Get the ship's size.
-	 * @return {integer} the Ship's size.
+	 * @return {number} the Ship's size.
 	 */
 	getSize() {
 		return this.size;
@@ -31,7 +31,7 @@ class Ship {
 
 	/**
 	 * Get the number of hits the ship has taken.
-	 * @return {integer} the number of hits
+	 * @return {number} the number of hits
 	 */
 	getNumHits() {
 		return this.numHits;
@@ -39,8 +39,7 @@ class Ship {
 
 	/**
 	 * Get the ship's coordinates.
-	 * @param none.
-	 * @return {string[]} coords, an array of strings
+	 * @return {string[]} the coordinates occupied by the Ship
 	 */
 	getCoords() {
 		return this.coords;
@@ -48,8 +47,7 @@ class Ship {
 
 	/**
 	 * Update the ship's status when it sinks.
-	 * @param none.
-	 * @return none.
+	 * @return {boolean} none.
 	 */
 	setStatus() {
 		this.status = false;
@@ -57,8 +55,6 @@ class Ship {
 
 	/**
 	 * Increment the number of hits the ship has taken, and call setSunk() if the ship takes enough hits to sink.
-	 * @param none.
-	 * @return none.
 	 */
 	incNumHits() {
 		if(this.status === true)
@@ -77,8 +73,7 @@ class Ship {
 
 	/**
 	 * Set the ship's coordinates.
-	 * @param {string[]} coordsArr, an array of strings
-	 * @return none.
+	 * @param {string[]} coordsArr : an array of strings
 	 */
 	setCoords(coordsArr) {
 		if(coordsArr.length > this.size)
