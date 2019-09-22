@@ -45,3 +45,10 @@
 13. 9/20/19. Fish Bowl
 	Attendees: Archana Ramakrishnan, Ethan Brenner
 	Continued front end/ GUI development; bug troubleshooting
+14. 9/21/19 LEEP2
+	Attendees: Archana Ramakrishnan, Ethan Brenner, Kyle Kappes-Sum, Malena Schoeni, Connie Li
+	Hack-a-thon style code as much as possible -- connect back end and front end 
+15. 9/22/19 Watkins Scholarship Hall
+	Attendees: Archana Ramakrishnan, Malena Schoeni
+	Worked on hit/miss interface and what happens when a ship is sunk
+	Final bug fixes 
