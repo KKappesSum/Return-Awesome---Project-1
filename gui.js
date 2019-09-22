@@ -471,9 +471,10 @@ function testObj(){
 function makeTempObj(exec) {
   tempObj.adm1Name = exec.admir1.name;
   tempObj.adm2Name = exec.admir2.name;
-  tempObj.numShips = exec.m_shipCount;
-  tempObj.adm1Coords = new Array(exec.m_shipCount);
-  tempObj.adm1Ori = new Array(exec.m_shipCount);
-  tempObj.adm2Coords = new Array(exec.m_shipCount);
-  tempObj.adm2Ori = new Array(exec.m_shipCount);
+  let num = Number(exec.m_shipCount);
+  tempObj.numShips = num;
+  tempObj.adm1Coords = new Array(num);
+  tempObj.adm1Ori = new Array(num);
+  tempObj.adm2Coords = new Array(num);
+  tempObj.adm2Ori = new Array(num);
 }
