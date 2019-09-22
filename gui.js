@@ -438,8 +438,6 @@ function onLoadPull(){
     //placeholder = pullExecObj();
     //create the new exec object/fill it in
     //exec.refreshMap();
-    exec = pullExecObj();
-    exec.refreshMap();
     
 }
 
