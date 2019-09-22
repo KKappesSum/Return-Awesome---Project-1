@@ -66,7 +66,7 @@ class Admiral {
     {
       //checks the fleet array for the ship that was hit
       this.fleet.forEach(function (element) {
-        coordArray = element.getCoords();
+        let coordArray = element.getCoords();
         coordArray.forEach(function(coorShip){
           if (coorShip === coor)
           {
