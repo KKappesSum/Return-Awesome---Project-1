@@ -1,6 +1,7 @@
 let exec;
 let tempExec;
-let holder;
+let tempObj = {};
+let placeholder;
 
 /**
  * This function adds one to its input.
@@ -451,3 +452,9 @@ function testObj(){
 }
 
 
+function makeTempObj(exec) {
+  tempObj.adm1Name = exec.admir1.name;
+  tempObj.adm2Name = exec.admir2.name;
+  tempObj.numShips = exec.m_shipCount;
+
+}
