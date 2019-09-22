@@ -393,11 +393,17 @@ function createExec(){
 * handles button clicks on player map, call necessary functions
 */
 function buttonHandler(tableId, coords){
-    let hit = exec.updateTable(tableId,coords);
-    switchPlayer(hit);
+    if(tableId == "fire1"){
+        let hit = exec.updateTable(tableId,coords);
+        switchPlayer(hit);
 
-    console.log(tableId);
-    console.log(coords);
+        console.log(tableId);
+        console.log(coords);
+    }
+    else{
+        console.log("You shouldn't fire on your own map");
+    }
+    
 }
 
 /**
