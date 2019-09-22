@@ -419,11 +419,11 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
 }
 
 function saveShip(coords, shipSize, orientation) {
-  if(exec.m_playerTurn == 1) {
+  if(exec.m_playerTurn == true) {
     tempObj.adm1Coords[shipSize - 1] = coords;
     tempObj.adm1Ori[shipSize - 1] = orientation;
   }
-  else if(exec.m_playerTurn == 2) {
+  else if(exec.m_playerTurn == false) {
     tempObj.adm2Coords[shipSize - 1] = coords;
     tempObj.adm2Ori[shipSize - 1] = orientation;
   }

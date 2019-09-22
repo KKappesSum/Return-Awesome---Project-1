@@ -89,6 +89,7 @@ class Admiral {
     let coordsArr = new Array(size);
     let coordsDone = false;
     // parse startCoord
+    console.log(startCoord);
     let row = Number(startCoord.substring(0,1));
     let col = Number(startCoord.substring(2));
     let tempStr = "";

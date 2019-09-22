@@ -25,16 +25,12 @@ class Exec{
         if(this.getPlayerTurn() == true){
             console.log("player 1's shot");
             isAhit = this.admir2.updateHit(coord, tableID);
-            this.endGameChecker(1);
-            this.advancePlayerTurn();
-            
+            this.endGameChecker(1);  
         }
         else if(this.getPlayerTurn() == false){
             console.log("player 2's shot");
             isAhit = this.admir1.updateHit(coord, tableID);
             this.endGameChecker(2);
-            this.advancePlayerTurn();
-            
         }
         else{
             prompt("something went wrong with the playerTurn variable")
@@ -159,7 +155,9 @@ class Exec{
             
             //refresh the maps
             exec.refreshMap();
+            console.log(exec.getPlayerTurn());
             exec.advancePlayerTurn();
+            console.log(exec.getPlayerTurn());
             //show tables
             document.getElementById("table1").style.display = "block";
             document.getElementById("table2").style.display = "block";
