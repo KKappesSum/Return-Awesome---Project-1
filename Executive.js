@@ -10,8 +10,8 @@
 class Exec{   
     constructor(adm1Name, adm2Name, numShips){
         this.m_shipCount = numShips;
-        //player turn updated each turn, adm1 = odd, adm2 = even?
-        this.m_playerTurn = 1;
+        //if true = p1, false = p2
+        this.m_playerTurn = true;
         this.admir1 = new Admiral(numShips, adm1Name);
         this.admir2 = new Admiral(numShips, adm2Name);  
     }
@@ -22,14 +22,14 @@ class Exec{
      */
     updateTable(coord, tableID){
         let isAhit;
-        if(this.getPlayerTurn() == 1){
+        if(this.getPlayerTurn() == true){
             console.log("player 1's shot");
             isAhit = this.admir2.updateHit(coord, tableID);
             this.endGameChecker(1);
             this.advancePlayerTurn();
             
         }
-        else if(this.getPlayerTurn() == 2){
+        else if(this.getPlayerTurn() == false){
             console.log("player 2's shot");
             isAhit = this.admir1.updateHit(coord, tableID);
             this.endGameChecker(2);
@@ -75,11 +75,11 @@ class Exec{
      * @param {boolean} orientation: vertical or horizontal orientation
      */
     sendCoordsForPlacement(tableId, coords, shipSize, orientation){
-        if(this.getPlayerTurn() == 1){
+        if(this.getPlayerTurn() == true){
             this.admir1.assignCoords(coords,shipSize, orientation,tableId);
             console.log("ship of size "+shipSize+" successfully placed for admiral1");
         }
-        else if (this.getPlayerTurn() == 2){
+        else if (this.getPlayerTurn() == false){
             this.admir2.assignCoords(coords,shipSize,orientation,tableId);
             console.log("ship of size "+shipSize+" successfully placed for admiral2");
         }
@@ -90,7 +90,7 @@ class Exec{
     
     /**
      * Determines which player is playing
-     * @returns {number}: a number indicating whose turn it is
+     * @returns {boolean}: a number indicating whose turn it is
      */
     getPlayerTurn(){
         return(this.m_playerTurn);
@@ -102,13 +102,9 @@ class Exec{
      * 
      */
     advancePlayerTurn(){
-        if(this.m_playerTurn == 1){
-            this.m_playerTurn = 2;
+        this.m_playerTurn = !this.m_playerTurn;
         }
-        else{
-            this.m_playerTurn = 1;
-        }
-    }
+    
     
     /**
      * Refreshes both tables based on the internal grids in each Admiral
@@ -116,12 +112,14 @@ class Exec{
      */
     refreshMap(){
         console.log("Called refreshMap()");
-        if(this.getPlayerTurn()==1)
+        if(this.getPlayerTurn()==true)
         {
+            console.log("P1");
             this.updateName();
             this.admir1.refreshOnStart();
         }
         else{
+            console.log("P2");
             this.updateName();
             this.admir2.refreshOnStart();
         }
@@ -132,7 +130,7 @@ class Exec{
      * @param: none
      */
     updateName(){
-        if(this.m_playerTurn ==1){
+        if(this.m_playerTurn == true){
             document.getElementById("playerName").value = this.admir1.name;
         }
         else{
@@ -158,14 +156,15 @@ class Exec{
             temp.value = "Next Player";
         }
         else{
-            exec.advancePlayerTurn();
+            
             //refresh the maps
             exec.refreshMap();
+            exec.advancePlayerTurn();
             //show tables
             document.getElementById("table1").style.display = "block";
             document.getElementById("table2").style.display = "block";
             //unlock the table
-            document.getElementById("fire1").classList.remove("disabledButton");
+            document.getElementById("table1").classList.remove("disabledButton");
             //update button text
             temp.value = "End Turn";
             //disable button
