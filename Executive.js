@@ -65,6 +65,7 @@ class Exec{
                 //displays end of game message and hides p1 ship map
                 document.getElementById("table2").style.display = "none";
                 document.getElementById("message").innerHTML = "has won the game!!!";
+                document.getElementById("turnButton").style.display = "none";
             }
         }
     
@@ -176,7 +177,7 @@ class Exec{
             if (this.admir2.fleet[i].status === false)
             {
                 document.getElementById("p1progress").innerHTML += "You sunk their ship of size "+(i+1)+"<br />";
-                document.getElementById("p2updates").innerHTML += "*Your ship of size "+(i+1)+"was sunk" +  "<br />";
+                document.getElementById("p2updates").innerHTML += "*Your ship of size "+(i+1)+" was sunk" +  "<br />";
             }
         }
         // let sunk;
