@@ -401,7 +401,7 @@ function buttonHandler(tableId, coords){
         console.log(coords);
     }
     else{
-        console.log("You shouldn't fire on your own map");
+        alert("You shouldn't fire on your own map");
     }
     
 }
