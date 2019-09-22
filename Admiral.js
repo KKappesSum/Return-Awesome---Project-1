@@ -156,6 +156,25 @@ class Admiral {
     return shipIndex;
   }
 
+  findShipByCoord(coord) {
+    let foundIndex = -1;
+    for(let shipIndex = 0; shipIndex < this.numShips; shipIndex++)
+    {
+      for(let coordIndex = 0; coordIndex < this.fleet[shipIndex].getSize(); coordIndex++)
+      {
+        if(this.fleet[shipIndex].getCoords()[coordIndex] == coord) {
+          foundIndex = shipIndex;
+        }
+      }
+    }
+    if(foundIndex < 0) {
+      console.log("ERROR: findShipByCoord could not find that coord in this Admiral!");
+    }
+    else {
+      return foundIndex;
+    }
+  }
+
   /**
    * refreshes both maps at the start of the game
    */
