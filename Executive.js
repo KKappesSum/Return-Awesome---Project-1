@@ -20,24 +20,18 @@ class Exec{
      * @param {string} coords: coordinates for the specific cell in the table
      * @return {boolean} true if a hit, false if a miss
      */
-    updateTable(coord){
+    updateTable(coord, tableID){
         let isAhit;
         if(this.getPlayerTurn() == 1){
             console.log("player 1's shot");
-            isAhit = this.admir2.checkIfHit(coord);
-            if(isAhit) {
-                this.admir2.hitShip(coord);
-            }
+            isAhit = this.admir2.updateHit(coord, tableID);
             this.endGameChecker(1);
             this.advancePlayerTurn();
             
         }
         else if(this.getPlayerTurn() == 2){
             console.log("player 2's shot");
-            isAhit = this.admir1.checkIfHit(coord);
-            if(isAhit) {
-                this.admir1.hitShip(coord);
-            }
+            isAhit = this.admir1.updateHit(coord, tableID);
             this.endGameChecker(2);
             this.advancePlayerTurn();
             
