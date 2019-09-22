@@ -62,7 +62,7 @@ class Admiral {
    */
   updateAfloat(coor, tableId) {
     
-    if (updateCell(coor,tableId) === true)
+    if (this.board.updateCell(coor,tableId) === true)
     {
       //checks the fleet array for the ship that was hit
       this.fleet.forEach(function (element) {
@@ -79,7 +79,7 @@ class Admiral {
         });
       });
     }
-    return(updateCell(coor,tableId));
+    return(this.board.updateCell(coor,tableId));
   }
 
   /**
