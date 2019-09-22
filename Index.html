@@ -21,7 +21,7 @@
 
     <div class="flex-container" id="board" style="flex-wrap: wrap">
         <!--Table 1-->
-        <div>
+        <div id="table1">
             <p align="center">Firing Map</p>
             <!--Alpha Table 1-->
             <div>
@@ -160,11 +160,13 @@
                 </aside>
             </section>
         </div>
-
+        <div style="flex-direction: row; vertical-align: top; text-align: center;">
+            <button style="width:50%; height: 130%; font-weight: bold; font-size: 18px; font-stretch: expanded;" align="center" type="button" id="turnButton" onlick="exec.turnButton();">End turn</button>
+        </div>
         <br>
 
         <!--Table 2-->
-        <div>
+        <div if="table2">
             <p align="center">Your Ships</p>
             <!--Alpha Table 2-->
             <div>
