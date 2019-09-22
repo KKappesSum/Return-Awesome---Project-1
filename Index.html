@@ -19,12 +19,14 @@
 
     <h2>Welcome to Battleship!</h2>
 
-    <div class="flex-container" id="board" width=100%>
+    <div class="flex-container" id="board">
+        <!--Table 1-->
         <div>
+            <!--Alpha Table 1-->
             <div>
                 <table align="top" id="letters" class="table">
                     <tr>
-                        <td>--</td>
+                        <td>-</td>
                         <td>A</td>
                         <td>B</td>
                         <td>C</td>
@@ -37,10 +39,9 @@
                 </table>
             </div>
 
-
-
+            <!--Numeric Table 1-->
             <aside style="float:left">
-                <table align="left" id="numbers" style="width:10%;">
+                <table align="left" id="numbers" style="width:10%; display:inline-block">
                     <tr>
                         <td>1</td>
                     </tr>
@@ -67,9 +68,13 @@
                     </tr>
                 </table>
             </aside>
+
+
+            <!--Button Table 1-->
             <section>
                 <aside>
-                    <table align="left" id="fire1" border="1" width=100% style="cursor: pointer; float:right">
+                    <table style="width:80%; display:inline-block" align="left" id="fire1" border="1" width=100%
+                        style="cursor: pointer; float: right">
                         <tr>
                             <td name="1:1" onclick="buttonHandler('fire1','1:1');">~~~</td>
                             <td name="1:2" onclick="buttonHandler('fire1','1:2');">~~~</td>
@@ -151,143 +156,151 @@
                             <td name="8:8" onclick="buttonHandler('fire1','8:8');">~~~</td>
                         </tr>
                     </table>
-
-                    <br>
-
-                    <div>
-                        <table align="top" id="letters" class="table">
-                            <tr>
-                                <td>--</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>C</td>
-                                <td>D</td>
-                                <td>E</td>
-                                <td>F</td>
-                                <td>G</td>
-                                <td>H</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <aside style="float:left">
-                        <table align="left" id="numbers" style="width:10%;">
-                            <tr>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                            </tr>
-                        </table>
-                    </aside>
-                    <section>
-                        <aside>
-
-                            <table align="right" id="ship1" border="1" width=100% style="cursor: pointer; float:right">
-                                <tr>
-                                    <td name="1:1" onclick="buttonHandler('ship1','1:1');">~~~</td>
-                                    <td name="1:2" onclick="buttonHandler('ship1','1:2');">~~~</td>
-                                    <td name="1:3" onclick="buttonHandler('ship1','1:3');">~~~</td>
-                                    <td name="1:4" onclick="buttonHandler('ship1','1:4');">~~~</td>
-                                    <td name="1:5" onclick="buttonHandler('ship1','1:5');">~~~</td>
-                                    <td name="1:6" onclick="buttonHandler('ship1','1:6');">~~~</td>
-                                    <td name="1:7" onclick="buttonHandler('ship1','1:7');">~~~</td>
-                                    <td name="1:8" onclick="buttonHandler('ship1','1:8');">~~~</td>
-                                </tr>
-                                <tr>
-                                    <td name="2:1" onclick="buttonHandler('ship1','2:1');">~~~</td>
-                                    <td name="2:2" onclick="buttonHandler('ship1','2:2');">~~~</td>
-                                    <td name="2:3" onclick="buttonHandler('ship1','2:3');">~~~</td>
-                                    <td name="2:4" onclick="buttonHandler('ship1','2:4');">~~~</td>
-                                    <td name="2:5" onclick="buttonHandler('ship1','2:5');">~~~</td>
-                                    <td name="2:6" onclick="buttonHandler('ship1','2:6');">~~~</td>
-                                    <td name="2:7" onclick="buttonHandler('ship1','2:7');">~~~</td>
-                                    <td name="2:8" onclick="buttonHandler('ship1','2:8');">~~~</td>
-                                </tr>
-                                <tr>
-                                    <td name="3:1" onclick="buttonHandler('ship1','3:1');">~~~</td>
-                                    <td name="3:2" onclick="buttonHandler('ship1','3:2');">~~~</td>
-                                    <td name="3:3" onclick="buttonHandler('ship1','3:3');">~~~</td>
-                                    <td name="3:4" onclick="buttonHandler('ship1','3:4');">~~~</td>
-                                    <td name="3:5" onclick="buttonHandler('ship1','3:5');">~~~</td>
-                                    <td name="3:6" onclick="buttonHandler('ship1','3:6');">~~~</td>
-                                    <td name="3:7" onclick="buttonHandler('ship1','3:7');">~~~</td>
-                                    <td name="3:8" onclick="buttonHandler('ship1','3:8');">~~~</td>
-                                </tr>
-                                <tr>
-                                    <td name="4:1" onclick="buttonHandler('ship1','4:1');">~~~</td>
-                                    <td name="4:2" onclick="buttonHandler('ship1','4:2');">~~~</td>
-                                    <td name="4:3" onclick="buttonHandler('ship1','4:3');">~~~</td>
-                                    <td name="4:4" onclick="buttonHandler('ship1','4:4');">~~~</td>
-                                    <td name="4:5" onclick="buttonHandler('ship1','4:5');">~~~</td>
-                                    <td name="4:6" onclick="buttonHandler('ship1','4:6');">~~~</td>
-                                    <td name="4:7" onclick="buttonHandler('ship1','4:7');">~~~</td>
-                                    <td name="4:8" onclick="buttonHandler('ship1','4:8');">~~~</td>
-                                </tr>
-                                <tr>
-                                    <td name="5:1" onclick="buttonHandler('ship1','5:1');">~~~</td>
-                                    <td name="5:2" onclick="buttonHandler('ship1','5:2');">~~~</td>
-                                    <td name="5:3" onclick="buttonHandler('ship1','5:3');">~~~</td>
-                                    <td name="5:4" onclick="buttonHandler('ship1','5:4');">~~~</td>
-                                    <td name="5:5" onclick="buttonHandler('ship1','5:5');">~~~</td>
-                                    <td name="5:6" onclick="buttonHandler('ship1','5:6');">~~~</td>
-                                    <td name="5:7" onclick="buttonHandler('ship1','5:7');">~~~</td>
-                                    <td name="5:8" onclick="buttonHandler('ship1','5:8');">~~~</td>
-                                </tr>
-                                <tr>
-                                    <td name="6:1" onclick="buttonHandler('ship1','6:1');">~~~</td>
-                                    <td name="6:2" onclick="buttonHandler('ship1','6:2');">~~~</td>
-                                    <td name="6:3" onclick="buttonHandler('ship1','6:3');">~~~</td>
-                                    <td name="6:4" onclick="buttonHandler('ship1','6:4');">~~~</td>
-                                    <td name="6:5" onclick="buttonHandler('ship1','6:5');">~~~</td>
-                                    <td name="6:6" onclick="buttonHandler('ship1','6:6');">~~~</td>
-                                    <td name="6:7" onclick="buttonHandler('ship1','6:7');">~~~</td>
-                                    <td name="6:8" onclick="buttonHandler('ship1','6:8');">~~~</td>
-                                </tr>
-                                <tr>
-                                    <td name="7:1" onclick="buttonHandler('ship1','7:1');">~~~</td>
-                                    <td name="7:2" onclick="buttonHandler('ship1','7:2');">~~~</td>
-                                    <td name="7:3" onclick="buttonHandler('ship1','7:3');">~~~</td>
-                                    <td name="7:4" onclick="buttonHandler('ship1','7:4');">~~~</td>
-                                    <td name="7:5" onclick="buttonHandler('ship1','7:5');">~~~</td>
-                                    <td name="7:6" onclick="buttonHandler('ship1','7:6');">~~~</td>
-                                    <td name="7:7" onclick="buttonHandler('ship1','7:7');">~~~</td>
-                                    <td name="7:8" onclick="buttonHandler('ship1','7:8');">~~~</td>
-                                </tr>
-                                <tr>
-                                    <td name="8:1" onclick="buttonHandler('ship1','8:1');">~~~</td>
-                                    <td name="8:2" onclick="buttonHandler('ship1','8:2');">~~~</td>
-                                    <td name="8:3" onclick="buttonHandler('ship1','8:3');">~~~</td>
-                                    <td name="8:4" onclick="buttonHandler('ship1','8:4');">~~~</td>
-                                    <td name="8:5" onclick="buttonHandler('ship1','8:5');">~~~</td>
-                                    <td name="8:6" onclick="buttonHandler('ship1','8:6');">~~~</td>
-                                    <td name="8:7" onclick="buttonHandler('ship1','8:7');">~~~</td>
-                                    <td name="8:8" onclick="buttonHandler('ship1','8:8');">~~~</td>
-                                </tr>
-                            </table>
-                        </aside>
-                    </section>
                 </aside>
             </section>
-
         </div>
+
+        <br>
+
+        <!--Table 2-->
+        <div>
+            <!--Alpha Table 2-->
+            <div>
+                <table align="top" id="letters" class="table">
+                    <tr>
+                        <td>-</td>
+                        <td>A</td>
+                        <td>B</td>
+                        <td>C</td>
+                        <td>D</td>
+                        <td>E</td>
+                        <td>F</td>
+                        <td>G</td>
+                        <td>H</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--Numeric Table 2-->
+            <aside style="float:left">
+                <table align="left" id="numbers" style="width:10%; display:inline-block">
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                    </tr>
+                </table>
+            </aside>
+
+            <!--Button Table 2-->
+            <section>
+                <aside>
+                    <table style="width:80%; display:inline-block" align="left" id="ship1" border="1" width=100%
+                        style="cursor: pointer; float: right">
+                        <tr>
+                            <td name="1:1" onclick="buttonHandler('ship1','1:1');">~~~</td>
+                            <td name="1:2" onclick="buttonHandler('ship1','1:2');">~~~</td>
+                            <td name="1:3" onclick="buttonHandler('ship1','1:3');">~~~</td>
+                            <td name="1:4" onclick="buttonHandler('ship1','1:4');">~~~</td>
+                            <td name="1:5" onclick="buttonHandler('ship1','1:5');">~~~</td>
+                            <td name="1:6" onclick="buttonHandler('ship1','1:6');">~~~</td>
+                            <td name="1:7" onclick="buttonHandler('ship1','1:7');">~~~</td>
+                            <td name="1:8" onclick="buttonHandler('ship1','1:8');">~~~</td>
+                        </tr>
+                        <tr>
+                            <td name="2:1" onclick="buttonHandler('ship1','2:1');">~~~</td>
+                            <td name="2:2" onclick="buttonHandler('ship1','2:2');">~~~</td>
+                            <td name="2:3" onclick="buttonHandler('ship1','2:3');">~~~</td>
+                            <td name="2:4" onclick="buttonHandler('ship1','2:4');">~~~</td>
+                            <td name="2:5" onclick="buttonHandler('ship1','2:5');">~~~</td>
+                            <td name="2:6" onclick="buttonHandler('ship1','2:6');">~~~</td>
+                            <td name="2:7" onclick="buttonHandler('ship1','2:7');">~~~</td>
+                            <td name="2:8" onclick="buttonHandler('ship1','2:8');">~~~</td>
+                        </tr>
+                        <tr>
+                            <td name="3:1" onclick="buttonHandler('ship1','3:1');">~~~</td>
+                            <td name="3:2" onclick="buttonHandler('ship1','3:2');">~~~</td>
+                            <td name="3:3" onclick="buttonHandler('ship1','3:3');">~~~</td>
+                            <td name="3:4" onclick="buttonHandler('ship1','3:4');">~~~</td>
+                            <td name="3:5" onclick="buttonHandler('ship1','3:5');">~~~</td>
+                            <td name="3:6" onclick="buttonHandler('ship1','3:6');">~~~</td>
+                            <td name="3:7" onclick="buttonHandler('ship1','3:7');">~~~</td>
+                            <td name="3:8" onclick="buttonHandler('ship1','3:8');">~~~</td>
+                        </tr>
+                        <tr>
+                            <td name="4:1" onclick="buttonHandler('ship1','4:1');">~~~</td>
+                            <td name="4:2" onclick="buttonHandler('ship1','4:2');">~~~</td>
+                            <td name="4:3" onclick="buttonHandler('ship1','4:3');">~~~</td>
+                            <td name="4:4" onclick="buttonHandler('ship1','4:4');">~~~</td>
+                            <td name="4:5" onclick="buttonHandler('ship1','4:5');">~~~</td>
+                            <td name="4:6" onclick="buttonHandler('ship1','4:6');">~~~</td>
+                            <td name="4:7" onclick="buttonHandler('ship1','4:7');">~~~</td>
+                            <td name="4:8" onclick="buttonHandler('ship1','4:8');">~~~</td>
+                        </tr>
+                        <tr>
+                            <td name="5:1" onclick="buttonHandler('ship1','5:1');">~~~</td>
+                            <td name="5:2" onclick="buttonHandler('ship1','5:2');">~~~</td>
+                            <td name="5:3" onclick="buttonHandler('ship1','5:3');">~~~</td>
+                            <td name="5:4" onclick="buttonHandler('ship1','5:4');">~~~</td>
+                            <td name="5:5" onclick="buttonHandler('ship1','5:5');">~~~</td>
+                            <td name="5:6" onclick="buttonHandler('ship1','5:6');">~~~</td>
+                            <td name="5:7" onclick="buttonHandler('ship1','5:7');">~~~</td>
+                            <td name="5:8" onclick="buttonHandler('ship1','5:8');">~~~</td>
+                        </tr>
+                        <tr>
+                            <td name="6:1" onclick="buttonHandler('ship1','6:1');">~~~</td>
+                            <td name="6:2" onclick="buttonHandler('ship1','6:2');">~~~</td>
+                            <td name="6:3" onclick="buttonHandler('ship1','6:3');">~~~</td>
+                            <td name="6:4" onclick="buttonHandler('ship1','6:4');">~~~</td>
+                            <td name="6:5" onclick="buttonHandler('ship1','6:5');">~~~</td>
+                            <td name="6:6" onclick="buttonHandler('ship1','6:6');">~~~</td>
+                            <td name="6:7" onclick="buttonHandler('ship1','6:7');">~~~</td>
+                            <td name="6:8" onclick="buttonHandler('ship1','6:8');">~~~</td>
+                        </tr>
+                        <tr>
+                            <td name="7:1" onclick="buttonHandler('ship1','7:1');">~~~</td>
+                            <td name="7:2" onclick="buttonHandler('ship1','7:2');">~~~</td>
+                            <td name="7:3" onclick="buttonHandler('ship1','7:3');">~~~</td>
+                            <td name="7:4" onclick="buttonHandler('ship1','7:4');">~~~</td>
+                            <td name="7:5" onclick="buttonHandler('ship1','7:5');">~~~</td>
+                            <td name="7:6" onclick="buttonHandler('ship1','7:6');">~~~</td>
+                            <td name="7:7" onclick="buttonHandler('ship1','7:7');">~~~</td>
+                            <td name="7:8" onclick="buttonHandler('ship1','7:8');">~~~</td>
+                        </tr>
+                        <tr>
+                            <td name="8:1" onclick="buttonHandler('ship1','8:1');">~~~</td>
+                            <td name="8:2" onclick="buttonHandler('ship1','8:2');">~~~</td>
+                            <td name="8:3" onclick="buttonHandler('ship1','8:3');">~~~</td>
+                            <td name="8:4" onclick="buttonHandler('ship1','8:4');">~~~</td>
+                            <td name="8:5" onclick="buttonHandler('ship1','8:5');">~~~</td>
+                            <td name="8:6" onclick="buttonHandler('ship1','8:6');">~~~</td>
+                            <td name="8:7" onclick="buttonHandler('ship1','8:7');">~~~</td>
+                            <td name="8:8" onclick="buttonHandler('ship1','8:8');">~~~</td>
+                        </tr>
+                    </table>
+                </aside>
+            </section>
+        </div>
+
     </div>
 </body>
 
