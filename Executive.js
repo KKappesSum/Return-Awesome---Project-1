@@ -58,7 +58,9 @@ class Exec{
                 outputString = player2 + ", you sunk all of " + player1 + "'s battleships!"; 
             }
             alert(outputString);
-            
+
+            sessionStorage.ExecObj = {};
+            location.href = "./index.html";
         }
     }
     
