@@ -49,16 +49,18 @@ class Exec{
         let player1 = this.admir1;
         let player2 = this.admir2;
         let outputString;
-        if(num ==1){
-            outputString = player1 + ", you sunk all of " + player2 + "'s battleships!";
-        }
-        else{
-            outputString = player2 + ", you sunk all of " + player1 + "'s battleships!";
-        }
-            //alerts gamers to the end of the game and resets sessionStorage, also routes the game to the setup screen
-            alert(outputString);
-            sessionStorage.ExecObj = {};
-            location.href = "./index.html";
+        if(this.admir1.afloat ==0 || this.admir2.afloat == 0){
+            if(num ==1){
+                outputString = player1 + ", you sunk all of " + player2 + "'s battleships!";
+            }
+            else{
+                outputString = player2 + ", you sunk all of " + player1 + "'s battleships!";
+            }
+                //alerts gamers to the end of the game and resets sessionStorage, also routes the game to the setup screen
+                alert(outputString);
+                sessionStorage.ExecObj = {};
+                location.href = "./index.html";
+            }
         }
     }
     
