@@ -59,7 +59,6 @@ function setShipCount(shipId) {
   {
     //if now player2, don't ask for number of ships since it was already determined 
     numShips = document.getElementById("shipNum").innerHTML;
-    console.log(numShips + "for p2");
   }
 
 
@@ -117,12 +116,8 @@ function placeShip(size, horizontal, shipId)
   }
   if(shipId==="ship2")
   {
-    console.log("THIS IS PLAYER 2'S NAME!!!!");
-    console.log(p2);
     document.getElementById("placement").innerHTML = p2 + ", place your 1x" + size + " ship!";
   }
-  console.log("THIS IS THE shipId");
-  console.log(shipId);
   let table = document.getElementById(shipId);
 
   //if the table isn't empty, begin to show the user places they can place their ships
@@ -266,7 +261,7 @@ function placeShip(size, horizontal, shipId)
               document.getElementById("ships").style.display = "none";
               document.getElementById("names").style.display = "none";
               document.getElementById("placement").style.display = "none";
-              alert("start the game");
+              alert("Press ok to start the game");
               exec.advancePlayerTurn();
               storeExecObj(tempObj);
             }
@@ -403,17 +398,14 @@ function createExec(){
     if(tempAdmr1 == "") {
       tempAdmr1 = document.getElementById("player1").placeholder;
     }
-    console.log(tempAdmr1);
 
     let tempAdmr2 = document.getElementById("player2").value;
     if(tempAdmr2 == "") {
       tempAdmr2 = document.getElementById("player2").placeholder;
     }
-    console.log(tempAdmr2);
     let newString = document.getElementById("ships").innerHTML;
     tempNumShips = newString.substring(16);
     tempNumShips= tempNumShips.substring(0,tempNumShips.indexOf(" "));
-    console.log(tempNumShips);
 
     exec = new Exec(tempAdmr1, tempAdmr2, tempNumShips);
     makeTempObj(exec);
@@ -430,8 +422,6 @@ function buttonHandler(tableId, coords){
         let hit = exec.updateTable(coords, tableId);
         document.getElementById("table1").classList.add("disabledButton");
         document.getElementById("turnButton").disabled = false;
-        console.log(tableId);
-        console.log(coords);
         exec.checkSunk();
         if(exec.getPlayerTurn()===1)
         {
@@ -442,8 +432,7 @@ function buttonHandler(tableId, coords){
             {
                 for (let j = 0; j<exec.admir2.fleet[i].coords.length; j++)
                 {
-                  console.log(exec.admir2.fleet[i].coords[j])
-                  if (exec.admir2.fleet[i].coords[j] == coords) {
+                  if (exec.admir2.fleet[i].coords[j] == coords && exec.admir2.afloat != 0) {
                     alert("Congrats! You sunk a ship!");
                   }
                 }
@@ -459,8 +448,7 @@ function buttonHandler(tableId, coords){
             {
                 for (let j = 0; j<exec.admir1.fleet[i].coords.length; j++)
                 {
-                  console.log(exec.admir1.fleet[i].coords[j]);
-                  if (exec.admir1.fleet[i].coords[j] === coords) {
+                  if (exec.admir1.fleet[i].coords[j] === coords && exec.admir1.afloat != 0) {
                     alert("Congrats! You sunk a ship!");
                   }
                 }
@@ -487,7 +475,6 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
     //need to figure out better way to decide which player to place ships for
     //maybe something can be taken from gui
     exec.sendCoordsForPlacement(tableId,coords,shipSize,orientation);
-    console.log("passed params to exec");
     saveShip(coords, shipSize, orientation);
 }
 
@@ -512,7 +499,6 @@ function saveShip(coords, shipSize, orientation) {
 */
 function storeExecObj(tempObj){
     sessionStorage.temp = JSON.stringify(tempObj);
-    console.log("stored obj");
     location.href = "./index.html";
 }
 
@@ -523,8 +509,6 @@ function storeExecObj(tempObj){
 */
 function pullExecObj(){
     let fromStorage = JSON.parse(sessionStorage.temp);
-    console.log("returning obj");
-    console.log(fromStorage);
     return(fromStorage);
 }
 
@@ -544,7 +528,6 @@ function onLoadPull(){
 */
 function testObj(){
    tempExec = new Exec("Ethan", "Anna", '6');
-   console.log("Test ope");
    storeExecObj();
 }
 
