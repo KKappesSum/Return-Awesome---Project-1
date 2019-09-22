@@ -51,3 +51,11 @@ td, tr {
 .disabledButton{
   pointer-events: none;
 }
+
+.update {
+  color: red;
+}
+
+.progress {
+  color: blue;
+}
