@@ -409,7 +409,7 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
     //maybe something can be taken from gui
     exec.sendCoordsForPlacement(tableId,coords,shipSize,orientation);
     console.log("passed params to exec");
-    saveShip(tableId, coords, shipSize, orientation);
+    saveShip(coords, shipSize, orientation);
 }
 
 function saveShip(coords, shipSize, orientation) {
