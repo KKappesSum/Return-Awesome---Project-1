@@ -1,3 +1,7 @@
+/**
+ * Class containing configuration parameters for the game's setup.
+ * @class Config
+ */
 class Config{   
     constructor(){
     
