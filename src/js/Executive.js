@@ -1,11 +1,14 @@
 //Author: Ethan Brenner
 
 /**
- * Creates the exec instance with two admiral objects, along with their number of ships
- * @param {string} adm1Name: Admiral 1's nickname
- * @param {string} adm2Name: Admiral 2's nickname
- * @param {number} numShips: number of playable ships per admiral
- * @return: none
+ * Top-level class containing an {@link Admiral} for each player and methods to run the game.
+ * @param {string} adm1Name - Admiral 1's nickname.
+ * @param {string} adm2Name - Admiral 2's nickname.
+ * @param {number} numShips - number of playable ships per Admiral.
+ * @prop {number} m_shipCount - the number of playable ships per Admiral.
+ * @prop {number} m_playerTurn - 1 for the first player, or 2 for the second player.
+ * @prop {Admiral} admir1 - the Admiral object for the first player.
+ * @prop {Admiral} admir2 - the Admiral object for the second player.
  */
 class Exec{   
     constructor(adm1Name, adm2Name, numShips){
@@ -15,24 +18,22 @@ class Exec{
         this.admir1 = new Admiral(numShips, adm1Name);
         this.admir2 = new Admiral(numShips, adm2Name);  
     }
+
      /**
-     * Passes "guess" coordinates to admiral for grid/map updates during game
-     * @param {string} coords: coordinates for the specific cell in the table
-     * @return {boolean} true if a hit, false if a miss
+     * Passes "guess" coordinates to {@link Admiral} to update the game board and Ships during gameplay.
+     * @param {string} coord - coordinates for the specific cell in the table.
+     * @param {string} tableID - the identifier specifying the table to update.
+     * @return {boolean} true if the guess is a hit, false if it's a miss.
      */
     updateTable(coord, tableID){
         let isAhit;
         if(this.getPlayerTurn() === 1){
             isAhit = this.admir2.updateHit(coord, tableID);
-            this.endGameChecker(1);
-            //this.advancePlayerTurn();
-            
+            this.endGameChecker(1);            
         }
         else if(this.getPlayerTurn() == 2){
             isAhit = this.admir1.updateHit(coord, tableID);
             this.endGameChecker(2);
-            //this.advancePlayerTurn();
-            
         }
         else{
             prompt("something went wrong with the playerTurn variable")
@@ -41,8 +42,8 @@ class Exec{
     }
 
     /**
-     * checks whether all ships have been sunk, if so tosses up an alert and ends the game
-     * @param: none
+     * Checks whether either player has sunk all of their opponent's ships.  If so, displays an alert declaring the winner of the game, and ends the game.
+     * @param {number} num - represents the current player turn: 1 for the first player, 2 for the second player.
      */
     endGameChecker(num){
         let player1 = this.admir1.name;
@@ -58,7 +59,6 @@ class Exec{
                 //alerts gamers to the end of the game and resets sessionStorage, also routes the game to the setup screen
                 alert(outputString);
                 sessionStorage.ExecObj = {};
-                //location.href = "./index.html"; 
 
                 //displays end of game message and hides p1 ship map
                 document.getElementById("table2").style.display = "none";
@@ -69,13 +69,11 @@ class Exec{
     
     
     /**
-     * Places ships based on given coordinates of the upper most left cell, 
-     * it sends the orientation, shipsize and table to be used to assemble and 
-     * place the ships across the proper cells
-     * @param {number} tableId: valid id for the table
-     * @param {string} coords: coordinates for the cell that was clicked
-     * @param {number} shipSize: size of the ship being constructed 
-     * @param {boolean} orientation: vertical or horizontal orientation
+     * Sends the given data to the current player's {@link Admiral} to handle ship placement. Calls {@link Admiral#assignCoords}.
+     * @param {string} tableId: valid id for the table.
+     * @param {string} coords: coordinates for the cell that was clicked.
+     * @param {number} shipSize: size of the ship being constructed .
+     * @param {boolean} orientation: orientation of the ship being constructed: true for horizontal, false for vertical.
      */
     sendCoordsForPlacement(tableId, coords, shipSize, orientation){
         if(this.getPlayerTurn() == 1){
@@ -85,22 +83,20 @@ class Exec{
             this.admir2.assignCoords(coords,shipSize,orientation,tableId);
         }
         else{
-            console.log("something went wrong with the getplayerturn function");
+            console.log("something went wrong with the sendCoordsForPlacement function");
         }
     }
     
     /**
-     * Determines which player is playing
-     * @returns {number}: a number indicating whose turn it is
+     * Determines which player is playing.
+     * @return {number}: 1 for the first player, 2 for the second player.
      */
     getPlayerTurn(){
         return(this.m_playerTurn);
     }
 
      /**
-     * Toggles the turn from one player to the other
-     * @param: none
-     * 
+     * Toggles the turn from one player to the other.
      */
     advancePlayerTurn(){
         if(this.m_playerTurn == 1){
@@ -112,8 +108,7 @@ class Exec{
     }
     
     /**
-     * Refreshes both tables based on the internal grids in each Admiral
-     * @param: none
+     * Refreshes both displayed tables to show the current player's game board.  Calls {@link Admiral#refreshOnStart}.
      */
     refreshMap(){
         if(this.getPlayerTurn()===1)
@@ -127,6 +122,9 @@ class Exec{
         }
     }
 
+    /**
+     * Refreshes the current player's firing map.  Calls {@link Admiral#refreshFireOnly}.
+     */
     refreshFireMap()
     {
         if(this.getPlayerTurn()===1)
@@ -141,8 +139,7 @@ class Exec{
     }
 
     /**
-     * changes the player name at the top of index
-     * @param: none
+     * Changes the player name displayed at the top of the game page.
      */
     updateName(){
         if(this.m_playerTurn ===1){
@@ -191,8 +188,7 @@ class Exec{
 }
 
 /**
- * @param: none
- * Changes the in-game messages for each player on their turn
+ * Displays the in-game messages for each player on their turn.
  */
 function updateMessages()
 {
