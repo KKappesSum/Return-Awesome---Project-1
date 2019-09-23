@@ -7,8 +7,7 @@ let p1;
 let p2;
 
 /**
- * Removes instructions after users start setup
- * @param: none
+ * Hides instructions after users start setup.
  */
 function removeInstructions()
 {
@@ -17,7 +16,6 @@ function removeInstructions()
 
 /**
  * This function takes the names of the players or sets them to default names if none were input.
- * @param: none
  */
 function setPlayerNames() {
     p1 = document.getElementById("player1").value;
@@ -32,10 +30,9 @@ function setPlayerNames() {
   }
 }
 
-
 /**
  * This function asks the user how many ships they want to use and begins to place ships
- * @param {string} shipId the id for the ship map from the setup.html
+ * @param {string} shipId - the id for the ship map from the setup.html.
  */
 function setShipCount(shipId) {
   //get input from user in pop up
@@ -92,11 +89,11 @@ function setShipCount(shipId) {
 
 /**
  * This function deals with the interface for placing ships. When the mouse hovers, 
- * the ship outline with change color depending on if a ship can be placed there.
+ * the cells that would be occupied by the ship change color depending on if a ship can be placed there.
  * Lets p1 place all their ships before hiding the map and prompting p2 to place their ships.
- * @param {int} size the size of the ship being placed
- * @param {boolean} horizontal boolean of the orientation, true = the ship is horizontal
- * @param {string} shipId string of the html id for the ship map being used
+ * @param {int} size - the size of the ship being placed.
+ * @param {boolean} horizontal - the orientation of the ship: true if the ship is horizontal, false if vertical.
+ * @param {string} shipId - the html id for the ship map being used.
  */
 function placeShip(size, horizontal, shipId) 
 {
@@ -273,20 +270,20 @@ function placeShip(size, horizontal, shipId)
 }
 
 /**
- *
- * @param {table cell} cell
- * @return boolean if placement is legal
+ * Checks if ship placement is legal.
+ * @param cell - the HTML table cell to check.
+ * @return {boolean} true if placement is legal, else false.
  */
 function isLegal(cell) {
   return cell.style.backgroundColor === "yellow";
 }
 
 /**
- * This function will color cells of a table according to if the placement of the ship is legal
- * @param {int} size size of the ship
- * @param {boolean} horizontal orientation of the ship
- * @param {string} color color for the cell
- * @param {string} tableID HTML ID for the table
+ * This function will color cells of a table according to if the placement of the ship is legal.
+ * @param {number} sizee - size of the ship.
+ * @param {boolean} horizontal - orientation of the ship: true if the ship is horizontal, false if vertical.
+ * @param {string} color - color for the cell.
+ * @param {string} tableID - HTML ID for the table.
  */
 function changeColor(sizee, horizontal, color, tableID) {
   let table = document.getElementById(tableID);
@@ -366,7 +363,7 @@ function changeColor(sizee, horizontal, color, tableID) {
 
 
 /** 
- * launched when submitting information in setup.html
+ * Creates the {@link Executive} object and calls {@link makeTempObj}.  Launched when submitting information in setup.html.
  */
 function createExec(){
     //creating an exec object
@@ -388,11 +385,10 @@ function createExec(){
 }
 
 /**
- * handles button clicks on player map, filters for just fire map, calls for updating table coords
- * and enables "next turn" button
-* @param {string} tableId: id of the table that triggered the onclick event
-* @param {string} coords: coordinates for a specific cell in the table
-*/
+ * Handles button clicks on the game maps, filters for just the firing map, calls {@link Exec#updateTable} to update the firing map, and enables the "next turn" button.
+ * @param {string} tableId - id of the table that triggered the onclick event.
+ * @param {string} coords - coordinates for a specific cell in the table.
+ */
 function buttonHandler(tableId, coords){
     if(tableId == "fire1"){
         let hit = exec.updateTable(coords, tableId);
@@ -434,26 +430,28 @@ function buttonHandler(tableId, coords){
         }
     }
     else{
-        alert("You shouldn't fire on your own map");
+        alert("You shouldn't fire on your own map!");
     }
-    
 }
 
 /**
-* 
-* @param {string} tableId : id of the table that triggered the onclick event
-* @param {string} coords : coordinates for a specific cell in the table
-* @param {number} shipSize: size of the ship being placed
-* @param {boolean} orientation: orientation of the ship, true for horizontal, false for vertical
-* handles button clicks on the setup page, handoff to exec obj
+* Handles button clicks on the setup page, passes the relevant data to the exec object, calling {@link Exec#sendCoordsForPlacement}.
+* @param {string} tableId - id of the table that triggered the onclick event.
+* @param {string} coords - coordinates for a specific cell in the table.
+* @param {number} shipSize - size of the ship being placed.
+* @param {boolean} orientation - orientation of the ship, true for horizontal, false for vertical.
 */
 function buttonHandlerSetup(tableId, coords, shipSize, orientation){
-    //need to figure out better way to decide which player to place ships for
-    //maybe something can be taken from gui
     exec.sendCoordsForPlacement(tableId,coords,shipSize,orientation);
     saveShip(coords, shipSize, orientation);
 }
 
+/**
+ * Adds a {@link Ship}'s basic data to an existing temporary object for storage.  Also see {@link makeTempObj}.
+ * @param {string} coords - the starting coordinate for the Ship being processed.
+ * @param {number} shipSize - the size of the Ship.
+ * @param {boolean} orientation - the orientation of the Ship, true for horizontal, false for vertical. 
+ */
 function saveShip(coords, shipSize, orientation) {
   if(exec.m_playerTurn == 1) {
     tempObj.adm1Coords[shipSize - 1] = coords;
@@ -469,9 +467,8 @@ function saveShip(coords, shipSize, orientation) {
 }
 
 /**
-* @param: none
-* stores the completed Exec object in the session storage after all ships are placed
-* navigates to the index page
+* Stores the completed temporary object in the session storage after all ships are placed, and navigates to the index page.
+* @param {Object} tempObj - object containing the necessary information to generate a new {@link Exec} object with all members initialized.
 */
 function storeExecObj(tempObj){
     sessionStorage.temp = JSON.stringify(tempObj);
@@ -479,9 +476,8 @@ function storeExecObj(tempObj){
 }
 
 /**
-* @param: none
-* @return: returns the exec obj from storage
-* retrieves the Exec obj from session storage at start of game
+* Retrieves the temporary object from session storage at the start of the game.
+* @return {Object} the temporary object from storage.
 */
 function pullExecObj(){
     let fromStorage = JSON.parse(sessionStorage.temp);
@@ -489,16 +485,19 @@ function pullExecObj(){
 }
 
 /**
-* tests retrieval from sessionStorage in index.html
+* Initializes the game by retrieving game data from sessionStorage in index.html, calling {@link reconstruct}, and calling {@link Exec#refreshMap}.
 */
 function onLoadPull(){
     
     placeholder = pullExecObj();
     reconstruct(placeholder);
     exec.refreshMap();
-    
 }
 
+/**
+ * Creates a temporary object which will be saved in session storage and assigns to it the basic data necessary to reconstruct an {@link Exec} object with everything it contains.  Also see {@link saveShip} and {@link reconstruct}.
+ * @param {Exec} exec - the Exec object created in setup.html.
+ */
 function makeTempObj(exec) {
   tempObj.adm1Name = exec.admir1.name;
   tempObj.adm2Name = exec.admir2.name;
@@ -510,6 +509,10 @@ function makeTempObj(exec) {
   tempObj.adm2Ori = new Array(num);
 }
 
+/**
+ * Constructs an {@link Exec} object in index.html and populates it with all data from a temporary object.  Also see {@link makeTempObj} and {@link saveShip}.
+ * @param {Object} obj - a temporary object pulled from session storage, which contains the necessary data to create and populate the Exec object.
+ */
 function reconstruct(obj) {
   exec = new Exec(obj.adm1Name, obj.adm2Name, obj.numShips);
   for(let i = 0; i < obj.numShips; i++)
@@ -546,10 +549,8 @@ function updateMessages()
 }
 
 /**
- * determines the state of the switch player button in index, hides/unhides table divs, updates
- * button text and refreshes player maps
- * @param: none
- * 
+ * Determines the state of the switch player button in index, hides/unhides table divs, updates
+ * button text and refreshes player maps.
  */
 function turnButton(){
     let temp = document.getElementById("turnButton");

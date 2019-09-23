@@ -31,7 +31,7 @@ class Ship {
 
 	/**
 	 * Get the number of hits the ship has taken.
-	 * @return {number} the number of hits
+	 * @return {number} the number of hits.
 	 */
 	getNumHits() {
 		return this.numHits;
@@ -39,7 +39,7 @@ class Ship {
 
 	/**
 	 * Get the ship's coordinates.
-	 * @return {string[]} the coordinates occupied by the Ship
+	 * @return {string[]} the coordinates occupied by the Ship.
 	 */
 	getCoords() {
 		return this.coords;
@@ -47,7 +47,6 @@ class Ship {
 
 	/**
 	 * Update the ship's status when it sinks.
-	 * @return {boolean} none.
 	 */
 	setStatus() {
 		this.status = false;
@@ -73,7 +72,7 @@ class Ship {
 
 	/**
 	 * Set the ship's coordinates.
-	 * @param {string[]} coordsArr : an array of strings
+	 * @param {string[]} coordsArr : all coordinates to be assigned to the Ship.
 	 */
 	setCoords(coordsArr) {
 		if(coordsArr.length > this.size)
