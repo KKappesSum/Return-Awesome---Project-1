@@ -114,10 +114,28 @@
                 
                 <li><a
                   href='#config'
-                  class="">
+                  class=" toggle-sibling">
                   Config
-                  
+                  <span class='icon'>▸</span>
                 </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#configoceantypes'
+                        class='regular pre-open'>
+                        #oceanTypes
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
                 
                 </li>
               
@@ -1271,6 +1289,89 @@
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>MAX_NUM_OF_SHIPS</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : the maximum number of ships allowed in the game.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>BOARD_SIZE</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : the length of each side of the square game board.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>oceanTypes</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+          : object containing the possible states of a cell of the game board: WATER, SHIP, MISS, or HIT; and the color values assigned to each state.
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='configoceantypes'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>oceanTypes</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  
+    <div class='pre p1 fill-light mt0'>oceanTypes</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>WATER</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+          
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
 
   
 
@@ -1279,6 +1380,12 @@
   
 
   
+</section>
+
+      </div>
+    </div>
+  
+</div>
 
   
 
