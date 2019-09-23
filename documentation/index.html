@@ -2339,7 +2339,8 @@
   </div>
   
 
-  <p>Hides instructions after users start setup.</p>
+  <p>[Member of gui.js]
+Hides instructions after users start setup.</p>
 
     <div class='pre p1 fill-light mt0'>removeInstructions()</div>
   
@@ -2387,7 +2388,8 @@
   </div>
   
 
-  <p>This function takes the names of the players or sets them to default names if none were input.</p>
+  <p>[Member of gui.js]
+This function takes the names of the players or sets them to default names if none were input.</p>
 
     <div class='pre p1 fill-light mt0'>setPlayerNames()</div>
   
@@ -2435,7 +2437,8 @@
   </div>
   
 
-  <p>This function asks the user how many ships they want to use and begins to place ships</p>
+  <p>[Member of gui.js]
+This function asks the user how many ships they want to use and begins to place ships</p>
 
     <div class='pre p1 fill-light mt0'>setShipCount(shipId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
   
@@ -2497,7 +2500,8 @@
   </div>
   
 
-  <p>This function deals with the interface for placing ships. When the mouse hovers,
+  <p>[Member of gui.js]
+This function deals with the interface for placing ships. When the mouse hovers,
 the cells that would be occupied by the ship change color depending on if a ship can be placed there.
 Lets p1 place all their ships before hiding the map and prompting p2 to place their ships.</p>
 
@@ -2579,7 +2583,8 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Checks if ship placement is legal.</p>
+  <p>[Member of gui.js]
+Checks if ship placement is legal.</p>
 
     <div class='pre p1 fill-light mt0'>isLegal(cell: any): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
   
@@ -2649,7 +2654,8 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>This function will color cells of a table according to if the placement of the ship is legal.</p>
+  <p>[Member of gui.js]
+This function will color cells of a table according to if the placement of the ship is legal.</p>
 
     <div class='pre p1 fill-light mt0'>changeColor(sizee: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, horizontal: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>, color: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, tableID: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
   
@@ -2738,7 +2744,9 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Creates the <a href="Executive">Executive</a> object and calls <a href="#maketempobj">makeTempObj</a>.  Launched when submitting information in setup.html.</p>
+  <p>[Member of gui.js]
+Creates the <a href="Executive">Executive</a> object and calls <a href="#maketempobj">makeTempObj</a>.  Launched when
+submitting information in setup.html.</p>
 
     <div class='pre p1 fill-light mt0'>createExec()</div>
   
@@ -2786,7 +2794,9 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Handles button clicks on the game maps, filters for just the firing map, calls <a href="#execupdatetable">Exec#updateTable</a> to update the firing map, and enables the "next turn" button.</p>
+  <p>[Member of gui.js]
+Handles button clicks on the game maps, filters for just the firing map, calls
+<a href="#execupdatetable">Exec#updateTable</a> to update the firing map, and enables the "next turn" button.</p>
 
     <div class='pre p1 fill-light mt0'>buttonHandler(tableId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, coords: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
   
@@ -2857,7 +2867,9 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Handles button clicks on the setup page, passes the relevant data to the exec object, calling <a href="#execsendcoordsforplacement">Exec#sendCoordsForPlacement</a>.</p>
+  <p>[Member of gui.js]
+Handles button clicks on the setup page, passes the relevant data to the exec object,
+calling <a href="#execsendcoordsforplacement">Exec#sendCoordsForPlacement</a>.</p>
 
     <div class='pre p1 fill-light mt0'>buttonHandlerSetup(tableId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, coords: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, shipSize: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, orientation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
   
@@ -2946,7 +2958,9 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Adds a <a href="#ship">Ship</a>'s basic data to an existing temporary object for storage.  Also see <a href="#maketempobj">makeTempObj</a>.</p>
+  <p>[Member of gui.js]
+Adds a <a href="#ship">Ship</a>'s basic data to an existing temporary object for storage.<br>
+Also see <a href="#maketempobj">makeTempObj</a>.</p>
 
     <div class='pre p1 fill-light mt0'>saveShip(coords: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, shipSize: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, orientation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
   
@@ -3026,7 +3040,9 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Stores the completed temporary object in the session storage after all ships are placed, and navigates to the index page.</p>
+  <p>[Member of gui.js]
+Stores the completed temporary object in the session storage after all ships are placed,
+and navigates to the index page.</p>
 
     <div class='pre p1 fill-light mt0'>storeExecObj(tempObj: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
   
@@ -3046,7 +3062,8 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>tempObj</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    object containing the necessary information to generate a new 
+	    object containing the necessary information to generate a new
+
 <a href="#exec">Exec</a>
  object with all members initialized.
 
@@ -3090,7 +3107,8 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Retrieves the temporary object from session storage at the start of the game.</p>
+  <p>[Member of gui.js]
+Retrieves the temporary object from session storage at the start of the game.</p>
 
     <div class='pre p1 fill-light mt0'>pullExecObj(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
@@ -3146,7 +3164,9 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Initializes the game by retrieving game data from sessionStorage in index.html, calling <a href="#reconstruct">reconstruct</a>, and calling <a href="#execrefreshmap">Exec#refreshMap</a>.</p>
+  <p>[Member of gui.js]
+Initializes the game by retrieving game data from sessionStorage in index.html,
+calling <a href="#reconstruct">reconstruct</a>, and calling <a href="#execrefreshmap">Exec#refreshMap</a>.</p>
 
     <div class='pre p1 fill-light mt0'>onLoadPull()</div>
   
@@ -3194,7 +3214,11 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Creates a temporary object which will be saved in session storage and assigns to it the basic data necessary to reconstruct an <a href="#exec">Exec</a> object with everything it contains.  Also see <a href="#saveship">saveShip</a> and <a href="#reconstruct">reconstruct</a>.</p>
+  <p>[Member of gui.js]
+Creates a temporary object which will be saved in session storage
+and assigns to it the basic data necessary to reconstruct an
+<a href="#exec">Exec</a> object with everything it contains.<br>
+Also see <a href="#saveship">saveShip</a> and <a href="#reconstruct">reconstruct</a>.</p>
 
     <div class='pre p1 fill-light mt0'>makeTempObj(exec: <a href="#exec">Exec</a>)</div>
   
@@ -3256,7 +3280,9 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Constructs an <a href="#exec">Exec</a> object in index.html and populates it with all data from a temporary object.  Also see <a href="#maketempobj">makeTempObj</a> and <a href="#saveship">saveShip</a>.</p>
+  <p>[Member of gui.js]
+Constructs an <a href="#exec">Exec</a> object in index.html and populates it with all
+data from a temporary object.  Also see <a href="#maketempobj">makeTempObj</a> and <a href="#saveship">saveShip</a>.</p>
 
     <div class='pre p1 fill-light mt0'>reconstruct(obj: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
   
@@ -3276,7 +3302,8 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>obj</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    a temporary object pulled from session storage, which contains the necessary data to create and populate the Exec object.
+	    a temporary object pulled from session storage, which
+contains the necessary data to create and populate the Exec object.
 
           </div>
           
@@ -3318,7 +3345,8 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Displays the in-game messages for each player on their turn.</p>
+  <p>[Member of gui.js]
+Displays the in-game messages for each player on their turn.</p>
 
     <div class='pre p1 fill-light mt0'>updateMessages()</div>
   
@@ -3366,7 +3394,8 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Determines the state of the switch player button in index, hides/unhides table divs, updates
+  <p>[Member of gui.js]
+Determines the state of the switch player button in index, hides/unhides table divs, updates
 button text and refreshes player maps.</p>
 
     <div class='pre p1 fill-light mt0'>turnButton()</div>
