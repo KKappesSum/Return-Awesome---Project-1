@@ -7,6 +7,7 @@ let p1;
 let p2;
 
 /**
+ * [Member of gui.js]
  * Hides instructions after users start setup.
  */
 function removeInstructions()
@@ -15,6 +16,7 @@ function removeInstructions()
 }
 
 /**
+ * [Member of gui.js]
  * This function takes the names of the players or sets them to default names if none were input.
  */
 function setPlayerNames() {
@@ -31,6 +33,7 @@ function setPlayerNames() {
 }
 
 /**
+ * [Member of gui.js]
  * This function asks the user how many ships they want to use and begins to place ships
  * @param {string} shipId - the id for the ship map from the setup.html.
  */
@@ -88,6 +91,7 @@ function setShipCount(shipId) {
 }
 
 /**
+ * [Member of gui.js]
  * This function deals with the interface for placing ships. When the mouse hovers, 
  * the cells that would be occupied by the ship change color depending on if a ship can be placed there.
  * Lets p1 place all their ships before hiding the map and prompting p2 to place their ships.
@@ -270,6 +274,7 @@ function placeShip(size, horizontal, shipId)
 }
 
 /**
+ * [Member of gui.js]
  * Checks if ship placement is legal.
  * @param cell - the HTML table cell to check.
  * @return {boolean} true if placement is legal, else false.
@@ -279,6 +284,7 @@ function isLegal(cell) {
 }
 
 /**
+ * [Member of gui.js]
  * This function will color cells of a table according to if the placement of the ship is legal.
  * @param {number} sizee - size of the ship.
  * @param {boolean} horizontal - orientation of the ship: true if the ship is horizontal, false if vertical.
@@ -363,7 +369,9 @@ function changeColor(sizee, horizontal, color, tableID) {
 
 
 /** 
- * Creates the {@link Executive} object and calls {@link makeTempObj}.  Launched when submitting information in setup.html.
+ * [Member of gui.js]
+ * Creates the {@link Executive} object and calls {@link makeTempObj}.  Launched when 
+ * submitting information in setup.html.
  */
 function createExec(){
     //creating an exec object
@@ -385,7 +393,9 @@ function createExec(){
 }
 
 /**
- * Handles button clicks on the game maps, filters for just the firing map, calls {@link Exec#updateTable} to update the firing map, and enables the "next turn" button.
+ * [Member of gui.js]
+ * Handles button clicks on the game maps, filters for just the firing map, calls 
+ * {@link Exec#updateTable} to update the firing map, and enables the "next turn" button.
  * @param {string} tableId - id of the table that triggered the onclick event.
  * @param {string} coords - coordinates for a specific cell in the table.
  */
@@ -435,19 +445,23 @@ function buttonHandler(tableId, coords){
 }
 
 /**
-* Handles button clicks on the setup page, passes the relevant data to the exec object, calling {@link Exec#sendCoordsForPlacement}.
-* @param {string} tableId - id of the table that triggered the onclick event.
-* @param {string} coords - coordinates for a specific cell in the table.
-* @param {number} shipSize - size of the ship being placed.
-* @param {boolean} orientation - orientation of the ship, true for horizontal, false for vertical.
-*/
+ * [Member of gui.js]
+ * Handles button clicks on the setup page, passes the relevant data to the exec object, 
+ * calling {@link Exec#sendCoordsForPlacement}.
+ * @param {string} tableId - id of the table that triggered the onclick event.
+ * @param {string} coords - coordinates for a specific cell in the table.
+ * @param {number} shipSize - size of the ship being placed.
+ * @param {boolean} orientation - orientation of the ship, true for horizontal, false for vertical.
+ */
 function buttonHandlerSetup(tableId, coords, shipSize, orientation){
     exec.sendCoordsForPlacement(tableId,coords,shipSize,orientation);
     saveShip(coords, shipSize, orientation);
 }
 
 /**
- * Adds a {@link Ship}'s basic data to an existing temporary object for storage.  Also see {@link makeTempObj}.
+ * [Member of gui.js]
+ * Adds a {@link Ship}'s basic data to an existing temporary object for storage.  
+ * Also see {@link makeTempObj}.
  * @param {string} coords - the starting coordinate for the Ship being processed.
  * @param {number} shipSize - the size of the Ship.
  * @param {boolean} orientation - the orientation of the Ship, true for horizontal, false for vertical. 
@@ -467,26 +481,32 @@ function saveShip(coords, shipSize, orientation) {
 }
 
 /**
-* Stores the completed temporary object in the session storage after all ships are placed, and navigates to the index page.
-* @param {Object} tempObj - object containing the necessary information to generate a new {@link Exec} object with all members initialized.
-*/
+ * [Member of gui.js]
+ * Stores the completed temporary object in the session storage after all ships are placed, 
+ * and navigates to the index page.
+ * @param {Object} tempObj - object containing the necessary information to generate a new 
+ * {@link Exec} object with all members initialized.
+ */
 function storeExecObj(tempObj){
     sessionStorage.temp = JSON.stringify(tempObj);
     location.href = "./index.html";
 }
 
 /**
-* Retrieves the temporary object from session storage at the start of the game.
-* @return {Object} the temporary object from storage.
-*/
+ * [Member of gui.js]
+ * Retrieves the temporary object from session storage at the start of the game.
+ * @return {Object} the temporary object from storage.
+ */
 function pullExecObj(){
     let fromStorage = JSON.parse(sessionStorage.temp);
     return(fromStorage);
 }
 
 /**
-* Initializes the game by retrieving game data from sessionStorage in index.html, calling {@link reconstruct}, and calling {@link Exec#refreshMap}.
-*/
+ * [Member of gui.js]
+ * Initializes the game by retrieving game data from sessionStorage in index.html, 
+ * calling {@link reconstruct}, and calling {@link Exec#refreshMap}.
+ */
 function onLoadPull(){
     
     placeholder = pullExecObj();
@@ -495,7 +515,11 @@ function onLoadPull(){
 }
 
 /**
- * Creates a temporary object which will be saved in session storage and assigns to it the basic data necessary to reconstruct an {@link Exec} object with everything it contains.  Also see {@link saveShip} and {@link reconstruct}.
+ * [Member of gui.js]
+ * Creates a temporary object which will be saved in session storage 
+ * and assigns to it the basic data necessary to reconstruct an 
+ * {@link Exec} object with everything it contains.  
+ * Also see {@link saveShip} and {@link reconstruct}.
  * @param {Exec} exec - the Exec object created in setup.html.
  */
 function makeTempObj(exec) {
@@ -510,8 +534,11 @@ function makeTempObj(exec) {
 }
 
 /**
- * Constructs an {@link Exec} object in index.html and populates it with all data from a temporary object.  Also see {@link makeTempObj} and {@link saveShip}.
- * @param {Object} obj - a temporary object pulled from session storage, which contains the necessary data to create and populate the Exec object.
+ * [Member of gui.js]
+ * Constructs an {@link Exec} object in index.html and populates it with all 
+ * data from a temporary object.  Also see {@link makeTempObj} and {@link saveShip}.
+ * @param {Object} obj - a temporary object pulled from session storage, which 
+ * contains the necessary data to create and populate the Exec object.
  */
 function reconstruct(obj) {
   exec = new Exec(obj.adm1Name, obj.adm2Name, obj.numShips);
@@ -527,6 +554,7 @@ function reconstruct(obj) {
 }
 
 /**
+ * [Member of gui.js]
  * Displays the in-game messages for each player on their turn.
  */
 function updateMessages()
@@ -549,6 +577,7 @@ function updateMessages()
 }
 
 /**
+ * [Member of gui.js]
  * Determines the state of the switch player button in index, hides/unhides table divs, updates
  * button text and refreshes player maps.
  */
