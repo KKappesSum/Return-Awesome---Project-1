@@ -29,15 +29,11 @@ class Exec{
         let isAhit;
         if(this.getPlayerTurn() === 1){
             isAhit = this.admir2.updateHit(coord, tableID);
-            this.endGameChecker(1);
-            //this.advancePlayerTurn();
-            
+            this.endGameChecker(1);            
         }
         else if(this.getPlayerTurn() == 2){
             isAhit = this.admir1.updateHit(coord, tableID);
             this.endGameChecker(2);
-            //this.advancePlayerTurn();
-            
         }
         else{
             prompt("something went wrong with the playerTurn variable")
@@ -63,7 +59,6 @@ class Exec{
                 //alerts gamers to the end of the game and resets sessionStorage, also routes the game to the setup screen
                 alert(outputString);
                 sessionStorage.ExecObj = {};
-                //location.href = "./index.html"; 
 
                 //displays end of game message and hides p1 ship map
                 document.getElementById("table2").style.display = "none";
@@ -74,7 +69,7 @@ class Exec{
     
     
     /**
-     * Sends the given data to the current player's {@link Admiral} to handle ship placement. 
+     * Sends the given data to the current player's {@link Admiral} to handle ship placement. Calls {@link Admiral#assignCoords}.
      * @param {string} tableId: valid id for the table.
      * @param {string} coords: coordinates for the cell that was clicked.
      * @param {number} shipSize: size of the ship being constructed .
@@ -88,22 +83,20 @@ class Exec{
             this.admir2.assignCoords(coords,shipSize,orientation,tableId);
         }
         else{
-            console.log("something went wrong with the getplayerturn function");
+            console.log("something went wrong with the sendCoordsForPlacement function");
         }
     }
     
     /**
-     * Determines which player is playing
-     * @returns {number}: a number indicating whose turn it is
+     * Determines which player is playing.
+     * @return {number}: 1 for the first player, 2 for the second player.
      */
     getPlayerTurn(){
         return(this.m_playerTurn);
     }
 
      /**
-     * Toggles the turn from one player to the other
-     * @param: none
-     * 
+     * Toggles the turn from one player to the other.
      */
     advancePlayerTurn(){
         if(this.m_playerTurn == 1){
@@ -115,8 +108,7 @@ class Exec{
     }
     
     /**
-     * Refreshes both tables based on the internal grids in each Admiral
-     * @param: none
+     * Refreshes both displayed tables to show the current player's game board.  Calls {@link Admiral#refreshOnStart}.
      */
     refreshMap(){
         if(this.getPlayerTurn()===1)
@@ -130,6 +122,9 @@ class Exec{
         }
     }
 
+    /**
+     * Refreshes the current player's firing map.  Calls {@link Admiral#refreshFireOnly}.
+     */
     refreshFireMap()
     {
         if(this.getPlayerTurn()===1)
@@ -144,8 +139,7 @@ class Exec{
     }
 
     /**
-     * changes the player name at the top of index
-     * @param: none
+     * Changes the player name displayed at the top of the game page.
      */
     updateName(){
         if(this.m_playerTurn ===1){
@@ -194,8 +188,7 @@ class Exec{
 }
 
 /**
- * @param: none
- * Changes the in-game messages for each player on their turn
+ * Displays the in-game messages for each player on their turn.
  */
 function updateMessages()
 {

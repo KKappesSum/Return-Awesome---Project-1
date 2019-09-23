@@ -172,6 +172,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#execrefreshfiremap'
+                        class='regular pre-open'>
+                        #refreshFireMap
+                      </a></li>
+                      
+                      <li><a
                         href='#execupdatename'
                         class='regular pre-open'>
                         #updateName
@@ -1574,7 +1580,7 @@
 
   
 
-  <p>Sends the given data to the current player's <a href="#admiral">Admiral</a> to handle ship placement.</p>
+  <p>Sends the given data to the current player's <a href="#admiral">Admiral</a> to handle ship placement. Calls <a href="#admiralassigncoords">Admiral#assignCoords</a>.</p>
 
     <div class='pre p1 fill-light mt0'>sendCoordsForPlacement(tableId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, coords: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, shipSize: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, orientation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
   
@@ -1662,7 +1668,7 @@
 
   
 
-  <p>Determines which player is playing</p>
+  <p>Determines which player is playing.</p>
 
     <div class='pre p1 fill-light mt0'>getPlayerTurn(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
   
@@ -1683,7 +1689,7 @@
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
-        : a number indicating whose turn it is
+        : 1 for the first player, 2 for the second player.
 
       
     
@@ -1709,7 +1715,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>advancePlayerTurn(null)</span>
+            <span class='code strong strong truncate'>advancePlayerTurn()</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1717,33 +1723,19 @@
 
   
 
-  <p>Toggles the turn from one player to the other</p>
+  <p>Toggles the turn from one player to the other.</p>
 
-    <div class='pre p1 fill-light mt0'>advancePlayerTurn(null: any)</div>
-  
-  
-
-  
-  
-  
-  
+    <div class='pre p1 fill-light mt0'>advancePlayerTurn()</div>
   
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
-	    : none
+  
+  
+  
+  
+  
 
-          </div>
-          
-        </div>
-      
-    </div>
   
 
   
@@ -1770,7 +1762,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>refreshMap(null)</span>
+            <span class='code strong strong truncate'>refreshMap()</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1778,33 +1770,66 @@
 
   
 
-  <p>Refreshes both tables based on the internal grids in each Admiral</p>
+  <p>Refreshes both displayed tables to show the current player's game board.  Calls <a href="#admiralrefreshonstart">Admiral#refreshOnStart</a>.</p>
 
-    <div class='pre p1 fill-light mt0'>refreshMap(null: any)</div>
-  
-  
-
-  
-  
-  
-  
+    <div class='pre p1 fill-light mt0'>refreshMap()</div>
   
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
-	    : none
+  
+  
+  
+  
+  
 
-          </div>
-          
-        </div>
-      
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
     </div>
+  
+    <div class='border-bottom' id='execrefreshfiremap'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>refreshFireMap()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Refreshes the current player's firing map.  Calls <a href="#admiralrefreshfireonly">Admiral#refreshFireOnly</a>.</p>
+
+    <div class='pre p1 fill-light mt0'>refreshFireMap()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
   
 
   
@@ -1831,7 +1856,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>updateName(null)</span>
+            <span class='code strong strong truncate'>updateName()</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1839,33 +1864,19 @@
 
   
 
-  <p>changes the player name at the top of index</p>
+  <p>Changes the player name displayed at the top of the game page.</p>
 
-    <div class='pre p1 fill-light mt0'>updateName(null: any)</div>
-  
-  
-
-  
-  
-  
-  
+    <div class='pre p1 fill-light mt0'>updateName()</div>
   
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
-	    : none
+  
+  
+  
+  
+  
 
-          </div>
-          
-        </div>
-      
-    </div>
   
 
   
@@ -1913,8 +1924,9 @@
   </div>
   
 
-  
-    <div class='pre p1 fill-light mt0'>updateMessages(null: any)</div>
+  <p>Displays the in-game messages for each player on their turn.</p>
+
+    <div class='pre p1 fill-light mt0'>updateMessages()</div>
   
   
 
@@ -1925,21 +1937,6 @@
   
   
 
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
-	    : none
-Changes the in-game messages for each player on their turn
-
-          </div>
-          
-        </div>
-      
-    </div>
   
 
   
@@ -1975,34 +1972,19 @@ Changes the in-game messages for each player on their turn
   </div>
   
 
-  <p>determines the state of the switch player button in index, hides/unhides table divs, updates
-button text and refreshes player maps</p>
+  <p>Determines the state of the switch player button in index.html, hides/unhides table divs, updates button text and refreshes player maps.</p>
 
-    <div class='pre p1 fill-light mt0'>turnButton(null: any)</div>
-  
-  
-
-  
-  
-  
-  
+    <div class='pre p1 fill-light mt0'>turnButton()</div>
   
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
-	    : none
+  
+  
+  
+  
+  
 
-          </div>
-          
-        </div>
-      
-    </div>
   
 
   
