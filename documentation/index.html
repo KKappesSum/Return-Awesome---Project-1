@@ -193,26 +193,6 @@
               
                 
                 <li><a
-                  href='#updatemessages'
-                  class="">
-                  updateMessages
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#turnbutton'
-                  class="">
-                  turnButton
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
                   href='#grid'
                   class=" toggle-sibling">
                   Grid
@@ -363,9 +343,19 @@
               
                 
                 <li><a
-                  href='#testobj'
+                  href='#updatemessages'
                   class="">
-                  testObj
+                  updateMessages
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#turnbutton'
+                  class="">
+                  turnButton
                   
                 </a>
                 
@@ -502,7 +492,9 @@
       
         <div class='space-bottom0'>
           <span class='code bold'>config</span> <code class='quiet'>(<a href="#config">Config</a>)</code>
-          : a Config object.
+          : a 
+<a href="#config">Config</a>
+ object.
 
           
         </div>
@@ -1916,102 +1908,6 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='updatemessages'>
-      updateMessages
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Displays the in-game messages for each player on their turn.</p>
-
-    <div class='pre p1 fill-light mt0'>updateMessages()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='turnbutton'>
-      turnButton
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Determines the state of the switch player button in index.html, hides/unhides table divs, updates button text and refreshes player maps.</p>
-
-    <div class='pre p1 fill-light mt0'>turnButton()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
     <h3 class='fl m0' id='grid'>
       Grid
     </h3>
@@ -2020,7 +1916,7 @@
   </div>
   
 
-  <p>Grid object for storing and updating information for each battlegrid</p>
+  <p>Class for storing and updating information for the game map.</p>
 
     <div class='pre p1 fill-light mt0'>new Grid(size: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
   
@@ -2040,7 +1936,9 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>size</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-	    : The size of the array to be created.
+	    The size of the game board, which is defined in 
+<a href="#config">Config</a>
+.
 
           </div>
           
@@ -2049,6 +1947,34 @@
     </div>
   
 
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>conf</span> <code class='quiet'>(<a href="#config">Config</a>)</code>
+          : a 
+<a href="#config">Config</a>
+ object.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>arr</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>>)</code>
+          : a 2D array of strings containing the status of each position on the game board.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>isHit</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
+          : used when checking whether a cell has been hit during gameplay.
+
+          
+        </div>
+      
+    </div>
   
 
   
@@ -2075,9 +2001,9 @@
 
   
 
-  <p>Places ships on the grid based on an array of coordinates and updates the onscreen table</p>
+  <p>Places ships on the grid based on an array of coordinates and updates the onscreen table.</p>
 
-    <div class='pre p1 fill-light mt0'>populateGrid(locationArr: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, tableId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+    <div class='pre p1 fill-light mt0'>populateGrid(locationArr: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>, tableId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
   
   
 
@@ -2094,8 +2020,8 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>locationArr</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
-	    : An array of coordinates occupied by a Ship
+            <span class='code bold'>locationArr</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>)</code>
+	    : An array of coordinates occupied by a Ship.
 
           </div>
           
@@ -2104,7 +2030,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>tableId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    : the elementId for the table to be updated
+	    : the elementId for the table to be updated.
 
           </div>
           
@@ -3089,27 +3015,90 @@ retrieves the Exec obj from session storage at start of game
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='testobj'>
-      testObj
+    <h3 class='fl m0' id='updatemessages'>
+      updateMessages
     </h3>
     
     
   </div>
   
 
-  <p>creates a exec obj used for testing exec functions</p>
+  <p>Displays the in-game messages for each player on their turn.</p>
 
-    <div class='pre p1 fill-light mt0'>testObj()</div>
-  
-  
-
-  
-  
-  
-  
+    <div class='pre p1 fill-light mt0'>updateMessages()</div>
   
   
 
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='turnbutton'>
+      turnButton
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>determines the state of the switch player button in index, hides/unhides table divs, updates
+button text and refreshes player maps</p>
+
+    <div class='pre p1 fill-light mt0'>turnButton(null: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
+	    : none
+
+          </div>
+          
+        </div>
+      
+    </div>
   
 
   
