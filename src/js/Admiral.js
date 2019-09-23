@@ -2,7 +2,7 @@
  * Class that contains one player's data.
  * @param {number} num - The number of ships being placed in the game.
  * @param {string} pName - the name of the player.
- * @prop {Config} config - a Config object.
+ * @prop {Config} config - a {@link Config} object.
  * @prop {number} numships - the number of Ships in Admiral.
  * @prop {Grid} board - a Grid to store the Admiral's game map, with dimensions given in config.
  * @prop {Ship[]} fleet - an array of Ships, initialized empty.
