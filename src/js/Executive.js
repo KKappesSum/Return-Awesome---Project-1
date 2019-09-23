@@ -150,6 +150,10 @@ class Exec{
         }
     }
 
+    /**
+     * Checks if a player has sunk/had their ships sunk and updates the progress and update headers on the page accordingly
+     * @param: none
+     */
     checkSunk()
     {
         document.getElementById("p2updates").innerHTML = "";
@@ -172,17 +176,6 @@ class Exec{
                 document.getElementById("p2updates").innerHTML += "*Your ship of size "+(i+1)+" was sunk" +  "<br />";
             }
         }
-        // let sunk;
-        // if(this.m_playerTurn ===2){
-        //     sunk = this.admir1.num - this.admir1.afloat;
-        // }
-        // else{
-        //     sunk = this.admir2.num  - this.admir2.name;
-        // }
-        // if (sunk != 0)
-        // {
-            
-        // }
     }
 
 }
