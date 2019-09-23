@@ -16,9 +16,8 @@ function removeInstructions()
 }
 
 /**
- * This function adds one to its input.
- * @param {number} input any number
- * @returns {number} that number, plus one.
+ * This function takes the names of the players or sets them to default names if none were input.
+ * @param: none
  */
 function setPlayerNames() {
     p1 = document.getElementById("player1").value;
@@ -365,32 +364,9 @@ function changeColor(sizee, horizontal, color, tableID) {
   }
 } //end of changecolor
 
-// /**
 
-//  * This function will hide p1's board when p1 is done and make p2's board visible once they hit ok on the prompt
-//  * @param {boolean} hit: true if a hit, false if a miss
-//  */
-// function switchPlayer(hit) {
-//   //hide boards
-//   document.getElementById("board").style.display = "none";
-//   exec.refreshMap();
-//   //make p2's board visible after giving an alert half a second later
-//   setTimeout(function () {unhide()}, 500);
-// }
-
-// /**
-//  * This function will make p2's board visible
-//  * @param none
-//  */
-// function unhide() {
-//   //setTimeout(function () {alert("Next player!")}, 1000);
-//   alert("Next player!");
-//   //unhide boards
-//   document.getElementById("board").style.display = "block";
-// }
-
-
- /* launched when submitting information in setup.html
+/** 
+ * launched when submitting information in setup.html
  */
 function createExec(){
     //creating an exec object
