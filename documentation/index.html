@@ -114,28 +114,10 @@
                 
                 <li><a
                   href='#config'
-                  class=" toggle-sibling">
+                  class="">
                   Config
-                  <span class='icon'>▸</span>
+                  
                 </a>
-                
-                <div class='toggle-target display-none'>
-                  
-                  
-                    <ul class='list-reset py1-ul pl1'>
-                      <li class='h5'><span>Instance members</span></li>
-                      
-                      <li><a
-                        href='#configoceantypes'
-                        class='regular pre-open'>
-                        #oceanTypes
-                      </a></li>
-                      
-                    </ul>
-                  
-                  
-                  
-                </div>
                 
                 </li>
               
@@ -1325,69 +1307,6 @@
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
-    <div class="clearfix">
-  
-    <div class='border-bottom' id='configoceantypes'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>oceanTypes</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  
-    <div class='pre p1 fill-light mt0'>oceanTypes</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Properties</div>
-    <div>
-      
-        <div class='space-bottom0'>
-          <span class='code bold'>WATER</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-          
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-</div>
-
-  
 
   
 
@@ -1410,9 +1329,9 @@
   </div>
   
 
-  <p>Creates the exec instance with two admiral objects, along with their number of ships</p>
+  <p>Top-level class containing an <a href="#admiral">Admiral</a> for each player and methods to run the game.</p>
 
-    <div class='pre p1 fill-light mt0'>new Exec(adm1Name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, adm2Name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, numShips: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): any</div>
+    <div class='pre p1 fill-light mt0'>new Exec(adm1Name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, adm2Name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, numShips: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
   
   
 
@@ -1430,7 +1349,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>adm1Name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    : Admiral 1's nickname
+	    Admiral 1's nickname.
 
           </div>
           
@@ -1439,7 +1358,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>adm2Name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    : Admiral 2's nickname
+	    Admiral 2's nickname.
 
           </div>
           
@@ -1448,7 +1367,7 @@
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>numShips</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-	    : number of playable ships per admiral
+	    number of playable ships per Admiral.
 
           </div>
           
@@ -1458,15 +1377,40 @@
   
 
   
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>any</code>:
-        : none
-
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
       
-    
+        <div class='space-bottom0'>
+          <span class='code bold'>m_shipCount</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : the number of playable ships per Admiral.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>m_playerTurn</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+          : 1 for the first player, or 2 for the second player.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>admir1</span> <code class='quiet'>(<a href="#admiral">Admiral</a>)</code>
+          : the Admiral object for the first player.
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>admir2</span> <code class='quiet'>(<a href="#admiral">Admiral</a>)</code>
+          : the Admiral object for the second player.
+
+          
+        </div>
+      
+    </div>
+  
+
   
 
   
@@ -1483,7 +1427,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>updateTable(coord, tableID, coords)</span>
+            <span class='code strong strong truncate'>updateTable(coord, tableID)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1491,9 +1435,9 @@
 
   
 
-  <p>Passes "guess" coordinates to admiral for grid/map updates during game</p>
+  <p>Passes "guess" coordinates to <a href="#admiral">Admiral</a> to update the game board and Ships during gameplay.</p>
 
-    <div class='pre p1 fill-light mt0'>updateTable(coord: any, tableID: any, coords: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+    <div class='pre p1 fill-light mt0'>updateTable(coord: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, tableID: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
   
   
 
@@ -1510,24 +1454,17 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>coord</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>coord</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    coordinates for the specific cell in the table.
+
           </div>
           
         </div>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>tableID</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>coords</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    : coordinates for the specific cell in the table
+            <span class='code bold'>tableID</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the identifier specifying the table to update.
 
           </div>
           
@@ -1542,7 +1479,7 @@
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-        true if a hit, false if a miss
+        true if the guess is a hit, false if it's a miss.
 
       
     
@@ -1568,7 +1505,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>endGameChecker(num, null)</span>
+            <span class='code strong strong truncate'>endGameChecker(num)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1576,9 +1513,9 @@
 
   
 
-  <p>checks whether all ships have been sunk, if so tosses up an alert and ends the game</p>
+  <p>Checks whether either player has sunk all of their opponent's ships.  If so, displays an alert declaring the winner of the game, and ends the game.</p>
 
-    <div class='pre p1 fill-light mt0'>endGameChecker(num: any, null: any)</div>
+    <div class='pre p1 fill-light mt0'>endGameChecker(num: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</div>
   
   
 
@@ -1595,16 +1532,8 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>num</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
-	    : none
+            <span class='code bold'>num</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    represents the current player turn: 1 for the first player, 2 for the second player.
 
           </div>
           
@@ -1645,11 +1574,9 @@
 
   
 
-  <p>Places ships based on given coordinates of the upper most left cell,
-it sends the orientation, shipsize and table to be used to assemble and
-place the ships across the proper cells</p>
+  <p>Sends the given data to the current player's <a href="#admiral">Admiral</a> to handle ship placement.</p>
 
-    <div class='pre p1 fill-light mt0'>sendCoordsForPlacement(tableId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, coords: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, shipSize: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, orientation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
+    <div class='pre p1 fill-light mt0'>sendCoordsForPlacement(tableId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, coords: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, shipSize: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, orientation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
   
   
 
@@ -1666,8 +1593,8 @@ place the ships across the proper cells</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>tableId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-	    : valid id for the table
+            <span class='code bold'>tableId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    : valid id for the table.
 
           </div>
           
@@ -1676,7 +1603,7 @@ place the ships across the proper cells</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>coords</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    : coordinates for the cell that was clicked
+	    : coordinates for the cell that was clicked.
 
           </div>
           
@@ -1685,7 +1612,7 @@ place the ships across the proper cells</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>shipSize</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-	    : size of the ship being constructed
+	    : size of the ship being constructed .
 
           </div>
           
@@ -1694,7 +1621,7 @@ place the ships across the proper cells</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>orientation</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
-	    : vertical or horizontal orientation
+	    : orientation of the ship being constructed: true for horizontal, false for vertical.
 
           </div>
           

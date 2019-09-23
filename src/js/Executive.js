@@ -1,11 +1,14 @@
 //Author: Ethan Brenner
 
 /**
- * Creates the exec instance with two admiral objects, along with their number of ships
- * @param {string} adm1Name: Admiral 1's nickname
- * @param {string} adm2Name: Admiral 2's nickname
- * @param {number} numShips: number of playable ships per admiral
- * @return: none
+ * Top-level class containing an {@link Admiral} for each player and methods to run the game.
+ * @param {string} adm1Name - Admiral 1's nickname.
+ * @param {string} adm2Name - Admiral 2's nickname.
+ * @param {number} numShips - number of playable ships per Admiral.
+ * @prop {number} m_shipCount - the number of playable ships per Admiral.
+ * @prop {number} m_playerTurn - 1 for the first player, or 2 for the second player.
+ * @prop {Admiral} admir1 - the Admiral object for the first player.
+ * @prop {Admiral} admir2 - the Admiral object for the second player.
  */
 class Exec{   
     constructor(adm1Name, adm2Name, numShips){
@@ -15,10 +18,12 @@ class Exec{
         this.admir1 = new Admiral(numShips, adm1Name);
         this.admir2 = new Admiral(numShips, adm2Name);  
     }
+
      /**
-     * Passes "guess" coordinates to admiral for grid/map updates during game
-     * @param {string} coords: coordinates for the specific cell in the table
-     * @return {boolean} true if a hit, false if a miss
+     * Passes "guess" coordinates to {@link Admiral} to update the game board and Ships during gameplay.
+     * @param {string} coord - coordinates for the specific cell in the table.
+     * @param {string} tableID - the identifier specifying the table to update.
+     * @return {boolean} true if the guess is a hit, false if it's a miss.
      */
     updateTable(coord, tableID){
         let isAhit;
@@ -41,8 +46,8 @@ class Exec{
     }
 
     /**
-     * checks whether all ships have been sunk, if so tosses up an alert and ends the game
-     * @param: none
+     * Checks whether either player has sunk all of their opponent's ships.  If so, displays an alert declaring the winner of the game, and ends the game.
+     * @param {number} num - represents the current player turn: 1 for the first player, 2 for the second player.
      */
     endGameChecker(num){
         let player1 = this.admir1.name;
@@ -69,13 +74,11 @@ class Exec{
     
     
     /**
-     * Places ships based on given coordinates of the upper most left cell, 
-     * it sends the orientation, shipsize and table to be used to assemble and 
-     * place the ships across the proper cells
-     * @param {number} tableId: valid id for the table
-     * @param {string} coords: coordinates for the cell that was clicked
-     * @param {number} shipSize: size of the ship being constructed 
-     * @param {boolean} orientation: vertical or horizontal orientation
+     * Sends the given data to the current player's {@link Admiral} to handle ship placement. 
+     * @param {string} tableId: valid id for the table.
+     * @param {string} coords: coordinates for the cell that was clicked.
+     * @param {number} shipSize: size of the ship being constructed .
+     * @param {boolean} orientation: orientation of the ship being constructed: true for horizontal, false for vertical.
      */
     sendCoordsForPlacement(tableId, coords, shipSize, orientation){
         if(this.getPlayerTurn() == 1){
