@@ -88,7 +88,7 @@ class Exec{
     }
     
     /**
-     * Determines which player is playing.
+     * Determines whether the current player is admir1 or admir2
      * @return {number}: 1 for the first player, 2 for the second player.
      */
     getPlayerTurn(){
@@ -96,7 +96,7 @@ class Exec{
     }
 
      /**
-     * Toggles the turn from one player to the other.
+     * Toggles the m_playerTurn variable between 1 and 2
      */
     advancePlayerTurn(){
         if(this.m_playerTurn == 1){
