@@ -523,15 +523,6 @@ function onLoadPull(){
     
 }
 
-/**
-* creates a exec obj used for testing exec functions
-*/
-function testObj(){
-   tempExec = new Exec("Ethan", "Anna", '6');
-   storeExecObj();
-}
-
-
 function makeTempObj(exec) {
   tempObj.adm1Name = exec.admir1.name;
   tempObj.adm2Name = exec.admir2.name;
