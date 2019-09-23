@@ -271,7 +271,7 @@ function placeShip(size, horizontal, shipId)
 
 /**
  * Checks if ship placement is legal.
- * @param cell the HTML table cell to check.
+ * @param cell - the HTML table cell to check.
  * @return {boolean} true if placement is legal, else false.
  */
 function isLegal(cell) {
