@@ -556,3 +556,24 @@ function reconstruct(obj) {
   }
 }
 
+/**
+ * Displays the in-game messages for each player on their turn.
+ */
+function updateMessages()
+{
+    exec.checkSunk();
+    if (exec.getPlayerTurn() === 1)
+    {
+        document.getElementById("p1updates").style.display = "block";
+        document.getElementById("p2updates").style.display = "none";
+        document.getElementById("p1progress").style.display = "block";
+        document.getElementById("p2progress").style.display = "none";
+    }
+    else
+    {
+        document.getElementById("p1updates").style.display = "none";
+        document.getElementById("p2updates").style.display = "block";
+        document.getElementById("p1progress").style.display = "none";
+        document.getElementById("p2progress").style.display = "block";
+    }
+}
