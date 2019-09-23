@@ -21,30 +21,6 @@ class Grid{
         }
     }
 
-    // -- SETTERS & GETTERS --
-    getArr() {
-        return this.arr;
-    }
-
-    getCell(coord) {
-        let row = Number(coord.substring(0,1));
-        let col = Number(coord.substring(2));
-        return this.arr[row - 1][col - 1];
-    }
-
-    getRow(row) {
-        return this.arr[row];
-    }
-
-    getCol(col) {
-        let tempArr = [];
-        for(let row = 0; row < this.conf.BOARD_SIZE; row++)
-        {
-            tempArr.push(this.arr[row][col]);
-        }
-        return tempArr;
-    }
-
     /**
      * Places ships on the grid based on an array of coordinates and updates the onscreen table.
      * @param {string[]} locationArr - An array of coordinates occupied by a Ship.
@@ -106,6 +82,7 @@ class Grid{
             this.arr[i][j] = this.conf.oceanTypes.HIT;
             this.isHit = true;
         }else if(this.arr[i][j] == this.conf.oceanTypes.HIT){
+            //Party Parrot dances again! (But seriously nothing goes here for a reason.)
         }else{
             this.arr[i][j] = this.conf.oceanTypes.MISS;
         }
