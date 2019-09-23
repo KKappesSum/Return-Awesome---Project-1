@@ -329,6 +329,16 @@
               
                 
                 <li><a
+                  href='#saveship'
+                  class="">
+                  saveShip
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#storeexecobj'
                   class="">
                   storeExecObj
@@ -352,6 +362,26 @@
                   href='#onloadpull'
                   class="">
                   onLoadPull
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#maketempobj'
+                  class="">
+                  makeTempObj
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#reconstruct'
+                  class="">
+                  reconstruct
                   
                 </a>
                 
@@ -2708,7 +2738,7 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Creates the <a href="Executive">Executive</a> object and calls <a href="makeTempObj">makeTempObj</a>.  Launched when submitting information in setup.html.</p>
+  <p>Creates the <a href="Executive">Executive</a> object and calls <a href="#maketempobj">makeTempObj</a>.  Launched when submitting information in setup.html.</p>
 
     <div class='pre p1 fill-light mt0'>createExec()</div>
   
@@ -2827,7 +2857,7 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   </div>
   
 
-  <p>Handles button clicks on the setup page, passes the relevant data to the exec object.</p>
+  <p>Handles button clicks on the setup page, passes the relevant data to the exec object, calling <a href="#execsendcoordsforplacement">Exec#sendCoordsForPlacement</a>.</p>
 
     <div class='pre p1 fill-light mt0'>buttonHandlerSetup(tableId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, coords: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, shipSize: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, orientation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
   
@@ -2908,16 +2938,17 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='storeexecobj'>
-      storeExecObj
+    <h3 class='fl m0' id='saveship'>
+      saveShip
     </h3>
     
     
   </div>
   
 
-  
-    <div class='pre p1 fill-light mt0'>storeExecObj(tempObj: any, null: any)</div>
+  <p>Adds a <a href="#ship">Ship</a>'s basic data to an existing temporary object for storage.  Also see <a href="#maketempobj">makeTempObj</a>.</p>
+
+    <div class='pre p1 fill-light mt0'>saveShip(coords: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, shipSize: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, orientation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
   
   
 
@@ -2934,18 +2965,90 @@ Lets p1 place all their ships before hiding the map and prompting p2 to place th
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>tempObj</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>coords</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the starting coordinate for the Ship being processed.
+
           </div>
           
         </div>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
-	    : none
-stores the completed Exec object in the session storage after all ships are placed
-navigates to the index page
+            <span class='code bold'>shipSize</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    the size of the Ship.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>orientation</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
+	    the orientation of the Ship, true for horizontal, false for vertical.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='storeexecobj'>
+      storeExecObj
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Stores the completed temporary object in the session storage after all ships are placed, and navigates to the index page.</p>
+
+    <div class='pre p1 fill-light mt0'>storeExecObj(tempObj: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>tempObj</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    object containing the necessary information to generate a new 
+<a href="#exec">Exec</a>
+ object with all members initialized.
 
           </div>
           
@@ -2987,8 +3090,9 @@ navigates to the index page
   </div>
   
 
-  
-    <div class='pre p1 fill-light mt0'>pullExecObj(null: any): any</div>
+  <p>Retrieves the temporary object from session storage at the start of the game.</p>
+
+    <div class='pre p1 fill-light mt0'>pullExecObj(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -2999,20 +3103,6 @@ navigates to the index page
   
   
 
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
-	    : none
-
-          </div>
-          
-        </div>
-      
-    </div>
   
 
   
@@ -3020,9 +3110,8 @@ navigates to the index page
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>any</code>:
-        : returns the exec obj from storage
-retrieves the Exec obj from session storage at start of game
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        the temporary object from storage.
 
       
     
@@ -3057,7 +3146,7 @@ retrieves the Exec obj from session storage at start of game
   </div>
   
 
-  <p>tests retrieval from sessionStorage in index.html</p>
+  <p>Initializes the game by retrieving game data from sessionStorage in index.html, calling <a href="#reconstruct">reconstruct</a>, and calling <a href="#execrefreshmap">Exec#refreshMap</a>.</p>
 
     <div class='pre p1 fill-light mt0'>onLoadPull()</div>
   
@@ -3070,6 +3159,130 @@ retrieves the Exec obj from session storage at start of game
   
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='maketempobj'>
+      makeTempObj
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Creates a temporary object which will be saved in session storage and assigns to it the basic data necessary to reconstruct an <a href="#exec">Exec</a> object with everything it contains.  Also see <a href="#saveship">saveShip</a> and <a href="#reconstruct">reconstruct</a>.</p>
+
+    <div class='pre p1 fill-light mt0'>makeTempObj(exec: <a href="#exec">Exec</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>exec</span> <code class='quiet'>(<a href="#exec">Exec</a>)</code>
+	    the Exec object created in setup.html.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='reconstruct'>
+      reconstruct
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Constructs an <a href="#exec">Exec</a> object in index.html and populates it with all data from a temporary object.  Also see <a href="#maketempobj">makeTempObj</a> and {saveShip}.</p>
+
+    <div class='pre p1 fill-light mt0'>reconstruct(obj: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>obj</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    a temporary object pulled from session storage, which contains the necessary data to create and populate the Exec object.
+
+          </div>
+          
+        </div>
+      
+    </div>
   
 
   
@@ -3153,34 +3366,20 @@ retrieves the Exec obj from session storage at start of game
   </div>
   
 
-  <p>determines the state of the switch player button in index, hides/unhides table divs, updates
-button text and refreshes player maps</p>
+  <p>Determines the state of the switch player button in index, hides/unhides table divs, updates
+button text and refreshes player maps.</p>
 
-    <div class='pre p1 fill-light mt0'>turnButton(null: any)</div>
-  
-  
-
-  
-  
-  
-  
+    <div class='pre p1 fill-light mt0'>turnButton()</div>
   
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>null</span> <code class='quiet'>(any)</code>
-	    : none
+  
+  
+  
+  
+  
 
-          </div>
-          
-        </div>
-      
-    </div>
   
 
   

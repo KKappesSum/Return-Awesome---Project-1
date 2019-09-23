@@ -446,6 +446,12 @@ function buttonHandlerSetup(tableId, coords, shipSize, orientation){
     saveShip(coords, shipSize, orientation);
 }
 
+/**
+ * Adds a {@link Ship}'s basic data to an existing temporary object for storage.  Also see {@link makeTempObj}.
+ * @param {string} coords - the starting coordinate for the Ship being processed.
+ * @param {number} shipSize - the size of the Ship.
+ * @param {boolean} orientation - the orientation of the Ship, true for horizontal, false for vertical. 
+ */
 function saveShip(coords, shipSize, orientation) {
   if(exec.m_playerTurn == 1) {
     tempObj.adm1Coords[shipSize - 1] = coords;
@@ -461,9 +467,8 @@ function saveShip(coords, shipSize, orientation) {
 }
 
 /**
-* @param: none
-* stores the completed Exec object in the session storage after all ships are placed
-* navigates to the index page
+* Stores the completed temporary object in the session storage after all ships are placed, and navigates to the index page.
+* @param {Object} tempObj - object containing the necessary information to generate a new {@link Exec} object with all members initialized.
 */
 function storeExecObj(tempObj){
     sessionStorage.temp = JSON.stringify(tempObj);
@@ -471,9 +476,8 @@ function storeExecObj(tempObj){
 }
 
 /**
-* @param: none
-* @return: returns the exec obj from storage
-* retrieves the Exec obj from session storage at start of game
+* Retrieves the temporary object from session storage at the start of the game.
+* @return {Object} the temporary object from storage.
 */
 function pullExecObj(){
     let fromStorage = JSON.parse(sessionStorage.temp);
@@ -481,16 +485,19 @@ function pullExecObj(){
 }
 
 /**
-* tests retrieval from sessionStorage in index.html
+* Initializes the game by retrieving game data from sessionStorage in index.html, calling {@link reconstruct}, and calling {@link Exec#refreshMap}.
 */
 function onLoadPull(){
     
     placeholder = pullExecObj();
     reconstruct(placeholder);
     exec.refreshMap();
-    
 }
 
+/**
+ * Creates a temporary object which will be saved in session storage and assigns to it the basic data necessary to reconstruct an {@link Exec} object with everything it contains.  Also see {@link saveShip} and {@link reconstruct}.
+ * @param {Exec} exec - the Exec object created in setup.html.
+ */
 function makeTempObj(exec) {
   tempObj.adm1Name = exec.admir1.name;
   tempObj.adm2Name = exec.admir2.name;
@@ -502,6 +509,10 @@ function makeTempObj(exec) {
   tempObj.adm2Ori = new Array(num);
 }
 
+/**
+ * Constructs an {@link Exec} object in index.html and populates it with all data from a temporary object.  Also see {@link makeTempObj} and {@link saveShip}.
+ * @param {Object} obj - a temporary object pulled from session storage, which contains the necessary data to create and populate the Exec object.
+ */
 function reconstruct(obj) {
   exec = new Exec(obj.adm1Name, obj.adm2Name, obj.numShips);
   for(let i = 0; i < obj.numShips; i++)
@@ -538,10 +549,8 @@ function updateMessages()
 }
 
 /**
- * determines the state of the switch player button in index, hides/unhides table divs, updates
- * button text and refreshes player maps
- * @param: none
- * 
+ * Determines the state of the switch player button in index, hides/unhides table divs, updates
+ * button text and refreshes player maps.
  */
 function turnButton(){
     let temp = document.getElementById("turnButton");
